@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.reift.movieapp.presentation.dashboard.BookmarkFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_bookmark"
+        android:name="com.reift.movieapp.presentation.bookmark.BookmarkFragment"
+        android:label="@string/title_bookmark"
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_explore"
         android:name="com.reift.movieapp.presentation.explore.ExploreFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:label="@string/title_explore"
+        tools:layout="@layout/fragment_explore" />
 </navigation>
