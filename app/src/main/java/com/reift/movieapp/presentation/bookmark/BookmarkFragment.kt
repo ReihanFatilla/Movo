@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.reift.movieapp.databinding.FragmentDashboardBinding
+import com.reift.movieapp.databinding.FragmentBookmarkBinding
 
 class BookmarkFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentBookmarkBinding? = null
     private val binding get() = _binding!!
 
     private var _viewModel: BookmarkViewModel? = null
@@ -24,7 +24,7 @@ class BookmarkFragment : Fragment() {
         _viewModel =
             ViewModelProvider(this)[BookmarkViewModel::class.java]
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         return binding.root
     }
 

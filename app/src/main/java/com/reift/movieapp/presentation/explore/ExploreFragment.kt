@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.reift.movieapp.databinding.FragmentNotificationsBinding
+import com.reift.movieapp.databinding.FragmentExploreBinding
 
 class ExploreFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
 
     private var _viewModel: ExploreViewModel? = null
@@ -22,7 +22,7 @@ class ExploreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
-        _binding = FragmentNotificationsBinding.inflate(layoutInflater)
+        _binding = FragmentExploreBinding.inflate(layoutInflater)
         return binding.root
     }
 
