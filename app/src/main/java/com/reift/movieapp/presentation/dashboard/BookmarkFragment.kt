@@ -1,4 +1,4 @@
-package com.reift.movieapp.ui.dashboard
+package com.reift.movieapp.presentation.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,30 +9,24 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.reift.movieapp.databinding.FragmentDashboardBinding
 
-class DashboardFragment : Fragment() {
+class BookmarkFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private var _viewModel: BookmarkViewModel? = null
+    private val viewModel get() = _viewModel!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        _viewModel =
+            ViewModelProvider(this)[BookmarkViewModel::class.java]
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
