@@ -21,4 +21,8 @@
         </activity>
     </application>
 
+    <meta-data
+        android:name = "apiKey"
+        android:value = "${ApiKey}"/>
+
 </manifest>
