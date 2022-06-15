@@ -49,9 +49,12 @@ interface ApiService {
         searchBy: String,
         @Query("api_key")
         apiKey: String,
+        @Query("query")
+        query: String,
         @Query("region")
         region: String,
         @Query("page")
         page: String = "1"
     ): Flowable<MovieResponse>
+
 }
