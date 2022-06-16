@@ -22,7 +22,7 @@ class ExploreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
-        _binding = FragmentExploreBinding.inflate(layoutInflater)
+        _binding = FragmentExploreBinding.inflate(inflater, container, false)
         return binding.root
     }
 

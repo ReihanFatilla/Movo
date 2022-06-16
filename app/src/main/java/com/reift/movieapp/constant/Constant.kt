@@ -22,4 +22,5 @@ object Constant {
     const val TV_SHOW = "tv"
     const val PEOPLE = "person"
     const val ALL = "multi"
+
 }

@@ -16,7 +16,7 @@ interface ApiService {
         @Query("region")
         region: String,
         @Query("page")
-        page: String = "1"
+        page: String
     ): Flowable<MovieResponse>
 
     @GET("movie/{id}/recommendations")
@@ -28,7 +28,7 @@ interface ApiService {
         @Query("region")
         region: String,
         @Query("page")
-        page: String = "1"
+        page: String
     ): Flowable<MovieResponse>
 
     @GET("discover/movie")
@@ -40,7 +40,7 @@ interface ApiService {
         @Query("region")
         region: String,
         @Query("page")
-        page: String = "1"
+        page: String
     ): Flowable<MovieResponse>
 
     @GET("search/{searchBy}")
@@ -54,7 +54,7 @@ interface ApiService {
         @Query("region")
         region: String,
         @Query("page")
-        page: String = "1"
+        page: String
     ): Flowable<MovieResponse>
 
 }
