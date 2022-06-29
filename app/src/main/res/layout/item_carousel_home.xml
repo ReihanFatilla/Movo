@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,14 +7,16 @@
     app:cardCornerRadius="15dp"
     app:cardUseCompatPadding="true"
     card_view:cardCornerRadius="12dp"
+    app:strokeColor="@color/grey"
+    app:strokeWidth="6dp"
     android:background="@drawable/bg_carousel_home">
 
     <ImageView
         android:id="@+id/img_movie"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="320dp"
         android:adjustViewBounds="true"
         android:src="@drawable/sample_movie_poster"
         android:scaleType="centerCrop"/>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

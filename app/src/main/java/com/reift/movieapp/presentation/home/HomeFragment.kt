@@ -36,9 +36,13 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        setUpTabBar()
         setUpCarousel()
 
         return binding.root
+    }
+
+    private fun setUpTabBar() {
     }
 
     private fun setUpCarousel() {
