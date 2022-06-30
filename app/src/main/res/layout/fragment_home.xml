@@ -124,6 +124,7 @@
             android:text="Minions: The Rise of Gru"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_genre"
             android:layout_width="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

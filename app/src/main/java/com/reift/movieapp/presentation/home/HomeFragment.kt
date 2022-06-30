@@ -80,6 +80,7 @@ class HomeFragment : Fragment() {
             val carouselRunnable = Runnable {
                 currentItem += 1
                 binding.tvTitle.text = movie?.get(currentItem)?.title ?: "null"
+                setUpGenreList(movie)
             }
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -91,6 +92,12 @@ class HomeFragment : Fragment() {
             })
         }
 
+    }
+
+    private fun setUpGenreList(movie: List<ResultsItem>?) {
+        binding.rvGenre.apply {
+            adapter
+        }
     }
 
 
