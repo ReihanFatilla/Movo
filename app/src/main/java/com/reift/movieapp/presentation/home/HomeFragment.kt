@@ -16,7 +16,6 @@ import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CarouselAdapter
-import com.reift.movieapp.presentation.home.component.CarouselItem
 import java.lang.Math.abs
 
 class HomeFragment : Fragment() {
@@ -53,11 +52,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpCarousel(movie: List<ResultsItem>?) {
-        val carouselItems: MutableList<CarouselItem> = ArrayList()
-        carouselItems.add(CarouselItem(R.drawable.sample_movie_poster))
-        carouselItems.add(CarouselItem(R.drawable.sample_movie_poster))
-        carouselItems.add(CarouselItem(R.drawable.sample_movie_poster))
-        carouselItems.add(CarouselItem(R.drawable.sample_movie_poster))
 
         binding.vpCarousel.apply {
             val mAdapter = CarouselAdapter(binding.vpCarousel)
