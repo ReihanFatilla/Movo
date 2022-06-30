@@ -57,6 +57,4 @@ interface ApiService {
         page: String
     ): Flowable<MovieResponse>
 
-
-
 }

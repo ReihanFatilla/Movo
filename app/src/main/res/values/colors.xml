@@ -10,4 +10,6 @@
 
     <color name="grey">#606060</color>
     <color name="app_backround">#171717</color>
+
+    <color name="red">#FF2D2D</color>
 </resources>

@@ -23,4 +23,13 @@ object Constant {
     const val PEOPLE = "person"
     const val ALL = "multi"
 
+    // Country/Region List
+    const val INDONESIA = "ID"
+    const val UNITED_STATES = "US"
+    const val CHINA = "CN"
+    const val ARAB = "AE"
+    const val MALASYIA = "MY"
+
+    // Image BaseUrl
+    const val IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w1280"
 }

@@ -10,7 +10,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class MovieRepository(context: Context) {
     private val ai: ApplicationInfo = context.packageManager
         .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
-    private val apiKey = ai.metaData["apiKey"].toString()
+    private val apiKey = "cc624f824bf4aae323fb0cc15680e65c"
+//        ai.metaData["apiKey"].toString()
 
     private val apiService = ApiClient.getApiService()
 

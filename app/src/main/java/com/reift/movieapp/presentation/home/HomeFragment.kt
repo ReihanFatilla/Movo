@@ -12,6 +12,8 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.reift.movieapp.R
+import com.reift.movieapp.constant.Constant
+import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.CarouselItem
@@ -36,8 +38,13 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.INDONESIA, "1")
+        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
+            setUpCarousel(it.results as List<ResultsItem>?)
+        }
+
         setUpTabBar()
-        setUpCarousel()
+
 
         return binding.root
     }
@@ -45,7 +52,7 @@ class HomeFragment : Fragment() {
     private fun setUpTabBar() {
     }
 
-    private fun setUpCarousel() {
+    private fun setUpCarousel(movie: List<ResultsItem>?) {
         val carouselItems: MutableList<CarouselItem> = ArrayList()
         carouselItems.add(CarouselItem(R.drawable.sample_movie_poster))
         carouselItems.add(CarouselItem(R.drawable.sample_movie_poster))
@@ -53,11 +60,15 @@ class HomeFragment : Fragment() {
         carouselItems.add(CarouselItem(R.drawable.sample_movie_poster))
 
         binding.vpCarousel.apply {
-            adapter = CarouselAdapter(carouselItems, binding.vpCarousel)
+            val mAdapter = CarouselAdapter(binding.vpCarousel)
+            adapter = mAdapter
+            mAdapter.setData(movie)
             clipToPadding = false
             clipChildren = false
             offscreenPageLimit = 3
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+            binding.tvTitle.text = movie?.get(0)?.title ?: "null"
 
             val compositePageTransformer = CompositePageTransformer()
             compositePageTransformer.apply {
@@ -66,6 +77,7 @@ class HomeFragment : Fragment() {
                         page, position ->
                     val r = 1 - abs(position)
                     page.scaleY = 0.85F + r * 0.1f
+                    binding.tvTitle.text = movie?.get(currentItem)?.title ?: "null"
                 }
             }
 
@@ -73,6 +85,7 @@ class HomeFragment : Fragment() {
 
             val carouselRunnable = Runnable {
                 currentItem += 1
+                binding.tvTitle.text = movie?.get(currentItem)?.title ?: "null"
             }
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -85,6 +98,7 @@ class HomeFragment : Fragment() {
         }
 
     }
+
 
     override fun onPause() {
         super.onPause()

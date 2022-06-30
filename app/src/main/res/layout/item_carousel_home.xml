@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
-    app:cardCornerRadius="15dp"
+    app:cardCornerRadius="25dp"
     app:cardUseCompatPadding="true"
     card_view:cardCornerRadius="12dp"
     app:strokeColor="@color/grey"
-    app:strokeWidth="6dp"
+    app:strokeWidth="4dp"
+    app:cardElevation="0dp"
     android:background="@drawable/bg_carousel_home">
 
     <ImageView
