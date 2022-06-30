@@ -1,5 +1,6 @@
 package com.reift.movieapp.presentation.home.component
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,9 +9,9 @@ import com.reift.movieapp.databinding.ItemGenreListBinding
 
 class GenreListAdapter:RecyclerView.Adapter<GenreListAdapter.GenreViewHolder>() {
 
-    val genreList = ArrayList<ResultsItem>()
+    val genreList = ArrayList<Int>()
 
-    fun setData(data: List<ResultsItem>?) {
+    fun setData(data: List<Int>?) {
         if (data == null) return
         genreList.clear()
         genreList.addAll(data)
@@ -24,7 +25,8 @@ class GenreListAdapter:RecyclerView.Adapter<GenreListAdapter.GenreViewHolder>() 
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
         holder.binding.apply {
-            val genre = when(genreList[position].genreIds.toString()){
+//            Log.i("genreList", "onBindViewHolder: ${genreList[position].genreIds?.get(position)?.toString()}")
+            val genre = when(genreList[position].toString()){
                 "28" -> "Action"
                 "12" -> "Adventure"
                 "16" -> "Animation"

@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.reift.movieapp.R
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CarouselAdapter
+import com.reift.movieapp.presentation.home.component.GenreListAdapter
 import java.lang.Math.abs
 
 class HomeFragment : Fragment() {
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.INDONESIA, "1")
+        viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, "1")
         viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
             setUpCarousel(it.results as List<ResultsItem>?)
         }
@@ -62,7 +63,7 @@ class HomeFragment : Fragment() {
             offscreenPageLimit = 3
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
-            binding.tvTitle.text = movie?.get(0)?.title ?: "null"
+            setUpCarouselMovieData(movie, currentItem)
 
             val compositePageTransformer = CompositePageTransformer()
             compositePageTransformer.apply {
@@ -71,7 +72,7 @@ class HomeFragment : Fragment() {
                         page, position ->
                     val r = 1 - abs(position)
                     page.scaleY = 0.85F + r * 0.1f
-                    binding.tvTitle.text = movie?.get(currentItem)?.title ?: "null"
+                    setUpCarouselMovieData(movie, currentItem)
                 }
             }
 
@@ -79,8 +80,7 @@ class HomeFragment : Fragment() {
 
             val carouselRunnable = Runnable {
                 currentItem += 1
-                binding.tvTitle.text = movie?.get(currentItem)?.title ?: "null"
-                setUpGenreList(movie)
+                setUpCarouselMovieData(movie, currentItem)
             }
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -94,16 +94,20 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun setUpGenreList(movie: List<ResultsItem>?) {
+    private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
+        binding.tvTitle.text = movie?.get(currentItem)?.title ?: "null"
+        setUpGenreList(movie?.get(currentItem)?.genreIds as List<Int>?)
+    }
+
+    private fun setUpGenreList(movie: List<Int>?) {
         binding.rvGenre.apply {
-            adapter
+            val mAdapter = GenreListAdapter()
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            mAdapter.setData(movie)
         }
     }
 
-
-    override fun onPause() {
-        super.onPause()
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
