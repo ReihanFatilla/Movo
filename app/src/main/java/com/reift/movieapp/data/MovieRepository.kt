@@ -32,6 +32,23 @@ class MovieRepository(context: Context) {
             })
     }
 
+    fun getTVShowList(
+        responseHandler: (MovieResponse) -> Unit,
+        errorHandler: (Throwable) -> Unit,
+        type: String,
+        region: String,
+        page: String
+    ){
+        apiService.getTVShowList(type, apiKey, region, page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            },{
+                errorHandler(it)
+            })
+    }
+
     fun getMovieRecommendationsById(
         responseHandler: (MovieResponse) -> Unit,
         errorHandler: (Throwable) -> Unit,

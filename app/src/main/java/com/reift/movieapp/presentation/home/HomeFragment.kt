@@ -50,11 +50,11 @@ class HomeFragment : Fragment() {
             setUpCarousel(it.results as List<ResultsItem>?)
         }
 
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            currentPage += 1
-            viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
-            binding.swipeRefreshLayout.isRefreshing = false
-        }
+//        binding.swipeRefreshLayout.setOnRefreshListener {
+//            currentPage += 1
+//            viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
+//            binding.swipeRefreshLayout.isRefreshing = false
+//        }
 
         setUpTabBar()
         return binding.root
@@ -67,7 +67,9 @@ class HomeFragment : Fragment() {
                 if(tab.position == 0){
                     viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
                 } else if (tab.position == 1){
-                    viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.INDONESIA, currentPage.toString())
+                    viewModel.getAiringTodayTvShow(Constant.AIRING_TODAY, Constant.UNITED_STATES, currentPage.toString())
+                } else if (tab.position == 2){
+
                 }
             }
 

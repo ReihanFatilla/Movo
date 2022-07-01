@@ -22,7 +22,21 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     ){
         repository.getMovieList(
             {
-                Log.i("getNowPlaying", "getNowPlayingMovie: $it")
+                nowPlayingResponse.value = it
+            },{},
+            type,
+            region,
+            page
+        )
+    }
+
+    fun getAiringTodayTvShow(
+        type: String,
+        region: String,
+        page: String
+    ){
+        repository.getTVShowList(
+            {
                 nowPlayingResponse.value = it
             },{},
             type,

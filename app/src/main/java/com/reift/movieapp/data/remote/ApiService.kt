@@ -19,6 +19,18 @@ interface ApiService {
         page: String
     ): Flowable<MovieResponse>
 
+    @GET("tv/{type}")
+    fun getTVShowList(
+        @Path("type")
+        type: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<MovieResponse>
+
     @GET("movie/{id}/recommendations")
     fun getMovieRecommendationsById(
         @Path("id")
