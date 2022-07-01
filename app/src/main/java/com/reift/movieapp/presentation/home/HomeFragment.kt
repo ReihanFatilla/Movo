@@ -44,8 +44,6 @@ class HomeFragment : Fragment() {
         }
 
         setUpTabBar()
-
-
         return binding.root
     }
 
@@ -63,25 +61,28 @@ class HomeFragment : Fragment() {
             offscreenPageLimit = 3
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
-            setUpCarouselMovieData(movie, currentItem)
+
+            val carouselRunnable = Runnable {
+                currentItem += 1
+            }
 
             val compositePageTransformer = CompositePageTransformer()
             compositePageTransformer.apply {
-                addTransformer(MarginPageTransformer(30))
+                addTransformer(MarginPageTransformer(20))
                 addTransformer {
                         page, position ->
-                    val r = 1 - abs(position)
+                    val r = 1 - kotlin.math.abs(position)
                     page.scaleY = 0.85F + r * 0.1f
-                    setUpCarouselMovieData(movie, currentItem)
+                    page.scaleX = 0.85F + r * 0.1f
+                    if(currentItem + 1 > movie!!.size){
+                        setUpCarouselMovieData(movie, currentItem - movie.size)
+                    } else {
+                        setUpCarouselMovieData(movie, currentItem)
+                    }
                 }
             }
 
             setPageTransformer(compositePageTransformer)
-
-            val carouselRunnable = Runnable {
-                currentItem += 1
-                setUpCarouselMovieData(movie, currentItem)
-            }
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
