@@ -29,6 +29,9 @@ class HomeFragment : Fragment() {
 
     private val carouselHandler = Handler()
 
+    private var currentPage = 1
+    private lateinit var carouselRunnable: Runnable
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,9 +41,15 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, "1")
+        viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
         viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
             setUpCarousel(it.results as List<ResultsItem>?)
+        }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            currentPage += 1
+            viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
+            binding.swipeRefreshLayout.isRefreshing = false
         }
 
         setUpTabBar()
@@ -62,7 +71,7 @@ class HomeFragment : Fragment() {
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
 
-            val carouselRunnable = Runnable {
+            carouselRunnable = Runnable {
                 currentItem += 1
             }
 
@@ -92,7 +101,6 @@ class HomeFragment : Fragment() {
                 }
             })
         }
-
     }
 
     private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
