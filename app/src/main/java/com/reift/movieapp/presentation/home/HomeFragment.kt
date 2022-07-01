@@ -2,6 +2,7 @@ package com.reift.movieapp.presentation.home
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.GenreListAdapter
-import java.lang.Math.abs
+
 
 class HomeFragment : Fragment() {
 
@@ -58,6 +61,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpTabBar() {
+        binding.tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                Log.i("onTabSelected", "onTabSelected: $tab")
+                if(tab.position == 0){
+                    viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
+                } else if (tab.position == 1){
+                    viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.INDONESIA, currentPage.toString())
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     private fun setUpCarousel(movie: List<ResultsItem>?) {

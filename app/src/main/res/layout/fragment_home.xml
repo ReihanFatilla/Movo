@@ -7,6 +7,9 @@
     tools:context=".presentation.home.HomeFragment"
     android:background="@color/app_backround"
     android:clipToPadding="false"
+    android:animateLayoutChanges="true"
+    app:swipeRefreshLayoutProgressSpinnerBackgroundColor="@color/primary_color"
+
     android:id="@+id/swipe_refresh_layout">
 
     <ScrollView
