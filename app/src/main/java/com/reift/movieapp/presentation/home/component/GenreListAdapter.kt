@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.reift.movieapp.HelperFunction
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.ItemGenreListBinding
 
@@ -25,29 +26,7 @@ class GenreListAdapter:RecyclerView.Adapter<GenreListAdapter.GenreViewHolder>() 
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
         holder.binding.apply {
-//            Log.i("genreList", "onBindViewHolder: ${genreList[position].genreIds?.get(position)?.toString()}")
-            val genre = when(genreList[position].toString()){
-                "28" -> "Action"
-                "12" -> "Adventure"
-                "16" -> "Animation"
-                "35" -> "Comedy"
-                "80" -> "Crime"
-                "99" -> "Documentary"
-                "18" -> "Drama"
-                "10751" -> "Family"
-                "14" -> "Fantasy"
-                "36" -> "History"
-                "27" -> "Horror"
-                "10402" -> "Music"
-                "9648" -> "Mystery"
-                "10749" -> "Romance"
-                "878" -> "Science Fiction"
-                "10770" -> "TV Movie"
-                "53" -> "Thriller"
-                "10752" -> "War"
-                "37" -> "Western"
-                else -> "animeh"
-            }
+            val genre = HelperFunction.getGenreById(genreList[position].toString())
             tvGenre.text = genre
         }
     }

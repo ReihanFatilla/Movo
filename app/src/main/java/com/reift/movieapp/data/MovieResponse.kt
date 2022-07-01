@@ -41,6 +41,9 @@ data class ResultsItem(
 	@field:SerializedName("title")
 	val title: String? = null,
 
+	@field:SerializedName("original_name")
+	val originalName: String? = null,
+
 	@field:SerializedName("genre_ids")
 	val genreIds: List<Int?>? = null,
 

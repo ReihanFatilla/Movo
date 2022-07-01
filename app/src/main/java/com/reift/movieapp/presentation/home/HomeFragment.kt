@@ -50,11 +50,11 @@ class HomeFragment : Fragment() {
             setUpCarousel(it.results as List<ResultsItem>?)
         }
 
-//        binding.swipeRefreshLayout.setOnRefreshListener {
-//            currentPage += 1
-//            viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
-//            binding.swipeRefreshLayout.isRefreshing = false
-//        }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            currentPage += 1
+            viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
 
         setUpTabBar()
         return binding.root
@@ -68,8 +68,6 @@ class HomeFragment : Fragment() {
                     viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
                 } else if (tab.position == 1){
                     viewModel.getAiringTodayTvShow(Constant.AIRING_TODAY, Constant.UNITED_STATES, currentPage.toString())
-                } else if (tab.position == 2){
-
                 }
             }
 
@@ -77,7 +75,6 @@ class HomeFragment : Fragment() {
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
             }
         })
     }
@@ -131,7 +128,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
-        binding.tvTitle.text = movie?.get(currentItem)?.title ?: "null"
+        binding.tvTitle.text = movie?.get(currentItem)?.title ?: movie?.get(currentItem)?.originalName
         setUpGenreList(movie?.get(currentItem)?.genreIds as List<Int>?)
     }
 
