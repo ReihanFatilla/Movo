@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
 
     private var currentPage = 1
     private lateinit var carouselRunnable: Runnable
+    private var movieLenght: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,11 +71,6 @@ class HomeFragment : Fragment() {
             offscreenPageLimit = 3
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
-
-            carouselRunnable = Runnable {
-                currentItem += 1
-            }
-
             val compositePageTransformer = CompositePageTransformer()
             compositePageTransformer.apply {
                 addTransformer(MarginPageTransformer(20))
@@ -83,12 +79,21 @@ class HomeFragment : Fragment() {
                     val r = 1 - kotlin.math.abs(position)
                     page.scaleY = 0.85F + r * 0.1f
                     page.scaleX = 0.85F + r * 0.1f
-                    if(currentItem + 1 > movie!!.size){
-                        setUpCarouselMovieData(movie, currentItem - movie.size)
+                    if(currentItem >= movie!!.size){
+                        if(currentItem - movieLenght == movie.size){
+                            movieLenght += movie.size
+                            setUpCarouselMovieData(movie, currentItem - movieLenght)
+                        } else {
+                            setUpCarouselMovieData(movie, currentItem - movieLenght)
+                        }
                     } else {
                         setUpCarouselMovieData(movie, currentItem)
                     }
                 }
+            }
+
+            carouselRunnable = Runnable {
+                currentItem += 1
             }
 
             setPageTransformer(compositePageTransformer)
