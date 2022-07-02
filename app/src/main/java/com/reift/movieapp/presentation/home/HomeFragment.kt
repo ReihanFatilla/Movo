@@ -1,5 +1,6 @@
 package com.reift.movieapp.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -18,6 +19,7 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
+import com.reift.movieapp.presentation.detail.DetailActivity
 import com.reift.movieapp.presentation.home.component.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.GenreListAdapter
 
@@ -79,6 +81,11 @@ class HomeFragment : Fragment() {
     private fun setUpCarousel(movie: List<ResultsItem>?) {
 
         binding.vpCarousel.apply {
+
+            setOnClickListener {
+                startActivity(Intent(context, DetailActivity::class.java))
+            }
+
             val mAdapter = CarouselAdapter(binding.vpCarousel)
             adapter = mAdapter
             mAdapter.setData(movie)
