@@ -10,6 +10,9 @@ data class MovieResponse(
 	@field:SerializedName("page")
 	val page: Int? = null,
 
+	@field:SerializedName("total_pages")
+	val totalPages: Int? = null,
+
 	@field:SerializedName("results")
 	val results: List<ResultsItem?>? = null,
 
@@ -17,6 +20,12 @@ data class MovieResponse(
 
 @Parcelize
 data class ResultsItem(
+
+	@field:SerializedName("overview")
+	val overview: String? = null,
+
+	@field:SerializedName("original_name")
+	val originalName: String? = null,
 
 	@field:SerializedName("title")
 	val title: String? = null,
