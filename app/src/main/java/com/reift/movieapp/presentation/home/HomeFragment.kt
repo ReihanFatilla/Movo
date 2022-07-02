@@ -50,12 +50,6 @@ class HomeFragment : Fragment() {
             setUpCarousel(it.results as List<ResultsItem>?)
         }
 
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            currentPage += 1
-            viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
-            binding.swipeRefreshLayout.isRefreshing = false
-        }
-
         setUpTabBar()
         return binding.root
     }
@@ -75,6 +69,11 @@ class HomeFragment : Fragment() {
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
+                currentPage += 1
+                when(tab?.position){
+                    0 -> viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
+                    1 -> viewModel.getAiringTodayTvShow(Constant.AIRING_TODAY, Constant.UNITED_STATES, currentPage.toString())
+                }
             }
         })
     }
@@ -90,9 +89,11 @@ class HomeFragment : Fragment() {
             offscreenPageLimit = 3
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
+            // make the first item in the carousel as the center item
+            setCurrentItem(mAdapter.itemCount * 3, false)
+
             val compositePageTransformer = CompositePageTransformer()
             compositePageTransformer.apply {
-                addTransformer(MarginPageTransformer(20))
                 addTransformer {
                         page, position ->
                     val r = 1 - kotlin.math.abs(position)
@@ -110,12 +111,11 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
+            setPageTransformer(compositePageTransformer)
 
             carouselRunnable = Runnable {
                 currentItem += 1
             }
-
-            setPageTransformer(compositePageTransformer)
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
@@ -125,6 +125,11 @@ class HomeFragment : Fragment() {
                 }
             })
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        carouselHandler.removeCallbacks(carouselRunnable)
     }
 
     private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
