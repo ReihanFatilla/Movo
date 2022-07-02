@@ -57,11 +57,9 @@ class HomeFragment : Fragment() {
     private fun setUpTabBar() {
         binding.tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                Log.i("onTabSelected", "onTabSelected: $tab")
-                if(tab.position == 0){
-                    viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
-                } else if (tab.position == 1){
-                    viewModel.getAiringTodayTvShow(Constant.AIRING_TODAY, Constant.UNITED_STATES, currentPage.toString())
+                when(tab.position){
+                    0 -> viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
+                    1 -> viewModel.getAiringTodayTvShow(Constant.AIRING_TODAY, Constant.UNITED_STATES, currentPage.toString())
                 }
             }
 
@@ -84,8 +82,6 @@ class HomeFragment : Fragment() {
             val mAdapter = CarouselAdapter(binding.vpCarousel)
             adapter = mAdapter
             mAdapter.setData(movie)
-            clipToPadding = false
-            clipChildren = false
             offscreenPageLimit = 3
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 

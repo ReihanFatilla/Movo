@@ -1,6 +1,7 @@
 package com.reift.movieapp.data.remote
 
 import com.reift.movieapp.data.MovieResponse
+import com.reift.movieapp.data.response.DetailResponse
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -30,6 +31,22 @@ interface ApiService {
         @Query("page")
         page: String
     ): Flowable<MovieResponse>
+
+    @GET("movie/{id}")
+    fun getMovieDetail(
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String
+    ): Flowable<DetailResponse>
+
+    @GET("tv/{id}")
+    fun getTvShowDetail(
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String
+    ): Flowable<DetailResponse>
 
     @GET("movie/{id}/recommendations")
     fun getMovieRecommendationsById(

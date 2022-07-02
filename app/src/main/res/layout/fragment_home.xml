@@ -101,8 +101,11 @@
                 android:layout_width="match_parent"
                 android:paddingStart="90dp"
                 android:paddingEnd="90dp"
+                android:clipChildren="false"
+                android:addStatesFromChildren="true"
                 android:layout_marginEnd="-20dp"
                 android:layout_marginStart="-20dp"
+                android:clipToPadding="false"
                 app:layout_constraintTop_toBottomOf="@id/tab_layout"
                 android:layout_height="wrap_content" />
 
