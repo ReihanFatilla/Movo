@@ -22,6 +22,7 @@ import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.detail.DetailActivity
 import com.reift.movieapp.presentation.home.component.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.GenreListAdapter
+import com.reift.movieapp.presentation.home.component.HorizontalListAdapter
 
 
 class HomeFragment : Fragment() {
@@ -52,8 +53,24 @@ class HomeFragment : Fragment() {
             setUpCarousel(it.results as List<ResultsItem>?)
         }
 
+        viewModel.getTrendingList(Constant.MEDIA_TV, Constant.UNITED_STATES, currentPage.toString())
+        viewModel.trendingResponse.observe(viewLifecycleOwner){
+            Log.i("onCreateView", "onCreateView: ${it.results}")
+            setUpTrending(it.results as List<ResultsItem>?)
+
+        }
+
         setUpTabBar()
         return binding.root
+    }
+
+    private fun setUpTrending(list: List<ResultsItem>?) {
+        binding.rvTrendingHome.apply {
+            val mAdapter = HorizontalListAdapter()
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            mAdapter.setData(list)
+        }
     }
 
     private fun setUpTabBar() {
