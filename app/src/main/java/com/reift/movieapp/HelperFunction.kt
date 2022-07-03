@@ -21,7 +21,8 @@ object HelperFunction {
         }
     }
 
-    fun setUpRatingStars(context: Context, binding: ItemHorizontalMovieBinding, rating: Double) {
+    fun setUpRatingStars(context: Context, binding: ItemHorizontalMovieBinding, originRating: Double) {
+        val rating = originRating / 2
         if(rating >= 0.5){
             binding.stars1.setColorFilter(getColor(context, R.color.yellow_star))
             if(rating >= 1.0){
