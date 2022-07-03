@@ -27,7 +27,6 @@ class DetailActivity : AppCompatActivity() {
 
         HelperFunction.transparentStatusbar(this)
 
-
         Glide.with(this)
             .load(R.drawable.sample_movie_poster)
             .apply(RequestOptions.bitmapTransform(BlurTransformation(35, 5)))

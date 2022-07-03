@@ -39,4 +39,7 @@ object Constant {
 
     // Image BaseUrl
     const val IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w1280"
+
+    // Intent Key
+    const val CAROUSEL_TO_DETAIL = "EXTRA_CAROUSEL_DETAIL"
 }

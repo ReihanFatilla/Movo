@@ -82,10 +82,6 @@ class HomeFragment : Fragment() {
 
         binding.vpCarousel.apply {
 
-            setOnClickListener {
-                startActivity(Intent(context, DetailActivity::class.java))
-            }
-
             val mAdapter = CarouselAdapter(binding.vpCarousel)
             adapter = mAdapter
             mAdapter.setData(movie)
