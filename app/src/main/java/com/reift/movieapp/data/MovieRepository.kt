@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import com.reift.movieapp.data.remote.ApiClient
+import com.reift.movieapp.data.response.DetailResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -40,6 +41,21 @@ class MovieRepository(context: Context) {
         page: String
     ){
         apiService.getTVShowList(type, apiKey, region, page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            },{
+                errorHandler(it)
+            })
+    }
+
+    fun getMovieDetail(
+        responseHandler: (DetailResponse) -> Unit,
+        errorHandler: (Throwable) -> Unit,
+        id: String
+    ){
+        apiService.getMovieDetail(id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
