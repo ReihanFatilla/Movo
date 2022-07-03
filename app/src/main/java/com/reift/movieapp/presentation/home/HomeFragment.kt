@@ -53,11 +53,9 @@ class HomeFragment : Fragment() {
             setUpCarousel(it.results as List<ResultsItem>?)
         }
 
-        viewModel.getTrendingList(Constant.MEDIA_TV, Constant.UNITED_STATES, currentPage.toString())
+        viewModel.getTrendingList(Constant.MEDIA_MOVIE, Constant.UNITED_STATES, currentPage.toString())
         viewModel.trendingResponse.observe(viewLifecycleOwner){
-            Log.i("onCreateView", "onCreateView: ${it.results}")
             setUpTrending(it.results as List<ResultsItem>?)
-
         }
 
         setUpTabBar()
@@ -103,9 +101,8 @@ class HomeFragment : Fragment() {
             adapter = mAdapter
             mAdapter.setData(movie)
             offscreenPageLimit = 3
-            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            overScrollMode = RecyclerView.OVER_SCROLL_ALWAYS
 
-            // make the first item in the carousel as the center item
             setCurrentItem(mAdapter.itemCount * 3, false)
 
             val compositePageTransformer = CompositePageTransformer()

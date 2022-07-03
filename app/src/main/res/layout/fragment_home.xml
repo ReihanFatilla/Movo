@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="16dp"
             android:paddingTop="24dp"
+            android:paddingBottom="70dp"
             android:clipToPadding="false">
 
             <com.google.android.material.card.MaterialCardView
@@ -107,7 +108,8 @@
                 android:layout_marginStart="-20dp"
                 android:clipToPadding="false"
                 app:layout_constraintTop_toBottomOf="@id/tab_layout"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
 
             <TextView
                 android:id="@+id/tv_title"
