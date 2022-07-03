@@ -2,9 +2,11 @@ package com.reift.movieapp
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.os.Build
 import android.view.Window
 import android.view.WindowManager
+import com.reift.movieapp.databinding.ItemHorizontalMovieBinding
 
 object HelperFunction {
 
@@ -16,6 +18,39 @@ object HelperFunction {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
+        }
+    }
+
+    fun setUpRatingStars(context: Context, binding: ItemHorizontalMovieBinding, rating: Double) {
+        if(rating >= 0.5){
+            binding.stars1.setColorFilter(getColor(context, R.color.yellow_star))
+            if(rating >= 1.0){
+                binding.stars1.setColorFilter(getColor(context, R.color.yellow_star))
+                if(rating >= 1.5){
+                    binding.stars2.setColorFilter(getColor(context, R.color.yellow_star))
+                    if(rating >= 2.0){
+                        binding.stars2.setColorFilter(getColor(context, R.color.yellow_star))
+                        if(rating >= 2.5){
+                            binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
+                            if(rating >= 3.0){
+                                binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
+                                if(rating >= 3.5){
+                                    binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
+                                    if(rating >= 4.0){
+                                        binding.stars4.setColorFilter(getColor(context, R.color.yellow_star))
+                                        if(rating >= 4.5){
+                                            binding.stars4.setColorFilter(getColor(context, R.color.yellow_star))
+                                            if(rating == 5.0){
+                                                binding.stars5.setColorFilter(getColor(context, R.color.yellow_star))
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -53,11 +88,11 @@ object HelperFunction {
         }
     }
 
-    fun getColor(detailActivity: Activity, color: Any): Int {
+    fun getColor(context: Context, color: Any): Int {
         return when(color){
-            is String -> detailActivity.resources.getColor(detailActivity.resources.getIdentifier(color, "color", detailActivity.packageName))
-            is Int -> detailActivity.resources.getColor(color)
-            else -> detailActivity.resources.getColor(detailActivity.resources.getIdentifier("colorPrimary", "color", detailActivity.packageName))
+            is String -> context.resources.getColor(context.resources.getIdentifier(color, "color", context.packageName))
+            is Int -> context.resources.getColor(color)
+            else -> context.resources.getColor(context.resources.getIdentifier("colorPrimary", "color", context.packageName))
         }
     }
 }
