@@ -24,8 +24,6 @@ class DetailActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbarDetail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_detail);
-
 
         HelperFunction.transparentStatusbar(this)
 
