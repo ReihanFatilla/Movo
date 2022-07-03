@@ -60,20 +60,6 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tv_title"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:maxLines="2"-->
-<!--                    android:text="Minions 2: The Rise of Gru"-->
-<!--                    android:textColor="@color/yellow_star"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:layout_marginTop="20dp"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/cv_poster"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:textSize="27sp" />-->
-
                 <TextView
                     android:id="@+id/tv_release_date"
                     android:layout_width="match_parent"

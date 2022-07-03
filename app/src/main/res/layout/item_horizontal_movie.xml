@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="175dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="0dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp"
+    android:backgroundTint="@color/app_backround">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample_movie_poster"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:text="Minions 2: The Rise \nof Gru"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/cv_profile">
+
+                <ImageView
+                    android:id="@+id/stars_1"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_star" />
+
+                <ImageView
+                    android:id="@+id/stars_2"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_star" />
+
+                <ImageView
+                    android:id="@+id/stars_3"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_star" />
+
+                <ImageView
+                    android:id="@+id/stars_4"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_star" />
+
+                <ImageView
+                    android:id="@+id/stars_5"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/light_grey" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/light_grey"
+                android:text="(9.2)"
+                android:textStyle="normal"
+                android:layout_marginStart="4dp"
+                android:ellipsize="end"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
