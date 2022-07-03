@@ -50,6 +50,23 @@ class MovieRepository(context: Context) {
             })
     }
 
+    fun getTrendingList(
+        responseHandler: (MovieResponse) -> Unit,
+        errorHandler: (Throwable) -> Unit,
+        media: String,
+        region: String,
+        page: String
+    ){
+        apiService.getTrendingList(media, apiKey, region, page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            },{
+                errorHandler(it)
+            })
+    }
+
     fun getMovieDetail(
         responseHandler: (DetailResponse) -> Unit,
         errorHandler: (Throwable) -> Unit,

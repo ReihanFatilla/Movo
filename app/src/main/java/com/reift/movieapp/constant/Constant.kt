@@ -2,6 +2,10 @@ package com.reift.movieapp.constant
 
 object Constant {
 
+    // Media Type
+    const val MEDIA_TV = "tv"
+    const val MEDIA_MOVIE = "movie"
+
     // Movie Discover Sort By
     const val SORT_POPULARITY = "popularity.desc"
     const val SORT_RELEASE = "release_date.desc"

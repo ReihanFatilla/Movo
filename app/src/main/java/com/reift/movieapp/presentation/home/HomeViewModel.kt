@@ -14,6 +14,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     val repository: MovieRepository = MovieRepository(application)
 
     var nowPlayingResponse = MutableLiveData<MovieResponse>()
+    var trendingResponse = MutableLiveData<MovieResponse>()
 
     fun getNowPlayingMovie(
         type: String,
@@ -40,6 +41,21 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 nowPlayingResponse.value = it
             },{},
             type,
+            region,
+            page
+        )
+    }
+
+    fun getTrendingList(
+        media: String,
+        region: String,
+        page: String
+    ){
+        repository.getTrendingList(
+            {
+                trendingResponse.value = it
+            },{},
+            media,
             region,
             page
         )

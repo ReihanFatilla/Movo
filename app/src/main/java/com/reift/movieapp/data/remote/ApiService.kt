@@ -48,6 +48,18 @@ interface ApiService {
         apiKey: String
     ): Flowable<DetailResponse>
 
+    @GET("trending/{media}/day")
+    fun getTrendingList(
+        @Path("media")
+        media: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<MovieResponse>
+
     @GET("movie/{id}/recommendations")
     fun getMovieRecommendationsById(
         @Path("id")
