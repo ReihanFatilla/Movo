@@ -50,40 +50,40 @@
 
                 <ImageView
                     android:id="@+id/stars_1"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:src="@drawable/ic_star"
                     app:tint="@color/light_grey"
                     />
 
                 <ImageView
                     android:id="@+id/stars_2"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:layout_marginStart="2dp"
                     android:src="@drawable/ic_star"
                     app:tint="@color/light_grey" />
 
                 <ImageView
                     android:id="@+id/stars_3"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:layout_marginStart="2dp"
                     android:src="@drawable/ic_star"
                     app:tint="@color/light_grey" />
 
                 <ImageView
                     android:id="@+id/stars_4"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:layout_marginStart="2dp"
                     android:src="@drawable/ic_star"
                     app:tint="@color/light_grey" />
 
                 <ImageView
                     android:id="@+id/stars_5"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:layout_marginStart="2dp"
                     android:src="@drawable/ic_star"
                     app:tint="@color/light_grey" />
@@ -95,12 +95,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
+                android:maxLength="5"
                 android:textColor="@color/light_grey"
                 android:text="(9.2)"
                 android:textStyle="normal"
                 android:layout_marginStart="4dp"
                 android:ellipsize="end"
-                android:textSize="11sp" />
+                android:textSize="10sp" />
 
         </LinearLayout>
 

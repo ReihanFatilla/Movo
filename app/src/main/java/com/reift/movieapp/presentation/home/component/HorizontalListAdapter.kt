@@ -29,7 +29,7 @@ class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHo
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val ratingCount = listMovie[position].voteAverage
-        val ratingString = "($ratingCount)"
+        val ratingString = "(${ratingCount.toString().take(3)})"
         holder.binding.apply {
             Glide.with(imgMovie.context)
                 .load(Constant.IMAGE_BASE_URL+listMovie[position].posterPath)
