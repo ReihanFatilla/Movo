@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.HelperFunction
-import com.reift.movieapp.R
 import com.reift.movieapp.constant.Constant
+import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.data.response.DetailResponse
 import com.reift.movieapp.databinding.ActivityDetailBinding
+import com.reift.movieapp.presentation.home.component.HorizontalListAdapter
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 
@@ -33,7 +36,6 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbarDetail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
         HelperFunction.transparentStatusbar(this)
 
         val id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
@@ -42,6 +44,20 @@ class DetailActivity : AppCompatActivity() {
         viewModel.detailResponse.observe(this){
             setUpDetailView(it)
             Log.i("setUpDetailView", "setUpDetailView: ${it?.title}")
+        }
+
+        viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
+        viewModel.similarResponse.observe(this){
+            setUpSimilarRecyclerView(it.results as List<ResultsItem>?)
+        }
+    }
+
+    private fun setUpSimilarRecyclerView(movie: List<ResultsItem>?) {
+        binding.rvSimilar.apply {
+            val mAdapter = HorizontalListAdapter()
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(this@DetailActivity, RecyclerView.HORIZONTAL, false)
+            mAdapter.setData(movie)
         }
     }
 
@@ -62,9 +78,7 @@ class DetailActivity : AppCompatActivity() {
                 .into(binding.imgDetailBackground)
 
             collapsingToolbar.title = it?.title
-            Log.i("setUpDetailView", "setUpDetailView: ${it?.title}")
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

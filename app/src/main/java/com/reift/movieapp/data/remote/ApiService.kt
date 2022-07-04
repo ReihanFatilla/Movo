@@ -32,6 +32,20 @@ interface ApiService {
         page: String
     ): Flowable<MovieResponse>
 
+    @GET("{media}/{id}/similar")
+    fun getSimilarList(
+        @Path("media")
+        media: String,
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<MovieResponse>
+
     @GET("movie/{id}")
     fun getMovieDetail(
         @Path("id")

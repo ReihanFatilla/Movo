@@ -50,6 +50,24 @@ class MovieRepository(context: Context) {
             })
     }
 
+    fun getSimilarList(
+        responseHandler: (MovieResponse) -> Unit,
+        errorHandler: (Throwable) -> Unit,
+        media: String,
+        id: String,
+        region: String,
+        page: String
+    ){
+        apiService.getSimilarList(media, id, apiKey, region, page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            },{
+                errorHandler(it)
+            })
+    }
+
     fun getTrendingList(
         responseHandler: (MovieResponse) -> Unit,
         errorHandler: (Throwable) -> Unit,
