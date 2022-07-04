@@ -13,8 +13,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.HelperFunction
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
+import com.reift.movieapp.data.response.CastItem
 import com.reift.movieapp.data.response.DetailResponse
 import com.reift.movieapp.databinding.ActivityDetailBinding
+import com.reift.movieapp.presentation.detail.component.CreditAdapter
 import com.reift.movieapp.presentation.home.component.HorizontalListAdapter
 import jp.wasabeef.glide.transformations.BlurTransformation
 
@@ -49,6 +51,21 @@ class DetailActivity : AppCompatActivity() {
         viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
         viewModel.similarResponse.observe(this){
             setUpSimilarRecyclerView(it.results as List<ResultsItem>?)
+        }
+
+        viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
+        viewModel.creditResponse.observe(this){
+            setUpCreditRecyclerView(it.cast as List<CastItem>?)
+            Log.i("onCreateCredit", "onCreateCredit: ${it.cast} ")
+        }
+    }
+
+    private fun setUpCreditRecyclerView(credit: List<CastItem>?) {
+        binding.rvCredits.apply {
+            val mAdapter = CreditAdapter()
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(this@DetailActivity, RecyclerView.HORIZONTAL, false)
+            mAdapter.setData(credit)
         }
     }
 
