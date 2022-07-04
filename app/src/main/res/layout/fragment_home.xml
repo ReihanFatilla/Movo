@@ -186,7 +186,7 @@
                     android:textStyle="normal" />
 
                 <ImageButton
-                    android:layout_width="10dp"
+                    android:layout_width="17dp"
                     android:layout_height="10dp"
                     android:src="@drawable/ic_right_arrow"
                     android:layout_marginStart="8dp"

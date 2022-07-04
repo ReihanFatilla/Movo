@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
 
         HelperFunction.transparentStatusbar(this)
 
-        val id = intent.getIntExtra(Constant.CAROUSEL_TO_DETAIL, 0).toString()
+        val id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
 
         viewModel.getMovieDetail(id)
         viewModel.detailResponse.observe(this){

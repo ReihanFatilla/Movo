@@ -16,6 +16,7 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.reift.movieapp.`interface`.OnItemClickCallback
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
@@ -68,6 +69,14 @@ class HomeFragment : Fragment() {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             mAdapter.setData(list)
+
+            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                override fun onItemClicked(data: ResultsItem) {
+                    val intent = Intent(context, DetailActivity::class.java)
+                    intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                    startActivity(intent)
+                }
+            })
         }
     }
 
@@ -158,7 +167,6 @@ class HomeFragment : Fragment() {
             mAdapter.setData(movie)
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

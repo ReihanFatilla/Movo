@@ -8,12 +8,19 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.HelperFunction
+import com.reift.movieapp.`interface`.OnItemClickCallback
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.ItemHorizontalMovieBinding
 
 class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHolder>() {
     val listMovie = ArrayList<ResultsItem>()
+
+    private var onItemClickCallBack: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallBack = onItemClickCallback
+    }
 
     fun setData(data: List<ResultsItem>?) {
         if (data == null) return
@@ -44,6 +51,9 @@ class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHo
                 holder.binding,
                 ratingCount!!
             )
+        }
+        holder.itemView.setOnClickListener {
+            onItemClickCallBack?.onItemClicked(listMovie[position])
         }
     }
 

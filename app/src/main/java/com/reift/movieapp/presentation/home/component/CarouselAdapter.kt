@@ -53,7 +53,7 @@ class CarouselAdapter(
             holder.itemView.context.startActivity(
                 Intent(holder.itemView.context, DetailActivity::class.java)
                     .putExtra(
-                        Constant.CAROUSEL_TO_DETAIL,
+                        Constant.INTENT_TO_DETAIL,
                         listMovie[position].id
                     )
             )
