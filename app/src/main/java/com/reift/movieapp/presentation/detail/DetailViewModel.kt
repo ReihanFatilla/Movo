@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.reift.movieapp.data.MovieRepository
 import com.reift.movieapp.data.MovieResponse
+import com.reift.movieapp.data.response.CreditResponse
 import com.reift.movieapp.data.response.DetailResponse
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
@@ -12,6 +13,7 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
 
     val detailResponse = MutableLiveData<DetailResponse>()
     val similarResponse = MutableLiveData<MovieResponse>()
+    val creditResponse = MutableLiveData<CreditResponse>()
 
 
     fun getMovieDetail(id: String){
@@ -36,5 +38,20 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
             page
         )
     }
+
+    fun getCreditList(media: String, id: String, region: String, page: String){
+        repository.getCreditList(
+            {
+                creditResponse.value = it
+            },
+            {},
+            media,
+            id,
+            region,
+            page
+        )
+    }
+
+
 
 }

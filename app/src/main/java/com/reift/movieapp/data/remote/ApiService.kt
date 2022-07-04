@@ -1,6 +1,7 @@
 package com.reift.movieapp.data.remote
 
 import com.reift.movieapp.data.MovieResponse
+import com.reift.movieapp.data.response.CreditResponse
 import com.reift.movieapp.data.response.DetailResponse
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
@@ -45,6 +46,20 @@ interface ApiService {
         @Query("page")
         page: String
     ): Flowable<MovieResponse>
+
+    @GET("{media}/{id}/credits")
+    fun getCreditList(
+        @Path("media")
+        media: String,
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<CreditResponse>
 
     @GET("movie/{id}")
     fun getMovieDetail(
