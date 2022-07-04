@@ -77,6 +77,9 @@ class DetailActivity : AppCompatActivity() {
                 .priority(Priority.HIGH)
                 .into(binding.imgDetailBackground)
 
+            tvOverview.text = it?.overview
+            tvMinOrEpisode.text= it?.runtime.toString()
+
             collapsingToolbar.title = it?.title
         }
     }
