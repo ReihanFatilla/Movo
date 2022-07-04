@@ -39,7 +39,7 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
         )
     }
 
-    fun getCreditList(media: String, id: String, region: String, page: String){
+    fun getCreditList(media: String, id: String, region: String){
         repository.getCreditList(
             {
                 creditResponse.value = it
@@ -48,7 +48,6 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
             media,
             id,
             region,
-            page
         )
     }
 

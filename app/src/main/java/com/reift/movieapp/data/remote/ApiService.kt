@@ -56,9 +56,7 @@ interface ApiService {
         @Query("api_key")
         apiKey: String,
         @Query("region")
-        region: String,
-        @Query("page")
-        page: String
+        region: String
     ): Flowable<CreditResponse>
 
     @GET("movie/{id}")

@@ -75,9 +75,8 @@ class MovieRepository(context: Context) {
         media: String,
         id: String,
         region: String,
-        page: String
     ){
-        apiService.getCreditList(media, id, apiKey, region, page)
+        apiService.getCreditList(media, id, apiKey, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

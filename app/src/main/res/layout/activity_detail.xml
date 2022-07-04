@@ -208,11 +208,22 @@
                 android:layout_marginTop="24dp"
                 android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/tv_actor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Actors"
+                app:layout_constraintTop_toBottomOf="@id/tv_overview"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:textSize="17sp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_credits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_overview"
+                app:layout_constraintTop_toBottomOf="@id/tv_actor"
                 tools:listitem="@layout/item_credit_detail"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
