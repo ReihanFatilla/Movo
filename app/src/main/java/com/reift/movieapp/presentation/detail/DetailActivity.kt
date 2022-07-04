@@ -61,7 +61,6 @@ class DetailActivity : AppCompatActivity() {
                 .priority(Priority.HIGH)
                 .into(binding.imgDetailBackground)
 
-//            tvTitle.text = it?.title
             collapsingToolbar.title = it?.title
             Log.i("setUpDetailView", "setUpDetailView: ${it?.title}")
         }
