@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
+        viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
         viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
             setUpCarousel(it.results as List<ResultsItem>?)
         }
@@ -59,8 +59,30 @@ class HomeFragment : Fragment() {
             setUpTrending(it.results as List<ResultsItem>?)
         }
 
+        viewModel.getUpcomingMovie(Constant.UNITED_STATES, currentPage.toString())
+        viewModel.upcomingResponse.observe(viewLifecycleOwner){
+            setUpUpcoming(it.results as List<ResultsItem>?)
+        }
+
         setUpTabBar()
         return binding.root
+    }
+
+    private fun setUpUpcoming(list: List<ResultsItem>?) {
+        binding.rvUpcomingHome.apply {
+            val mAdapter = HorizontalListAdapter()
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            mAdapter.setData(list)
+
+            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                override fun onItemClicked(data: ResultsItem) {
+                    val intent = Intent(context, DetailActivity::class.java)
+                    intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                    startActivity(intent)
+                }
+            })
+        }
     }
 
     private fun setUpTrending(list: List<ResultsItem>?) {
@@ -84,8 +106,8 @@ class HomeFragment : Fragment() {
         binding.tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when(tab.position){
-                    0 -> viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
-                    1 -> viewModel.getAiringTodayTvShow(Constant.AIRING_TODAY, Constant.UNITED_STATES, currentPage.toString())
+                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
+                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
                 }
             }
 
@@ -95,8 +117,8 @@ class HomeFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 currentPage += 1
                 when(tab?.position){
-                    0 -> viewModel.getNowPlayingMovie(Constant.NOW_PLAYING, Constant.UNITED_STATES, currentPage.toString())
-                    1 -> viewModel.getAiringTodayTvShow(Constant.AIRING_TODAY, Constant.UNITED_STATES, currentPage.toString())
+                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
+                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
                 }
             }
         })

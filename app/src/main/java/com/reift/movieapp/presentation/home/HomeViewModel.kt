@@ -15,9 +15,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     var nowPlayingResponse = MutableLiveData<MovieResponse>()
     var trendingResponse = MutableLiveData<MovieResponse>()
+    var upcomingResponse = MutableLiveData<MovieResponse>()
 
     fun getNowPlayingMovie(
-        type: String,
         region: String,
         page: String
     ){
@@ -25,14 +25,27 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             {
                 nowPlayingResponse.value = it
             },{},
-            type,
+            Constant.NOW_PLAYING,
+            region,
+            page
+        )
+    }
+
+    fun getUpcomingMovie(
+        region: String,
+        page: String
+    ){
+        repository.getMovieList(
+            {
+                upcomingResponse.value = it
+            },{},
+            Constant.UPCOMING,
             region,
             page
         )
     }
 
     fun getAiringTodayTvShow(
-        type: String,
         region: String,
         page: String
     ){
@@ -40,7 +53,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             {
                 nowPlayingResponse.value = it
             },{},
-            type,
+            Constant.AIRING_TODAY,
             region,
             page
         )
