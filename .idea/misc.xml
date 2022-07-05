@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_back_detail.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/ic_half_stars.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/nav_item_color.xml" value="0.1605" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.13697916666666668" />

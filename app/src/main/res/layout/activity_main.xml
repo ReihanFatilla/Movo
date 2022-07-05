@@ -13,6 +13,8 @@
         android:background="#F2171717"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
+        app:itemTextColor="@drawable/nav_item_color"
+        app:itemIconTint="@drawable/nav_item_color"
         />
 
     <fragment
