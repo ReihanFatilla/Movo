@@ -34,7 +34,7 @@
                     android:id="@+id/img_detail_background"
                     android:layout_width="match_parent"
                     android:layout_height="450dp"
-                    android:src="@drawable/sample_movie_poster"
+                    android:src="@color/app_backround"
                     android:foreground="@drawable/black_shadow"
                     android:scaleType="centerCrop" />
 
@@ -54,7 +54,7 @@
                         android:id="@+id/img_movie_poster"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/sample_movie_poster"
+                        android:src="@color/app_backround"
                         android:scaleType="centerCrop" />
 
                 </com.google.android.material.card.MaterialCardView>
@@ -127,6 +127,7 @@
                         app:tint="@color/yellow_star" />
 
                     <TextView
+                        android:id="@+id/tv_rating_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLength="3"
@@ -138,6 +139,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_raters_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/light_grey"

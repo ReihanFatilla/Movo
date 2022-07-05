@@ -120,6 +120,8 @@ class DetailActivity : AppCompatActivity() {
                 .into(binding.imgDetailBackground)
 
             tvOverview.text = it?.overview
+            tvRatingCount.text = it?.voteAverage.toString()
+            tvRatersCount.text = it?.voteCount.toString()
             tvMinOrEpisode.text= it?.runtime.toString()
             tvReleaseDate.text = HelperFunction.dateFormatter(it?.releaseDate.toString())
             collapsingToolbar.title = it?.title
