@@ -1,5 +1,6 @@
 package com.reift.movieapp.presentation.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.HelperFunction
+import com.reift.movieapp.`interface`.OnItemClickCallback
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.data.response.CastItem
@@ -56,8 +58,9 @@ class DetailActivity : AppCompatActivity() {
         viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
         viewModel.creditResponse.observe(this){
             setUpCreditRecyclerView(it.cast as List<CastItem>?)
-            Log.i("onCreateCredit", "onCreateCredit: ${it.cast} ")
         }
+
+
     }
 
     private fun setUpCreditRecyclerView(credit: List<CastItem>?) {
@@ -75,6 +78,14 @@ class DetailActivity : AppCompatActivity() {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(this@DetailActivity, RecyclerView.HORIZONTAL, false)
             mAdapter.setData(movie)
+
+            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                override fun onItemClicked(data: ResultsItem) {
+                    val intent = Intent(this@DetailActivity, DetailActivity::class.java)
+                    intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                    startActivity(intent)
+                }
+            })
         }
     }
 
@@ -96,7 +107,7 @@ class DetailActivity : AppCompatActivity() {
 
             tvOverview.text = it?.overview
             tvMinOrEpisode.text= it?.runtime.toString()
-
+            tvReleaseDate.text = HelperFunction.dateFormatter(it?.releaseDate.toString())
             collapsingToolbar.title = it?.title
         }
     }

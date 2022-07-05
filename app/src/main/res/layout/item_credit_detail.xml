@@ -40,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Director"
+        android:textAlignment="center"
         android:textSize="12sp"
         android:textColor="@color/light_grey" />
 

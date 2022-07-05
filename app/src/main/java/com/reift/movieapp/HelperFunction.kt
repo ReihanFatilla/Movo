@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import com.reift.movieapp.databinding.ItemHorizontalMovieBinding
+import java.time.Year
 
 object HelperFunction {
 
@@ -18,6 +20,41 @@ object HelperFunction {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
+        }
+    }
+
+    fun dateFormatter(originalDate: String): String{
+        var year = ""
+        var month = ""
+        var date = ""
+        for(i in 0..3){
+            year += originalDate[i]
+        }
+        for(i in 5..6){
+            month += originalDate[i]
+        }
+        for(i in 8..9){
+            date += originalDate[i]
+        }
+        month = monthNameGenerator(month)
+        return "$date $month $year"
+    }
+
+    fun monthNameGenerator(month: String): String{
+        return when(month){
+             "01" -> "January";
+               "02" -> "February";
+                "03" -> "March";
+                "04" -> "April";
+                "05" -> "May";
+                "06" -> "June";
+                "07" -> "July";
+                "08" -> "August";
+                "09" -> "September";
+                "10" -> "October";
+                "11" -> "November";
+                "12" -> "December";
+            else -> "iya"
         }
     }
 
