@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import com.reift.movieapp.data.remote.ApiClient
 import com.reift.movieapp.data.response.CreditResponse
 import com.reift.movieapp.data.response.DetailResponse
+import com.reift.movieapp.data.response.ReviewResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -60,6 +61,23 @@ class MovieRepository(context: Context) {
         page: String
     ){
         apiService.getSimilarList(media, id, apiKey, region, page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            },{
+                errorHandler(it)
+            })
+    }
+
+    fun getReviewList(
+        responseHandler: (ReviewResponse) -> Unit,
+        errorHandler: (Throwable) -> Unit,
+        media: String,
+        id: String,
+        page: String,
+    ){
+        apiService.getReviewList(media, id, apiKey, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

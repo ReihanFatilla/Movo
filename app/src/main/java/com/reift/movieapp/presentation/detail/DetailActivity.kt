@@ -60,7 +60,6 @@ class DetailActivity : AppCompatActivity() {
             setUpCreditRecyclerView(it.cast as List<CastItem>?)
         }
 
-
     }
 
     private fun setUpCreditRecyclerView(credit: List<CastItem>?) {
