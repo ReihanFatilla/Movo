@@ -34,7 +34,7 @@ interface ApiService {
         page: String
     ): Flowable<MovieResponse>
 
-    @GET("{media}/{id}/review")
+    @GET("{media}/{id}/reviews")
     fun getReviewList(
         @Path("media")
         media: String,

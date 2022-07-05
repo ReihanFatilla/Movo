@@ -17,8 +17,10 @@ import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.data.response.CastItem
 import com.reift.movieapp.data.response.DetailResponse
+import com.reift.movieapp.data.response.ResultsItemReview
 import com.reift.movieapp.databinding.ActivityDetailBinding
 import com.reift.movieapp.presentation.detail.component.CreditAdapter
+import com.reift.movieapp.presentation.detail.component.ReviewAdapter
 import com.reift.movieapp.presentation.home.component.HorizontalListAdapter
 import jp.wasabeef.glide.transformations.BlurTransformation
 
@@ -47,7 +49,6 @@ class DetailActivity : AppCompatActivity() {
         viewModel.getMovieDetail(id)
         viewModel.detailResponse.observe(this){
             setUpDetailView(it)
-            Log.i("setUpDetailView", "setUpDetailView: ${it?.title}")
         }
 
         viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
@@ -60,6 +61,20 @@ class DetailActivity : AppCompatActivity() {
             setUpCreditRecyclerView(it.cast as List<CastItem>?)
         }
 
+        viewModel.getReviewList(Constant.MEDIA_MOVIE, id, "1")
+        viewModel.reviewResponse.observe(this){
+            setUpReviewRecyclerView(it.results as List<ResultsItemReview>?)
+        }
+
+    }
+
+    private fun setUpReviewRecyclerView(list: List<ResultsItemReview>?) {
+        binding.rvReviews.apply {
+            val mAdapter = ReviewAdapter()
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(this@DetailActivity, RecyclerView.HORIZONTAL, false)
+            mAdapter.setData(list)
+        }
     }
 
     private fun setUpCreditRecyclerView(credit: List<CastItem>?) {
