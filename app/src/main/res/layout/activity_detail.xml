@@ -20,7 +20,7 @@
             app:collapsedTitleTextColor="@color/white"
             app:titleCollapseMode="scale"
             app:collapsedTitleGravity="start"
-            app:title="Minions 2: The Rise of Gru"
+            app:title=" "
             app:expandedTitleGravity="center|bottom"
             app:expandedTitleTextAppearance="@style/CollapseBarTextStyle">
 
@@ -135,7 +135,7 @@
                         android:textColor="@color/yellow_star"
                         android:textSize="26sp"
                         android:textStyle="bold"
-                        android:text="8.5" />
+                        tools:text="8.5" />
                 </LinearLayout>
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:textColor="@color/light_grey"
                     android:textSize="15sp"
                     android:textStyle="normal"
-                    android:text="77 842" />
+                    tools:text="77 842" />
 
             </LinearLayout>
 
@@ -173,7 +173,7 @@
                         android:textColor="@color/green"
                         android:textSize="26sp"
                         android:textStyle="bold"
-                        android:text="180" />
+                        tools:text="180" />
 
                     <TextView
                         android:id="@+id/tv_min"
@@ -183,7 +183,7 @@
                         android:textColor="@color/green"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="min" />
+                        android:text="@string/min" />
 
                 </LinearLayout>
 
@@ -202,7 +202,7 @@
                 android:id="@+id/tv_overview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="When Gru retires, Kevin, Stuart and Bob decide to find a new master. They travel the world and finally meet Scarlett Overkill, a female super villain who intends to rule the world."
+                tools:text="When Gru retires, Kevin, Stuart and Bob decide to find a new master. They travel the world and finally meet Scarlett Overkill, a female super villain who intends to rule the world."
                 app:layout_constraintTop_toBottomOf="@id/ll_rating"
                 android:textColor="@color/light_grey"
                 android:textStyle="bold"
