@@ -50,13 +50,15 @@ class CarouselAdapter(
             }
         }
         holder.itemView.setOnClickListener {
-            holder.itemView.context.startActivity(
-                Intent(holder.itemView.context, DetailActivity::class.java)
-                    .putExtra(
-                        Constant.INTENT_TO_DETAIL,
-                        listMovie[position].id
-                    )
-            )
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+                if(listMovie[position].title == null){
+                    intent.putExtra(Constant.INTENT_TO_DETAIL, listMovie[position].id)
+                    intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_TV)
+                } else {
+                    intent.putExtra(Constant.INTENT_TO_DETAIL, listMovie[position].id)
+                    intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
+                }
+            holder.itemView.context.startActivity(intent)
         }
     }
 

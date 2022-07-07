@@ -18,12 +18,13 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     val reviewResponse = MutableLiveData<ReviewResponse>()
 
 
-    fun getMovieDetail(id: String){
-        repository.getMovieDetail(
+    fun getDetail(media: String, id: String){
+        repository.getDetail(
             {
                 detailResponse.value = it
             },
             {},
+            media,
             id
         )
     }

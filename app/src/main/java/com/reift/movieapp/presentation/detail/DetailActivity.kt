@@ -32,6 +32,8 @@ class DetailActivity : AppCompatActivity() {
     private var _viewModel: DetailViewModel? = null
     private val viewModel get() = _viewModel as DetailViewModel
 
+//    private lateinit var intentType: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -45,10 +47,17 @@ class DetailActivity : AppCompatActivity() {
         HelperFunction.transparentStatusbar(this)
 
         val id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
+        val intentType = intent.getStringExtra(Constant.INTENT_TYPE)
 
-        viewModel.getMovieDetail(id)
+        Log.i("intentType", "$intentType")
+
+        if(intentType == Constant.INTENT_TV) {
+            viewModel.getDetail(Constant.MEDIA_TV, id)
+        } else {
+            viewModel.getDetail(Constant.MEDIA_MOVIE, id)
+        }
         viewModel.detailResponse.observe(this){
-            setUpDetailView(it)
+            setUpDetailView(it, intentType)
         }
 
         viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
@@ -103,7 +112,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpDetailView(it: DetailResponse?) {
+    private fun setUpDetailView(it: DetailResponse?, intentType: String?) {
         binding.apply {
             Glide.with(this@DetailActivity)
                 .load(Constant.IMAGE_BASE_URL+it?.posterPath)
@@ -123,8 +132,17 @@ class DetailActivity : AppCompatActivity() {
             tvRatingCount.text = it?.voteAverage.toString()
             tvRatersCount.text = it?.voteCount.toString()
             tvMinOrEpisode.text= it?.runtime.toString()
-            tvReleaseDate.text = HelperFunction.dateFormatter(it?.releaseDate.toString())
-            collapsingToolbar.title = it?.title
+            if(intentType == Constant.INTENT_TV){
+                tvMinOrEpisode.text = it?.numberOfEpisodes.toString()
+                tvDurationOrEpisode.text = "Episodes"
+                tvMin.text = ""
+            } else {
+                tvMinOrEpisode.text= it?.runtime.toString()
+                tvDurationOrEpisode.text = "Duration"
+                tvMin.text = "min"
+            }
+            tvReleaseDate.text = HelperFunction.dateFormatter(it?.releaseDate ?: it?.firstRelease.toString())
+            collapsingToolbar.title = it?.title ?: it?.name
         }
     }
 

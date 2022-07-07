@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
                 override fun onItemClicked(data: ResultsItem) {
                     val intent = Intent(context, DetailActivity::class.java)
-                    intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                        .putExtra(Constant.INTENT_TO_DETAIL, data.id)
                     startActivity(intent)
                 }
             })
@@ -95,7 +95,13 @@ class HomeFragment : Fragment() {
             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
                 override fun onItemClicked(data: ResultsItem) {
                     val intent = Intent(context, DetailActivity::class.java)
-                    intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                    if(data.title == null){
+                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_TV)
+                    } else {
+                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
+                    }
                     startActivity(intent)
                 }
             })

@@ -121,12 +121,13 @@ class MovieRepository(context: Context) {
             })
     }
 
-    fun getMovieDetail(
+    fun getDetail(
         responseHandler: (DetailResponse) -> Unit,
         errorHandler: (Throwable) -> Unit,
+        media: String,
         id: String
     ){
-        apiService.getMovieDetail(id, apiKey)
+        apiService.getDetail(media, id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

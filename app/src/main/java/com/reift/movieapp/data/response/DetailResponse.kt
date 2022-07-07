@@ -49,8 +49,8 @@ data class DetailResponse(
 	@field:SerializedName("overview")
 	val overview: String? = null,
 
-	@field:SerializedName("original_title")
-	val originalTitle: String? = null,
+	@field:SerializedName("name")
+	val name: String? = null,
 
 	@field:SerializedName("seasons")
 	val seasons: List<SeasonsItem?>? = null,
@@ -69,6 +69,9 @@ data class DetailResponse(
 
 	@field:SerializedName("release_date")
 	val releaseDate: String? = null,
+
+	@field:SerializedName("first_air_date")
+	val firstRelease: String? = null,
 
 	@field:SerializedName("vote_average")
 	val voteAverage: Double? = null,

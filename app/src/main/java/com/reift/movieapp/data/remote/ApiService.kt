@@ -72,20 +72,14 @@ interface ApiService {
         region: String
     ): Flowable<CreditResponse>
 
-    @GET("movie/{id}")
-    fun getMovieDetail(
+    @GET("{media}/{id}")
+    fun getDetail(
+        @Path("media")
+        media: String,
         @Path("id")
         id: String,
         @Query("api_key")
-        apiKey: String
-    ): Flowable<DetailResponse>
-
-    @GET("tv/{id}")
-    fun getTvShowDetail(
-        @Path("id")
-        id: String,
-        @Query("api_key")
-        apiKey: String
+        apiKey: String,
     ): Flowable<DetailResponse>
 
     @GET("trending/{media}/day")
