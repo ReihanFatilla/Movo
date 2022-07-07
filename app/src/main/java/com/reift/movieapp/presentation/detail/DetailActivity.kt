@@ -53,24 +53,28 @@ class DetailActivity : AppCompatActivity() {
 
         if(intentType == Constant.INTENT_TV) {
             viewModel.getDetail(Constant.MEDIA_TV, id)
+            viewModel.getSimilarList(Constant.MEDIA_TV, id, Constant.UNITED_STATES, "1")
+            viewModel.getCreditList(Constant.MEDIA_TV, id, Constant.UNITED_STATES)
+            viewModel.getReviewList(Constant.MEDIA_TV, id, "1")
         } else {
             viewModel.getDetail(Constant.MEDIA_MOVIE, id)
+            viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
+            viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
+            viewModel.getReviewList(Constant.MEDIA_MOVIE, id, "1")
         }
         viewModel.detailResponse.observe(this){
             setUpDetailView(it, intentType)
         }
 
-        viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
         viewModel.similarResponse.observe(this){
             setUpSimilarRecyclerView(it.results as List<ResultsItem>?)
         }
 
-        viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
         viewModel.creditResponse.observe(this){
             setUpCreditRecyclerView(it.cast as List<CastItem>?)
         }
 
-        viewModel.getReviewList(Constant.MEDIA_MOVIE, id, "1")
+
         viewModel.reviewResponse.observe(this){
             setUpReviewRecyclerView(it.results as List<ResultsItemReview>?)
         }
