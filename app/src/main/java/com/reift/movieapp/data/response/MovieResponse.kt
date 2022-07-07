@@ -22,7 +22,7 @@ data class ResultsItem(
 	@field:SerializedName("overview")
 	val overview: String? = null,
 
-	@field:SerializedName("original_name")
+	@field:SerializedName("name")
 	val originalName: String? = null,
 
 	@field:SerializedName("title")

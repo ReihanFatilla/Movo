@@ -140,7 +140,7 @@ class HomeFragment : Fragment() {
             offscreenPageLimit = 3
             overScrollMode = RecyclerView.OVER_SCROLL_ALWAYS
 
-            setCurrentItem(mAdapter.itemCount * 3, false)
+            setCurrentItem(mAdapter.itemCount * 3, true)
 
             val compositePageTransformer = CompositePageTransformer()
             compositePageTransformer.apply {
@@ -183,8 +183,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
-        binding.tvTitle.text = movie?.get(currentItem)?.title ?: movie?.get(currentItem)?.originalName
         setUpGenreList(movie?.get(currentItem)?.genreIds as List<Int>?)
+        binding.tvTitle.text = movie?.get(currentItem)?.title ?: movie?.get(currentItem)?.originalName
     }
 
     private fun setUpGenreList(movie: List<Int>?) {

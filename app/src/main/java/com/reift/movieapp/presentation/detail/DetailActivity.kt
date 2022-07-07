@@ -109,7 +109,13 @@ class DetailActivity : AppCompatActivity() {
             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
                 override fun onItemClicked(data: ResultsItem) {
                     val intent = Intent(this@DetailActivity, DetailActivity::class.java)
-                    intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                    if(data.title == null){
+                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_TV)
+                    } else {
+                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
+                    }
                     startActivity(intent)
                 }
             })
