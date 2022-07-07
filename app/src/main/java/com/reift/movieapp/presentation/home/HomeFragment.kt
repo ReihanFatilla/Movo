@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
             adapter = mAdapter
             mAdapter.setData(movie)
             offscreenPageLimit = 3
-            overScrollMode = RecyclerView.OVER_SCROLL_ALWAYS
+            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
             setCurrentItem(mAdapter.itemCount * 3, true)
 
