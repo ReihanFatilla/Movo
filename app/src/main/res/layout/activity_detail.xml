@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
-                    android:text="25 June 2022"
+                    android:text=""
                     android:layout_marginTop="60dp"
                     android:textColor="@color/light_grey"
                     android:textAlignment="center"

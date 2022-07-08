@@ -1,5 +1,6 @@
 package com.reift.movieapp.presentation.detail.component
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +33,9 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            tvNameReview.text = listReview[position].authorDetails?.name
+            Log.i("authorDetail", listReview[position].authorDetails.toString())
+            tvNameReview.text = listReview[position].authorDetails?.name ?: "Anonymous"
+            tvUsernameReview.text = "@"+listReview[position].authorDetails?.username
             tvMessage.text = listReview[position].content
             Glide.with(imgProfileReview.context)
                 .load(listReview[position].authorDetails?.avatarPath)
