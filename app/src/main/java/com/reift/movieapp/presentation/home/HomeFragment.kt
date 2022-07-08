@@ -3,17 +3,14 @@ package com.reift.movieapp.presentation.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.reift.movieapp.`interface`.OnItemClickCallback
@@ -136,54 +133,15 @@ class HomeFragment : Fragment() {
 
     private fun setUpCarousel(movie: List<ResultsItem>?) {
 
-        binding.vpCarousel.apply {
+        binding.rvCarousel.apply {
 
-            val mAdapter = CarouselAdapter(binding.vpCarousel)
+            val mAdapter = CarouselAdapter()
             adapter = mAdapter
+            layoutManager = CenterItemLayoutManager(context, RecyclerView.HORIZONTAL, false)
             mAdapter.setData(movie)
-            offscreenPageLimit = 3
-            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            LinearSnapHelper().attachToRecyclerView(this)
 
-            setCurrentItem(mAdapter.itemCount * 3, true)
-
-            val compositePageTransformer = CompositePageTransformer()
-            compositePageTransformer.apply {
-                addTransformer {
-                        page, position ->
-                    val r = 1 - kotlin.math.abs(position)
-                    page.scaleY = 0.85F + r * 0.1f
-                    page.scaleX = 0.85F + r * 0.1f
-                    if(currentItem >= movie!!.size){
-                        if(currentItem - movieLenght == movie.size){
-                            movieLenght += movie.size
-                            setUpCarouselMovieData(movie, currentItem - movieLenght)
-                        } else {
-                            setUpCarouselMovieData(movie, currentItem - movieLenght)
-                        }
-                    } else {
-                        setUpCarouselMovieData(movie, currentItem)
-                    }
-                }
-            }
-            setPageTransformer(compositePageTransformer)
-
-            carouselRunnable = Runnable {
-                currentItem += 1
-            }
-
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    carouselHandler.removeCallbacks(carouselRunnable)
-                    carouselHandler.postDelayed(carouselRunnable, 3000)
-                }
-            })
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        carouselHandler.removeCallbacks(carouselRunnable)
     }
 
     private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {

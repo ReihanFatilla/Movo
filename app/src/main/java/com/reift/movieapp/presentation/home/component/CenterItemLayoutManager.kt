@@ -8,7 +8,7 @@ import kotlin.math.abs
 class CenterItemLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
     LinearLayoutManager(context, orientation, reverseLayout) {
     override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-        lp?.width = width/3
+        lp?.width = width/2
         return true
     }
 
@@ -38,7 +38,7 @@ class CenterItemLayoutManager(context: Context?, orientation: Int, reverseLayout
             val child = getChildAt(i)
             val centerChild = (getDecoratedLeft(child!!) + getDecoratedRight(child)) / 2.0f
             val d = Math.min(d1, abs(center - centerChild))
-            val scale = 1.0f - 0.2f * d/d1
+            val scale = 1.0f - 0.15f * d/d1
             child.scaleX = scale
             child.scaleY = scale
         }
