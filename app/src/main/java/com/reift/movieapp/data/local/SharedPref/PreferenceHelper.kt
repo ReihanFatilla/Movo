@@ -11,6 +11,14 @@ class PreferenceHelper(context: Context, PrefName: String) {
         prefEditor = sharedPref.edit()
     }
 
+    fun toArray(): List<String> {
+        return sharedPref.toString().split(",")
+    }
+
+    override fun toString(): String {
+        return sharedPref.toString().replace("{", "").replace("}", "").replace("\"", "")
+    }
+
     fun put(key: String, value: String) {
         prefEditor.putString(key, value)
             .commit()

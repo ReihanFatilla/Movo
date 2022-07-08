@@ -33,12 +33,11 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            Log.i("authorDetail", listReview[position].authorDetails.toString())
-            tvNameReview.text = listReview[position].authorDetails?.name ?: "Anonymous"
+            tvNameReview.text = listReview[position].author
             tvUsernameReview.text = "@"+listReview[position].authorDetails?.username
             tvMessage.text = listReview[position].content
             Glide.with(imgProfileReview.context)
-                .load(listReview[position].authorDetails?.avatarPath)
+                .load(listReview[position].authorDetails?.avatarPath.toString().drop(1))
                 .apply(RequestOptions())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
