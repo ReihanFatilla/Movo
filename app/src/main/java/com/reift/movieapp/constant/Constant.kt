@@ -49,4 +49,7 @@ object Constant {
     const val INTENT_TYPE = "EXTRA_INTENT_TYPE"
     const val INTENT_MOVIE = "EXTRA_INTENT_MOVIE"
     const val INTENT_TV = "EXTRA_INTENT_TV"
+
+    // Shared Preference
+    const val PREF_BOOKMARK_ID = "PREF_BOOKMARK_ID"
 }

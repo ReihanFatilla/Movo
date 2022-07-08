@@ -22,6 +22,7 @@ import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.detail.DetailActivity
 import com.reift.movieapp.presentation.home.component.CarouselAdapter
+import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
 import com.reift.movieapp.presentation.home.component.GenreListAdapter
 import com.reift.movieapp.presentation.home.component.HorizontalListAdapter
 
@@ -72,7 +73,8 @@ class HomeFragment : Fragment() {
         binding.rvUpcomingHome.apply {
             val mAdapter = HorizontalListAdapter()
             adapter = mAdapter
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            val mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = mLayoutManager
             mAdapter.setData(list)
 
             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
@@ -82,8 +84,10 @@ class HomeFragment : Fragment() {
                     startActivity(intent)
                 }
             })
+
         }
     }
+
 
     private fun setUpTrending(list: List<ResultsItem>?) {
         binding.rvTrendingHome.apply {
