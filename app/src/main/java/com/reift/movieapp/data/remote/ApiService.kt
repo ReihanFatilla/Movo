@@ -10,20 +10,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("movie/{type}")
-    fun getMovieList(
-        @Path("type")
-        type: String,
-        @Query("api_key")
-        apiKey: String,
-        @Query("region")
-        region: String,
-        @Query("page")
-        page: String
-    ): Flowable<MovieResponse>
-
-    @GET("tv/{type}")
-    fun getTVShowList(
+    @GET("{media}/{type}")
+    fun getMovieTVList(
+        @Path("media")
+        media: String,
         @Path("type")
         type: String,
         @Query("api_key")

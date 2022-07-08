@@ -18,31 +18,15 @@ class MovieRepository(context: Context) {
 
     private val apiService = ApiClient.getApiService()
 
-    fun getMovieList(
+    fun getMovieTVList(
         responseHandler: (MovieResponse) -> Unit,
         errorHandler: (Throwable) -> Unit,
+        media: String,
         type: String,
         region: String,
         page: String
     ){
-        apiService.getMovieList(type, apiKey, region, page)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                responseHandler(it)
-            },{
-                errorHandler(it)
-            })
-    }
-
-    fun getTVShowList(
-        responseHandler: (MovieResponse) -> Unit,
-        errorHandler: (Throwable) -> Unit,
-        type: String,
-        region: String,
-        page: String
-    ){
-        apiService.getTVShowList(type, apiKey, region, page)
+        apiService.getMovieTVList(media, type, apiKey, region, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

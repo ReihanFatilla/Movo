@@ -21,10 +21,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         region: String,
         page: String
     ){
-        repository.getMovieList(
+        repository.getMovieTVList(
             {
                 nowPlayingResponse.value = it
             },{},
+            Constant.MEDIA_MOVIE,
             Constant.NOW_PLAYING,
             region,
             page
@@ -35,10 +36,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         region: String,
         page: String
     ){
-        repository.getMovieList(
+        repository.getMovieTVList(
             {
                 upcomingResponse.value = it
             },{},
+            Constant.MEDIA_MOVIE,
             Constant.UPCOMING,
             region,
             page
@@ -49,10 +51,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         region: String,
         page: String
     ){
-        repository.getTVShowList(
+        repository.getMovieTVList(
             {
                 nowPlayingResponse.value = it
             },{},
+            Constant.MEDIA_TV,
             Constant.AIRING_TODAY,
             region,
             page

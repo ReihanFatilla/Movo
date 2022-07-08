@@ -144,8 +144,8 @@ class DetailActivity : AppCompatActivity() {
             tvMinOrEpisode.text= it?.runtime.toString()
             if(intentType == Constant.INTENT_TV){
                 tvMinOrEpisode.text = it?.numberOfEpisodes.toString()
-                tvDurationOrEpisode.text = "Episodes"
-                tvMin.text = ""
+                tvDurationOrEpisode.text = it?.numberOfSeasons.toString()+" Seasons"
+                tvMin.text = "Eps"
             } else {
                 tvMinOrEpisode.text= it?.runtime.toString()
                 tvDurationOrEpisode.text = "Duration"
