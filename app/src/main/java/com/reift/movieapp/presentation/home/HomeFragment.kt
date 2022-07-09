@@ -137,11 +137,29 @@ class HomeFragment : Fragment() {
 
             val mAdapter = CarouselAdapter()
             adapter = mAdapter
-            layoutManager = CenterItemLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            val mLayoutManager = CenterItemLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            layoutManager = mLayoutManager
             mAdapter.setData(movie)
+            setUpCarouselMovieData(movie, 0)
             LinearSnapHelper().attachToRecyclerView(this)
 
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        val position: Int = getCurrentItem()
+                        setUpCarouselMovieData(movie, position + 1)
+                    }
+                }
+            })
+
+
         }
+    }
+
+    private fun getCurrentItem(): Int {
+        return (binding.rvCarousel.layoutManager as CenterItemLayoutManager)
+            .findFirstVisibleItemPosition()
     }
 
     private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
