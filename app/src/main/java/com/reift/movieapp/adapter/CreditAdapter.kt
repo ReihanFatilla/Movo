@@ -1,4 +1,4 @@
-package com.reift.movieapp.presentation.detail.component
+package com.reift.movieapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.response.CastItem
-import com.reift.movieapp.data.response.CreditResponse
 import com.reift.movieapp.databinding.ItemCreditDetailBinding
 
 class CreditAdapter: RecyclerView.Adapter<CreditAdapter.MyViewHolder>()  {

@@ -1,6 +1,5 @@
-package com.reift.movieapp.presentation.detail.component
+package com.reift.movieapp.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

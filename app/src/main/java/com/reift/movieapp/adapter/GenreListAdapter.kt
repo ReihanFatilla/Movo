@@ -1,11 +1,9 @@
-package com.reift.movieapp.presentation.home.component
+package com.reift.movieapp.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.reift.movieapp.HelperFunction
-import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.ItemGenreListBinding
 
 class GenreListAdapter:RecyclerView.Adapter<GenreListAdapter.GenreViewHolder>() {
