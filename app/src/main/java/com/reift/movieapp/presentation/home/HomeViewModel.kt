@@ -11,7 +11,7 @@ import com.reift.movieapp.data.MovieRepository
 import com.reift.movieapp.data.MovieResponse
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
-    val repository: MovieRepository = MovieRepository(application)
+    private val repository: MovieRepository = MovieRepository(application)
 
     var nowPlayingResponse = MutableLiveData<MovieResponse>()
     var trendingResponse = MutableLiveData<MovieResponse>()

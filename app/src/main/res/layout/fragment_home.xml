@@ -137,136 +137,17 @@
             tools:itemCount="3"
             tools:listitem="@layout/item_genre_list" />
 
-        <TextView
-            android:id="@+id/tv_trending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Trending"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_genre" />
-
-        <TextView
-            android:id="@+id/tv_trending_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="See what's Today's Trending"
-            android:textColor="@color/light_grey"
-            android:textSize="13sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_trending" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/btn_see_all_trending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_trending_desc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_trending">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="@color/primary_color"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_trending" />
-
-            <ImageButton
-                android:layout_width="17dp"
-                android:layout_height="10dp"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_right_arrow"
-                app:tint="@color/primary_color" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_trending_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="-16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="-16dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/btn_see_all_trending"
-            tools:listitem="@layout/item_horizontal_movie" />
-
-        <TextView
-            android:id="@+id/tv_upcoming"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Upcoming"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_trending_home" />
-
-        <TextView
-            android:id="@+id/tv_upcoming_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="See what's Today's Upcoming"
-            android:textColor="@color/light_grey"
-            android:textSize="13sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_upcoming" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/btn_see_all_upcoming"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_upcoming_desc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_upcoming"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="@color/primary_color"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_trending" />
-
-            <ImageButton
-                android:layout_width="17dp"
-                android:layout_height="10dp"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_right_arrow"
-                app:tint="@color/primary_color" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_upcoming_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="-16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="-16dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/btn_see_all_upcoming"
-            tools:listitem="@layout/item_horizontal_movie" />
+            app:layout_constraintTop_toBottomOf="@+id/rv_genre"
+            tools:listitem="@layout/item_list_movie_rv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

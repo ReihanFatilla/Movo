@@ -59,32 +59,11 @@ class HomeFragment : Fragment() {
 
         viewModel.getUpcomingMovie(Constant.UNITED_STATES, currentPage.toString())
         viewModel.upcomingResponse.observe(viewLifecycleOwner){
-            setUpUpcoming(it.results as List<ResultsItem>?)
         }
 
         setUpTabBar()
         return binding.root
     }
-
-    private fun setUpUpcoming(list: List<ResultsItem>?) {
-        binding.rvUpcomingHome.apply {
-            val mAdapter = HorizontalListAdapter()
-            adapter = mAdapter
-            val mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            layoutManager = mLayoutManager
-            mAdapter.setData(list)
-
-            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                override fun onItemClicked(data: ResultsItem) {
-                    val intent = Intent(context, DetailActivity::class.java)
-                        .putExtra(Constant.INTENT_TO_DETAIL, data.id)
-                    startActivity(intent)
-                }
-            })
-
-        }
-    }
-
 
     private fun setUpTrending(list: List<ResultsItem>?) {
         binding.rvTrendingHome.apply {
