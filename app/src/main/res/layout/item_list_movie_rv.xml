@@ -10,7 +10,7 @@
     android:layout_marginTop="24dp">
 
     <TextView
-        android:id="@+id/tv_trending"
+        android:id="@+id/tv_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Trending"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/tv_trending_desc"
+        android:id="@+id/tv_type_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="See what's Today's Trending"
@@ -29,7 +29,7 @@
         android:textSize="13sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_trending" />
+        app:layout_constraintTop_toBottomOf="@id/tv_type" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/btn_see_all_trending"
@@ -38,9 +38,9 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="4dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_trending_desc"
+        app:layout_constraintBottom_toBottomOf="@id/tv_type_desc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_trending">
+        app:layout_constraintTop_toTopOf="@id/tv_type">
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,8 +49,7 @@
             android:textColor="@color/primary_color"
             android:textSize="12sp"
             android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_trending" />
+            />
 
         <ImageButton
             android:layout_width="17dp"
@@ -62,7 +61,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_trending_home"
+        android:id="@+id/rv_movie_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="-16dp"

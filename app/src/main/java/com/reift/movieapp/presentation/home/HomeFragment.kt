@@ -18,10 +18,10 @@ import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.detail.DetailActivity
-import com.reift.movieapp.presentation.home.component.CarouselAdapter
+import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
-import com.reift.movieapp.presentation.home.component.GenreListAdapter
-import com.reift.movieapp.presentation.home.component.HorizontalListAdapter
+import com.reift.movieapp.adapter.GenreListAdapter
+import com.reift.movieapp.adapter.HorizontalListAdapter
 
 
 class HomeFragment : Fragment() {

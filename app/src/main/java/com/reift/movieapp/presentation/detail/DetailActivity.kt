@@ -19,9 +19,9 @@ import com.reift.movieapp.data.response.CastItem
 import com.reift.movieapp.data.response.DetailResponse
 import com.reift.movieapp.data.response.ResultsItemReview
 import com.reift.movieapp.databinding.ActivityDetailBinding
-import com.reift.movieapp.presentation.detail.component.CreditAdapter
-import com.reift.movieapp.presentation.detail.component.ReviewAdapter
-import com.reift.movieapp.presentation.home.component.HorizontalListAdapter
+import com.reift.movieapp.adapter.CreditAdapter
+import com.reift.movieapp.adapter.ReviewAdapter
+import com.reift.movieapp.adapter.HorizontalListAdapter
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 
