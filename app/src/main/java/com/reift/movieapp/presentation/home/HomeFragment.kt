@@ -35,11 +35,7 @@ class HomeFragment : Fragment() {
     private var _viewModel: HomeViewModel? = null
     private val viewModel get() = _viewModel!!
 
-    private val carouselHandler = Handler()
-
     private var currentPage = 1
-    private lateinit var carouselRunnable: Runnable
-    private var movieLenght: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
