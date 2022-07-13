@@ -1,14 +1,11 @@
-package com.reift.movieapp
+package com.reift.movieapp.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import android.view.Window
 import android.view.WindowManager
-import com.reift.movieapp.databinding.ItemHorizontalMovieBinding
-import java.time.Year
 
 object HelperFunction {
 

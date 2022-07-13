@@ -138,7 +138,7 @@
             tools:listitem="@layout/item_genre_list" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_trending_home"
+            android:id="@+id/rv_movie_type_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="-16dp"

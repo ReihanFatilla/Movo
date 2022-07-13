@@ -3,6 +3,7 @@ package com.reift.movieapp.presentation.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,8 @@ import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
 import com.reift.movieapp.adapter.GenreListAdapter
 import com.reift.movieapp.adapter.HorizontalListAdapter
+import com.reift.movieapp.adapter.MovieTypeAdapter
+import com.reift.movieapp.presentation.home.component.MovieTypeData
 
 
 class HomeFragment : Fragment() {
@@ -47,44 +50,54 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        setUpMovieTypeList()
+
         viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
         viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
             setUpCarousel(it.results as List<ResultsItem>?)
         }
 
-        viewModel.getTrendingList(Constant.MEDIA_MOVIE, Constant.UNITED_STATES, currentPage.toString())
-        viewModel.trendingResponse.observe(viewLifecycleOwner){
-            setUpTrending(it.results as List<ResultsItem>?)
-        }
-
-        viewModel.getUpcomingMovie(Constant.UNITED_STATES, currentPage.toString())
-        viewModel.upcomingResponse.observe(viewLifecycleOwner){
-        }
 
         setUpTabBar()
         return binding.root
     }
 
-    private fun setUpTrending(list: List<ResultsItem>?) {
-        binding.rvTrendingHome.apply {
-            val mAdapter = HorizontalListAdapter()
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            mAdapter.setData(list)
+    private fun setUpMovieTypeList() {
+        val mAdapter = MovieTypeAdapter()
 
-            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                override fun onItemClicked(data: ResultsItem) {
-                    val intent = Intent(context, DetailActivity::class.java)
-                    if(data.title == null){
-                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
-                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_TV)
-                    } else {
-                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
-                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
-                    }
-                    startActivity(intent)
-                }
-            })
+        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
+        viewModel.topRatedResponse.observe(viewLifecycleOwner){
+            mAdapter.setData(MovieTypeData(
+                "Top Rated",
+                "See what's Top Rated",
+                it.results as List<ResultsItem>?
+            ))
+            Log.i("setUpMovieTypeList", it.results.toString())
+        }
+
+        viewModel.getTrendingList(Constant.MEDIA_MOVIE, Constant.UNITED_STATES, currentPage.toString())
+        viewModel.trendingResponse.observe(viewLifecycleOwner){
+            mAdapter.setData(MovieTypeData(
+                "Trending",
+                "See what's Trending",
+                it.results as List<ResultsItem>?
+            ))
+            Log.i("setUpMovieTypeList2", it.results.toString())
+
+        }
+
+        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.UPCOMING, Constant.UNITED_STATES, currentPage.toString())
+        viewModel.upcomingResponse.observe(viewLifecycleOwner){
+            mAdapter.setData(MovieTypeData(
+                "Upcoming",
+                "See what's Upcoming",
+                it.results as List<ResultsItem>?
+            ))
+        }
+
+        binding.rvMovieTypeList.apply {
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(context)
         }
     }
 
@@ -113,7 +126,6 @@ class HomeFragment : Fragment() {
     private fun setUpCarousel(movie: List<ResultsItem>?) {
 
         binding.rvCarousel.apply {
-
             val mAdapter = CarouselAdapter()
             adapter = mAdapter
             val mLayoutManager = CenterItemLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -159,4 +171,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

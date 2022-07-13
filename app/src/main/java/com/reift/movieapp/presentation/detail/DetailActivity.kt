@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.reift.movieapp.HelperFunction
+import com.reift.movieapp.utils.HelperFunction
 import com.reift.movieapp.`interface`.OnItemClickCallback
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem

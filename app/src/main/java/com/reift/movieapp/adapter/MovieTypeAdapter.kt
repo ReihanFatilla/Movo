@@ -1,19 +1,23 @@
 package com.reift.movieapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.reift.movieapp.`interface`.OnItemClickCallback
+import com.reift.movieapp.constant.Constant
+import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.ItemListMovieRvBinding
+import com.reift.movieapp.presentation.detail.DetailActivity
 import com.reift.movieapp.presentation.home.component.MovieTypeData
 
 class MovieTypeAdapter: RecyclerView.Adapter<MovieTypeAdapter.MyViewHolder>() {
     var listMovieType = ArrayList<MovieTypeData>()
 
-    fun setData(data: List<MovieTypeData>?) {
-        if (data == null) return
-        listMovieType.clear()
-        listMovieType.addAll(data)
+    fun setData(data: MovieTypeData) {
+        listMovieType.add(data)
+        notifyDataSetChanged()
     }
 
     class MyViewHolder(val binding: ItemListMovieRvBinding): RecyclerView.ViewHolder(binding.root)
@@ -31,6 +35,20 @@ class MovieTypeAdapter: RecyclerView.Adapter<MovieTypeAdapter.MyViewHolder>() {
                 adapter = mAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 mAdapter.setData(listMovieType[position].movieType)
+
+                mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                    override fun onItemClicked(data: ResultsItem) {
+                        val intent = Intent(context, DetailActivity::class.java)
+                        if(data.title == null){
+                            intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                            intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_TV)
+                        } else {
+                            intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
+                            intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
+                        }
+                        holder.itemView.context.startActivity(intent)
+                    }
+                })
             }
         }
     }

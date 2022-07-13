@@ -9,39 +9,35 @@ import androidx.lifecycle.ViewModel
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.MovieRepository
 import com.reift.movieapp.data.MovieResponse
+import com.reift.movieapp.data.ResultsItem
+import com.reift.movieapp.presentation.home.component.MovieTypeData
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: MovieRepository = MovieRepository(application)
 
     var nowPlayingResponse = MutableLiveData<MovieResponse>()
     var trendingResponse = MutableLiveData<MovieResponse>()
+    var topRatedResponse = MutableLiveData<MovieResponse>()
+    var popularResponse = MutableLiveData<MovieResponse>()
     var upcomingResponse = MutableLiveData<MovieResponse>()
 
-    fun getNowPlayingMovie(
+    fun getListByType(
+        media: String,
+        type: String,
         region: String,
-        page: String
+        page: String,
     ){
         repository.getMovieTVList(
             {
-                nowPlayingResponse.value = it
+                when (type) {
+                    Constant.NOW_PLAYING -> nowPlayingResponse.value = it
+                    Constant.TOP_RATED -> topRatedResponse.value = it
+                    Constant.POPULAR_MOVIE -> popularResponse.value = it
+                    Constant.UPCOMING -> upcomingResponse.value = it
+                }
             },{},
-            Constant.MEDIA_MOVIE,
-            Constant.NOW_PLAYING,
-            region,
-            page
-        )
-    }
-
-    fun getUpcomingMovie(
-        region: String,
-        page: String
-    ){
-        repository.getMovieTVList(
-            {
-                upcomingResponse.value = it
-            },{},
-            Constant.MEDIA_MOVIE,
-            Constant.UPCOMING,
+            media,
+            type,
             region,
             page
         )
@@ -72,6 +68,21 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 trendingResponse.value = it
             },{},
             media,
+            region,
+            page
+        )
+    }
+
+    fun getNowPlayingMovie(
+        region: String,
+        page: String
+    ) {
+        repository.getMovieTVList(
+            {
+                nowPlayingResponse.value = it
+            },{},
+            Constant.MEDIA_MOVIE,
+            Constant.NOW_PLAYING,
             region,
             page
         )
