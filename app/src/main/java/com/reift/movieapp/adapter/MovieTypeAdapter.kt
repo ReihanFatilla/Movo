@@ -20,7 +20,9 @@ class MovieTypeAdapter: RecyclerView.Adapter<MovieTypeAdapter.MyViewHolder>() {
 
     fun setData(data: MovieTypeData) {
         listMovieType.add(data)
-        notifyDataSetChanged()
+        if(listMovieType.size == 2) {
+            notifyDataSetChanged()
+        }
     }
 
     class MyViewHolder(val binding: ItemListMovieRvBinding): RecyclerView.ViewHolder(binding.root)

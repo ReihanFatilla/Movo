@@ -1,8 +1,6 @@
 package com.reift.movieapp.presentation.home
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,15 +12,12 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.reift.movieapp.`interface`.OnItemClickCallback
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
-import com.reift.movieapp.presentation.detail.DetailActivity
 import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
 import com.reift.movieapp.adapter.GenreListAdapter
-import com.reift.movieapp.adapter.HorizontalListAdapter
 import com.reift.movieapp.adapter.MovieTypeAdapter
 import com.reift.movieapp.presentation.home.component.MovieTypeData
 
