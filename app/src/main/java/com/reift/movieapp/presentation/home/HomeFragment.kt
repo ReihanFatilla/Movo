@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
             setUpCarousel(it.results as List<ResultsItem>?)
         }
 
-
         setUpTabBar()
         return binding.root
     }
@@ -93,7 +92,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpTabBar() {
-        binding.tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
+        binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when(tab.position){
                     0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
@@ -115,7 +114,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpCarousel(movie: List<ResultsItem>?) {
-
         binding.rvCarousel.apply {
             val mAdapter = CarouselAdapter()
             adapter = mAdapter

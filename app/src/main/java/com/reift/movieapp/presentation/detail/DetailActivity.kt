@@ -1,5 +1,6 @@
 package com.reift.movieapp.presentation.detail
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -122,6 +123,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setUpDetailView(it: DetailResponse?, intentType: String?) {
         binding.apply {
             Glide.with(this@DetailActivity)

@@ -15,6 +15,8 @@ class PreferenceHelper(context: Context, PrefName: String) {
         return sharedPref.toString().split(",")
     }
 
+
+
     override fun toString(): String {
         return sharedPref.toString().replace("{", "").replace("}", "").replace("\"", "")
     }
