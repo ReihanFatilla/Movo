@@ -41,8 +41,7 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        binding.shimmerCarouselContainer.startShimmer()
-        binding.shimmerListContainer.startShimmer()
+//        binding.shimmerFrameLayout.frameShimmer.startShimmer()
 
         setUpMovieTypeList()
 
@@ -92,8 +91,6 @@ class HomeFragment : Fragment() {
         binding.rvMovieTypeList.apply {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context)
-            binding.shimmerListContainer.stopShimmer()
-            binding.shimmerListContainer.visibility = View.GONE
             this.visibility = View.VISIBLE
         }
     }
@@ -130,9 +127,13 @@ class HomeFragment : Fragment() {
             setUpCarouselMovieData(movie, 0)
             LinearSnapHelper().attachToRecyclerView(this)
 
-            binding.shimmerCarouselContainer.stopShimmer()
-            binding.shimmerCarouselContainer.visibility = View.GONE
-            this.visibility = View.VISIBLE
+//            viewModel.isLoading.observe(viewLifecycleOwner){
+//                if(it){
+//                    binding.shimmerFrameLayout.frameShimmer.startShimmer()
+//                    binding.shimmerFrameLayout.frameShimmer.visibility = View.GONE
+//                }
+//            }
+
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
