@@ -21,6 +21,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     var popularResponse = MutableLiveData<MovieResponse>()
     var upcomingResponse = MutableLiveData<MovieResponse>()
 
+    var isLoading = MutableLiveData<Boolean>()
+
     fun getListByType(
         media: String,
         type: String,
@@ -80,6 +82,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         repository.getMovieTVList(
             {
                 nowPlayingResponse.value = it
+                isLoading.value = true
             },{},
             Constant.MEDIA_MOVIE,
             Constant.NOW_PLAYING,

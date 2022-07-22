@@ -41,6 +41,9 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        binding.shimmerCarouselContainer.startShimmer()
+        binding.shimmerListContainer.startShimmer()
+
         setUpMovieTypeList()
 
         viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
@@ -51,6 +54,7 @@ class HomeFragment : Fragment() {
         setUpTabBar()
         return binding.root
     }
+
 
     private fun setUpMovieTypeList() {
         val mAdapter = MovieTypeAdapter()
@@ -88,6 +92,9 @@ class HomeFragment : Fragment() {
         binding.rvMovieTypeList.apply {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context)
+            binding.shimmerListContainer.stopShimmer()
+            binding.shimmerListContainer.visibility = View.GONE
+            this.visibility = View.VISIBLE
         }
     }
 
@@ -122,6 +129,10 @@ class HomeFragment : Fragment() {
             mAdapter.setData(movie)
             setUpCarouselMovieData(movie, 0)
             LinearSnapHelper().attachToRecyclerView(this)
+
+            binding.shimmerCarouselContainer.stopShimmer()
+            binding.shimmerCarouselContainer.visibility = View.GONE
+            this.visibility = View.VISIBLE
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
