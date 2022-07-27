@@ -29,5 +29,5 @@ class GenreListAdapter:RecyclerView.Adapter<GenreListAdapter.GenreViewHolder>() 
         }
     }
 
-    override fun getItemCount() = genreList.size
+    override fun getItemCount() = if(genreList.size <= 3) genreList.size else 3
 }

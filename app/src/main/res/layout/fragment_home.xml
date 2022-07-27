@@ -16,16 +16,262 @@
         android:paddingTop="24dp"
         android:paddingBottom="70dp">
 
-<!--        <include-->
-<!--            android:id="@+id/shimmer_frame_layout"-->
-<!--            android:layout_height="wrap_content"-->
+<!--        <com.facebook.shimmer.ShimmerFrameLayout-->
+
 <!--            android:layout_width="match_parent"-->
-<!--            layout="@layout/fragment_home_shimmer"-->
-<!--            android:layout_marginStart="-16dp"-->
+<!--            android:layout_height="wrap_content"-->
 <!--            android:layout_marginTop="-24dp"-->
 <!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_marginStart="-16dp"-->
 <!--            android:layout_marginEnd="-16dp"-->
-<!--            />-->
+<!--            android:background="@color/app_backround"-->
+<!--            android:animateLayoutChanges="true"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:animationCache="true"-->
+<!--            app:shimmer_repeat_mode="restart"-->
+<!--            android:id="@+id/shimmer_frame_layout"-->
+<!--            app:shimmer_shape="radial"-->
+<!--            >-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:clipToPadding="false"-->
+<!--                android:paddingHorizontal="16dp"-->
+<!--                android:paddingTop="24dp"-->
+<!--                android:paddingBottom="70dp" >-->
+
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/cv_profile_shimmer"-->
+<!--                    android:layout_width="38dp"-->
+<!--                    android:layout_height="38dp"-->
+<!--                    app:cardBackgroundColor="@color/white"-->
+<!--                    app:cardCornerRadius="150dp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:strokeColor="@color/grey"-->
+<!--                    app:strokeWidth="2dp">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/img_profile_shimmer"-->
+<!--                        android:layout_width="36dp"-->
+<!--                        android:layout_height="36dp"-->
+<!--                        tools:src="@tools:sample/avatars" />-->
+
+<!--                </com.google.android.material.card.MaterialCardView>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/cv_profile_shimmer"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/cv_profile_shimmer"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/cv_profile_shimmer">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Hello"-->
+<!--                        android:textColor="@color/grey"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Reihan Fatilla"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <com.google.android.material.tabs.TabLayout-->
+<!--                    android:id="@+id/tab_layout_shimmer"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    android:layout_marginStart="-20dp"-->
+<!--                    android:layout_marginTop="18dp"-->
+<!--                    android:layout_marginEnd="-20dp"-->
+<!--                    android:backgroundTint="@android:color/transparent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/cv_profile_shimmer"-->
+<!--                    app:tabIndicator="@android:color/transparent"-->
+<!--                    app:tabIndicatorAnimationMode="elastic"-->
+<!--                    app:tabIndicatorGravity="stretch"-->
+<!--                    app:tabMode="fixed"-->
+<!--                    app:tabRippleColor="@android:color/transparent"-->
+<!--                    app:tabSelectedTextColor="@color/white"-->
+<!--                    app:tabTextAppearance="@style/MyTabLayoutTextAppearance"-->
+<!--                    app:tabTextColor="@color/grey">-->
+
+<!--                    <com.google.android.material.tabs.TabItem-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Movies" />-->
+
+<!--                    <com.google.android.material.tabs.TabItem-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="TV Show" />-->
+
+<!--                    <com.google.android.material.tabs.TabItem-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Bookmark" />-->
+
+<!--                </com.google.android.material.tabs.TabLayout>-->
+
+<!--                <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--                    android:id="@+id/shimmer_carousel_container"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="-20dp"-->
+<!--                    android:layout_marginEnd="-20dp"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/tab_layout_shimmer"-->
+<!--                    android:animateLayoutChanges="true"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:animationCache="true"-->
+<!--                    app:shimmer_repeat_mode="restart"-->
+<!--                    app:shimmer_shape="radial">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        &lt;!&ndash;below we are displaying multiple-->
+<!--                            shimmer layouts using include-->
+<!--                            to show them in list format&ndash;&gt;-->
+<!--                        <include layout="@layout/item_shimmer_carousel_home" />-->
+<!--                        <include layout="@layout/item_shimmer_carousel_home" />-->
+<!--                        <include layout="@layout/item_shimmer_carousel_home" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_title_shimmer"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="50dp"-->
+<!--                    android:layout_marginTop="2dp"-->
+<!--                    android:layout_marginEnd="50dp"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:background="#B3B3B3"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="19sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/shimmer_carousel_container" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/ll_genre_shimmer"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/tv_title_shimmer"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    >-->
+
+<!--                    <include layout="@layout/item_genre_list" />-->
+<!--                    <include layout="@layout/item_genre_list" />-->
+<!--                    <include layout="@layout/item_genre_list" />-->
+
+<!--                </LinearLayout>-->
+
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_type_shimmer"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Trending List"-->
+<!--                    android:background="#B3B3B3"-->
+<!--                    android:textColor="#B3B3B3"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/ll_genre_shimmer"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_type_desc_shimmer"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="See what's Today's Trending"-->
+<!--                    android:background="#B3B3B3"-->
+<!--                    android:textColor="#B3B3B3"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/tv_type_shimmer" />-->
+
+<!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                    android:id="@+id/btn_see_all_trending_shimmer"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:background="#B3B3B3"-->
+<!--                    android:padding="4dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/tv_type_desc_shimmer"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/tv_type_shimmer">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="See All"-->
+<!--                        android:textColor="#B3B3B3"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:textStyle="normal"-->
+<!--                        />-->
+
+<!--                    <ImageButton-->
+<!--                        android:layout_width="17dp"-->
+<!--                        android:layout_height="10dp"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:src="@drawable/ic_right_arrow"-->
+<!--                        app:tint="#B3B3B3" />-->
+
+<!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/rv_movie_type"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="-16dp"-->
+<!--                    android:layout_marginEnd="-16dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:visibility="invisible"-->
+<!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/btn_see_all_trending_shimmer"-->
+<!--                    tools:listitem="@layout/item_horizontal_movie" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="-16dp"-->
+<!--                    android:layout_marginEnd="-16dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/btn_see_all_trending_shimmer"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    >-->
+
+<!--                    <include layout="@layout/item_shimmer_horizontal_movie" />-->
+<!--                    <include layout="@layout/item_shimmer_horizontal_movie" />-->
+<!--                    <include layout="@layout/item_shimmer_horizontal_movie" />-->
+
+<!--                </LinearLayout>-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </com.facebook.shimmer.ShimmerFrameLayout>-->
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_profile"

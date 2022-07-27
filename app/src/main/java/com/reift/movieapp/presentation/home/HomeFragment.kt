@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,13 +13,13 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.reift.movieapp.adapter.CarouselAdapter
+import com.reift.movieapp.adapter.GenreListAdapter
+import com.reift.movieapp.adapter.MovieTypeAdapter
 import com.reift.movieapp.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
-import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
-import com.reift.movieapp.adapter.GenreListAdapter
-import com.reift.movieapp.adapter.MovieTypeAdapter
 import com.reift.movieapp.presentation.home.component.MovieTypeData
 
 
@@ -41,7 +42,7 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-//        binding.shimmerFrameLayout.frameShimmer.startShimmer()
+//        binding.shimmerFrameLayout.startShimmer()
 
         setUpMovieTypeList()
 
@@ -88,10 +89,25 @@ class HomeFragment : Fragment() {
             ))
         }
 
+
+
         binding.rvMovieTypeList.apply {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context)
             this.visibility = View.VISIBLE
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    val lastPosition = layoutManager.findLastVisibleItemPosition()
+                    if (lastPosition == mAdapter.itemCount - 1) {
+                        Toast.makeText(context, "Last Page", Toast.LENGTH_SHORT).show()
+//                        currentPage++
+//                        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
+                    }
+                }
+            })
+
         }
     }
 
@@ -129,8 +145,8 @@ class HomeFragment : Fragment() {
 
 //            viewModel.isLoading.observe(viewLifecycleOwner){
 //                if(it){
-//                    binding.shimmerFrameLayout.frameShimmer.startShimmer()
-//                    binding.shimmerFrameLayout.frameShimmer.visibility = View.GONE
+//                    binding.shimmerFrameLayout.startShimmer()
+//                    binding.shimmerFrameLayout.visibility = View.GONE
 //                }
 //            }
 
