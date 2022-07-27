@@ -1,6 +1,7 @@
 package com.reift.movieapp.presentation.home
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,7 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-//        binding.shimmerFrameLayout.startShimmer()
+//        binding.includedShimmer.frameShimmer.startShimmer()
 
         setUpMovieTypeList()
 
@@ -94,18 +95,24 @@ class HomeFragment : Fragment() {
         binding.rvMovieTypeList.apply {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context)
-            this.visibility = View.VISIBLE
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
                     val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                     val lastPosition = layoutManager.findLastVisibleItemPosition()
-                    if (lastPosition == mAdapter.itemCount - 1) {
+                    if (lastPosition == mAdapter.itemCount-1 && newState == RecyclerView.SCROLL_STATE_IDLE) {
                         Toast.makeText(context, "Last Page", Toast.LENGTH_SHORT).show()
-//                        currentPage++
-//                        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
                     }
                 }
+//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                    super.onScrolled(recyclerView, dx, dy)
+//
+//                    if (lastPosition == mAdapter.itemCount - 1) {
+
+////                        currentPage++
+////                        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
+//                    }
+//                }
             })
 
         }
@@ -139,17 +146,9 @@ class HomeFragment : Fragment() {
             adapter = mAdapter
             val mLayoutManager = CenterItemLayoutManager(context, RecyclerView.HORIZONTAL, false)
             layoutManager = mLayoutManager
-            mAdapter.setData(movie)
             setUpCarouselMovieData(movie, 0)
+            mAdapter.setData(movie)
             LinearSnapHelper().attachToRecyclerView(this)
-
-//            viewModel.isLoading.observe(viewLifecycleOwner){
-//                if(it){
-//                    binding.shimmerFrameLayout.startShimmer()
-//                    binding.shimmerFrameLayout.visibility = View.GONE
-//                }
-//            }
-
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -157,9 +156,16 @@ class HomeFragment : Fragment() {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val position: Int = getCurrentItem()
                         setUpCarouselMovieData(movie, position + 1)
+
                     }
                 }
             })
+
+//            Handler().postDelayed({
+//                binding.includedShimmer.frameShimmer.stopShimmer()
+//                binding.includedShimmer.frameShimmer.visibility = View.INVISIBLE
+//                binding.contraintHome.visibility = View.VISIBLE
+//            }, 1000)
 
 
         }
