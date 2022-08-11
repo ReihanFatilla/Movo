@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="220dp"
     android:layout_height="320dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +11,7 @@
     app:strokeColor="@color/grey"
     app:strokeWidth="4dp"
     app:cardElevation="0dp"
-    android:background="@drawable/bg_carousel_home">
+    >
 
     <ImageView
         android:id="@+id/img_movie"

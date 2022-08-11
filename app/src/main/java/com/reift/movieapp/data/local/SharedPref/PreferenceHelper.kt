@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class PreferenceHelper(context: Context, PrefName: String) {
+
     var sharedPref: SharedPreferences
     var prefEditor: SharedPreferences.Editor
     init {
@@ -14,8 +15,6 @@ class PreferenceHelper(context: Context, PrefName: String) {
     fun toArray(): List<String> {
         return sharedPref.toString().split(",")
     }
-
-
 
     override fun toString(): String {
         return sharedPref.toString().replace("{", "").replace("}", "").replace("\"", "")

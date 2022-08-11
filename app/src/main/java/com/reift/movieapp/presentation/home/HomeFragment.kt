@@ -95,25 +95,25 @@ class HomeFragment : Fragment() {
         binding.rvMovieTypeList.apply {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context)
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                    val lastPosition = layoutManager.findLastVisibleItemPosition()
-                    if (lastPosition == mAdapter.itemCount-1 && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        Toast.makeText(context, "Last Page", Toast.LENGTH_SHORT).show()
-                    }
-                }
-//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                    super.onScrolled(recyclerView, dx, dy)
-//
-//                    if (lastPosition == mAdapter.itemCount - 1) {
-
-////                        currentPage++
-////                        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
+//            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                    super.onScrollStateChanged(recyclerView, newState)
+//                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+//                    val lastPosition = layoutManager.findLastVisibleItemPosition()
+//                    if (lastPosition == mAdapter.itemCount-1 && newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                        Toast.makeText(context, "Last Page", Toast.LENGTH_SHORT).show()
 //                    }
 //                }
-            })
+////                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+////                    super.onScrolled(recyclerView, dx, dy)
+////
+////                    if (lastPosition == mAdapter.itemCount - 1) {
+//
+//////                        currentPage++
+//////                        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
+////                    }
+////                }
+//            })
 
         }
     }
@@ -156,7 +156,6 @@ class HomeFragment : Fragment() {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val position: Int = getCurrentItem()
                         setUpCarouselMovieData(movie, position + 1)
-
                     }
                 }
             })
