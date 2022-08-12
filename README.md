@@ -3,14 +3,16 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="/images/MockUp.png" alt="Product Images">
+
+https://user-images.githubusercontent.com/88997868/184272482-36425c93-5fd4-484c-80cd-0bf9a1da6312.mp4
+
+
 
 Movo (Movie Information) is an android application to find out all the Movie Information and details around the world Including related movies, reviews, actors, current playing, upcoming, top rated movies and more.
 
-* 
-* Get books by category
-* Book search by title, author, publisher and category
-* Book details containing title, rating, maturity rating, and description
+* Get all type of Movie list including
+* Search for movie and filter it in many way
+* Movie details containing title, rating, maturity rating, and description
 * Feature to save books into bookmarks for later use
 * Notifications every day to show recommended books to read that day
 
