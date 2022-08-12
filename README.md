@@ -13,8 +13,7 @@ Movo (Movie Information) is an android application to find out all the Movie Inf
 * Get all type of Movie list including
 * Search for movie and filter it in many way
 * Movie details containing title, rating, maturity rating, and description
-* Feature to save books into bookmarks for later use
-* Notifications every day to show recommended books to read that day
+* Feature to save Movie into bookmarks for later to see
 
 this is a collaboration between me ([Reihan Fatilla](https://www.linkedin.com/in/muhammad-reihan-fatilla-48a62721a/)) as android developer and my friend ([Kalingga Rafif](https://www.linkedin.com/in/kalinggarafif/)) as UI/UX Designer.
 
