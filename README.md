@@ -99,7 +99,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 - Reihan Fatilla - [@Linkedin](https://www.linkedin.com/in/muhammad-reihan-fatilla-48a62721a/) - Android Developer
 - Kalingga Rafif - [@Linkedin](https://www.linkedin.com/in/kalinggarafif/) - UI/UX Designer
 
-Project Link: [https://github.com/ReihanFatilla/Reado](https://github.com/ReihanFatilla/Reado)
+Project Link: [https://github.com/ReihanFatilla/Movo](https://github.com/ReihanFatilla/Movo)
 
 
 Credit
