@@ -26,150 +26,141 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_width="match_parent"/>-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/contraint_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_profile"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="150dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:clipToPadding="false">
+            app:strokeColor="@color/grey"
+            app:strokeWidth="2dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_profile"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="150dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/grey"
-                app:strokeWidth="2dp">
+            <ImageView
+                android:id="@+id/img_profile"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                tools:src="@tools:sample/avatars" />
 
-                <ImageView
-                    android:id="@+id/img_profile"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    tools:src="@tools:sample/avatars" />
+        </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@id/cv_profile"
-                app:layout_constraintStart_toEndOf="@id/cv_profile"
-                app:layout_constraintTop_toTopOf="@id/cv_profile">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hello"
-                    android:textColor="@color/grey"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reihan Fatilla"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginStart="-20dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="-20dp"
-                android:backgroundTint="@android:color/transparent"
-                app:layout_constraintTop_toBottomOf="@id/cv_profile"
-                app:tabIndicator="@android:color/transparent"
-                app:tabIndicatorAnimationMode="elastic"
-                app:tabIndicatorGravity="stretch"
-                app:tabMode="fixed"
-                app:tabRippleColor="@android:color/transparent"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-                app:tabTextColor="@color/grey">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Movies" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TV Show" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bookmark" />
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_carousel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="-20dp"
-                android:layout_marginEnd="-20dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_carousel_home"
-                app:layout_constraintTop_toBottomOf="@id/tab_layout" />
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/cv_profile"
+            app:layout_constraintStart_toEndOf="@id/cv_profile"
+            app:layout_constraintTop_toTopOf="@id/cv_profile">
 
             <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="50dp"
-                android:maxLines="1"
-                android:text="Minions: The Rise of Gru"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="19sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_carousel" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_genre_list" />
+                android:text="Hello"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_movie_type_list"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-16dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="-16dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/rv_genre"
-                tools:listitem="@layout/item_list_movie_rv" />
+                android:text="Reihan Fatilla"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="-20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="-20dp"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/cv_profile"
+            app:tabIndicator="@android:color/transparent"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabIndicatorGravity="stretch"
+            app:tabMode="fixed"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+            app:tabTextColor="@color/grey">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movies" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TV Show" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bookmark" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-20dp"
+            android:layout_marginEnd="-20dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_carousel_home"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="50dp"
+            android:maxLines="1"
+            android:text="Minions: The Rise of Gru"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_carousel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_genre_list" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_movie_type_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="-16dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/rv_genre"
+            tools:listitem="@layout/item_list_movie_rv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
