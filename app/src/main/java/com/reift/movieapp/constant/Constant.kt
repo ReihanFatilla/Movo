@@ -36,7 +36,7 @@ object Constant {
 
     // Country/Region List
     const val INDONESIA = "ID"
-    const val UNITED_STATES = "US"
+    const val UNITED_STATES = "ID"
     const val CHINA = "CN"
     const val ARAB = "AE"
     const val MALASYIA = "MY"

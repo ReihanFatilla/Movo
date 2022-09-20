@@ -7,10 +7,6 @@ import kotlin.math.abs
 
 class CenterItemLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
     LinearLayoutManager(context, orientation, reverseLayout) {
-    override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-        lp?.width = width / 2
-        return true
-    }
 
     override fun onLayoutCompleted(state: RecyclerView.State?) {
         super.onLayoutCompleted(state)

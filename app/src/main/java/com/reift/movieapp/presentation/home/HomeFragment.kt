@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -122,8 +123,8 @@ class HomeFragment : Fragment() {
         binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when(tab.position){
-                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
-                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
+//                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
+//                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
                 }
             }
 
@@ -148,7 +149,7 @@ class HomeFragment : Fragment() {
             layoutManager = mLayoutManager
             setUpCarouselMovieData(movie, 0)
             mAdapter.setData(movie)
-            LinearSnapHelper().attachToRecyclerView(this)
+            PagerSnapHelper().attachToRecyclerView(this)
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
