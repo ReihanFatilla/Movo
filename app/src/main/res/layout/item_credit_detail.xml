@@ -29,10 +29,11 @@
         android:id="@+id/tv_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Director"
+        android:text="Reihan"
+        android:layout_marginTop="6dp"
         android:maxLines="2"
         android:textAlignment="center"
-        android:textSize="14sp"
+        android:textSize="15sp"
         android:textColor="@color/white" />
 
     <TextView
