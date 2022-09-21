@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:maxLines="1"
-                    android:text="2h 24min"
+                    android:text="16 Desember 2022"
                     android:textColor="@color/gray_text"
                     android:textSize="15sp"
                     app:layout_constraintTop_toTopOf="@id/cv_dot"
@@ -102,6 +102,88 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cv_dot" />
+
+                <LinearLayout
+                    android:id="@+id/ll_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="@id/view_line"
+                    app:layout_constraintBottom_toBottomOf="@id/view_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view_line"
+                    >
+
+                    <ImageView
+                        android:id="@+id/ic_favorite"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_favorite" />
+
+                    <TextView
+                        android:id="@+id/tv_add_or_remove_favorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Add To Favorite"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="3dp"
+                    android:layout_height="50dp"
+                    android:background="@color/dark_grey"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_genre"
+                     />
+
+                <LinearLayout
+                    android:id="@+id/ll_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="@id/view_line"
+                    app:layout_constraintBottom_toBottomOf="@id/view_line"
+                    app:layout_constraintEnd_toStartOf="@+id/view_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    >
+
+                    <ImageView
+                        android:id="@+id/ic_stars"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_stars" />
+
+                    <TextView
+                        android:id="@+id/tv_rating_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="4.7"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/yellow_star"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_raters_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="(4284)"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/gray_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -132,99 +214,13 @@
             android:clipToPadding="false"
             android:layout_marginBottom="40dp">
 
-            <LinearLayout
-                android:id="@+id/ll_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="24dp"
-                android:orientation="vertical"
-                android:gravity="center"
-                app:layout_constraintTop_toTopOf="parent"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal" >
-
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:src="@drawable/ic_star"
-                        app:tint="@color/yellow_star" />
-
-                    <TextView
-                        android:id="@+id/tv_rating_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:maxLength="3"
-                        android:layout_marginStart="6dp"
-                        android:textColor="@color/yellow_star"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        tools:text="8.5" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tv_raters_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/light_grey"
-                    android:textSize="15sp"
-                    android:textStyle="normal"
-                    tools:text="77 842" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_min_or_episode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:textColor="@color/green"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        tools:text="180" />
-
-                    <TextView
-                        android:id="@+id/tv_min"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:textColor="@color/green"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:text="@string/min" />
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_overview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="When Gru retires, Kevin, Stuart and Bob decide to find a new master. They travel the world and finally meet Scarlett Overkill, a female super villain who intends to rule the world."
-                app:layout_constraintTop_toBottomOf="@id/ll_rating"
+                app:layout_constraintTop_toTopOf="parent"
                 android:textColor="@color/light_grey"
                 android:textStyle="bold"
                 android:layout_marginTop="24dp"
@@ -305,7 +301,7 @@
                 android:orientation="horizontal" />
 
             <View
-                android:id="@+id/view_line"
+                android:id="@+id/view_line2"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:layout_marginStart="-22dp"
@@ -323,7 +319,7 @@
                 android:layout_marginEnd="-24dp"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_review_detail"
-                app:layout_constraintTop_toBottomOf="@id/view_line"
+                app:layout_constraintTop_toBottomOf="@id/view_line2"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal" />
 
