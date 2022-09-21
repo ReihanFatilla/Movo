@@ -7,7 +7,9 @@
         <entry key="app/src/main/res/drawable/bg_bottom_nav.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/bg_carousel_home.xml" value="0.2075" />
         <entry key="app/src/main/res/drawable/bg_detail_genre.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/bg_searchview.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/black_shadow.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/color_cursor.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/ic_back_detail.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/ic_half_stars.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.157" />

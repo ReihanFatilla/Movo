@@ -76,17 +76,32 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <SearchView
+            android:id="@+id/sv_film_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:theme="@style/searchViewStyle"
+            android:queryBackground="@android:color/transparent"
+            android:searchIcon="@drawable/ic_search"
+            android:queryHint="Find your film here"
+            android:autofillHints="Find your film here"
+            android:iconifiedByDefault="false"
+            android:background="@drawable/bg_searchview"
+            app:layout_constraintTop_toBottomOf="@id/logo_movo"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_carousel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="36dp"
             android:layout_marginStart="-20dp"
             android:layout_marginEnd="-20dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_carousel_home"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/sv_film_tv" />
 
 
         <TextView
