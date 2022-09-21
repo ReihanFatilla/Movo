@@ -45,7 +45,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_bold"
             android:layout_marginTop="28dp"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_see_all_similar"
@@ -65,8 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginStart="-24dp"
-            android:layout_marginEnd="-24dp"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
             app:layout_constraintTop_toBottomOf="@id/tv_similar"
             tools:listitem="@layout/item_horizontal_movie"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -80,7 +80,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_bold"
             android:layout_marginTop="28dp"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/rv_similar"
             />
 
@@ -102,8 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginStart="-24dp"
-            android:layout_marginEnd="-24dp"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
             app:layout_constraintTop_toBottomOf="@id/tv_recommended"
             tools:listitem="@layout/item_horizontal_movie"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

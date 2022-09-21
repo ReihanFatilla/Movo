@@ -8,8 +8,6 @@
     app:cardCornerRadius="25dp"
     app:cardUseCompatPadding="true"
     card_view:cardCornerRadius="12dp"
-    app:strokeColor="@color/gray_text"
-    app:strokeWidth="4dp"
     app:cardElevation="0dp"
     >
 
