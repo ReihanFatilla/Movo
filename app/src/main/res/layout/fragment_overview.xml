@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="Actors"
             android:textColor="@color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
             android:layout_marginTop="24dp"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/tv_synopsis"/>
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:text="Wallpaper"
             android:textColor="@color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
             android:layout_marginTop="24dp"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/rv_actors"/>

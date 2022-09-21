@@ -11,8 +11,9 @@
     <color name="green">#20D896</color>
 
     <color name="primary_color">#007AFF</color>
+    <color name="darker_primary_color">#193FC7</color>
 
-    <color name="gray_text">#8B8B8B</color>
+    <color name="gray_text">#969696</color>
     <color name="gray_genre_text">#C5C5C5</color>
     <color name="dark_grey">#262626</color>
     <color name="card_background">#262626</color>
