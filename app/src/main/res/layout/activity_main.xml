@@ -10,11 +10,14 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F2262626"
+        android:background="@drawable/bg_nav_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="unlabeled"
         app:itemTextColor="@drawable/nav_item_color"
         app:itemIconTint="@drawable/nav_item_color"
+        android:layout_marginHorizontal="110dp"
+        android:layout_marginBottom="36dp"
         />
 
     <fragment
