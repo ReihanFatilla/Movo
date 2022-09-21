@@ -16,96 +16,77 @@
         android:paddingTop="24dp"
         android:paddingBottom="70dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_profile"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="150dp"
-            app:layout_constraintStart_toStartOf="parent"
+        <ImageView
+            android:id="@+id/logo_movo"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="2dp">
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/logo_home_movo" />
 
-            <ImageView
-                android:id="@+id/img_profile"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                tools:src="@tools:sample/avatars" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_movo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@id/cv_profile"
-            app:layout_constraintStart_toEndOf="@id/cv_profile"
-            app:layout_constraintTop_toTopOf="@id/cv_profile">
+            android:layout_marginStart="12dp"
+            android:text="@string/movo"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/plus_jakarta_plus_bold"
+            app:layout_constraintTop_toTopOf="@id/logo_movo"
+            app:layout_constraintBottom_toBottomOf="@id/logo_movo"
+            app:layout_constraintStart_toEndOf="@id/logo_movo" />
 
-            <TextView
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/logo_movo"
+            app:layout_constraintBottom_toBottomOf="@id/logo_movo"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"
-                android:textColor="@color/grey"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="2dp"
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reihan Fatilla"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="2dp"
+                    android:text="ID"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_semibold" />
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_right" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginStart="-20dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="-20dp"
-            android:backgroundTint="@android:color/transparent"
-            app:layout_constraintTop_toBottomOf="@id/cv_profile"
-            app:tabIndicator="@android:color/transparent"
-            app:tabIndicatorAnimationMode="elastic"
-            app:tabIndicatorGravity="stretch"
-            app:tabMode="fixed"
-            app:tabRippleColor="@android:color/transparent"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextAppearance="@style/tabLayoutTextTheme"
-            app:tabTextColor="@color/grey">
+            </LinearLayout>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Movies" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TV Show" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bookmark" />
-
-        </com.google.android.material.tabs.TabLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_carousel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="360dp"
             android:layout_marginStart="-20dp"
             android:layout_marginEnd="-20dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_carousel_home"
-            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView

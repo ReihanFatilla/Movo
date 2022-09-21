@@ -28,7 +28,7 @@
             app:cardCornerRadius="150dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/grey"
+            app:strokeColor="@color/gray_text"
             app:strokeWidth="2dp">
 
             <ImageView
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hello"
-                android:textColor="@color/grey"
+                android:textColor="@color/gray_text"
                 android:textSize="16sp" />
 
             <TextView
@@ -81,7 +81,7 @@
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/white"
             app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-            app:tabTextColor="@color/grey">
+            app:tabTextColor="@color/gray_text">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
