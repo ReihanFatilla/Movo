@@ -16,8 +16,9 @@
 
     </style>
 
-    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
-        <item name="android:textSize">14sp</item>
+    <style name="tabLayoutTextTheme" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
     </style>
 
     <style name="transparentStatusBar" parent="Theme.MovieApp">

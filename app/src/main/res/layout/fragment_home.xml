@@ -76,7 +76,7 @@
             app:tabMode="fixed"
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/white"
-            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+            app:tabTextAppearance="@style/tabLayoutTextTheme"
             app:tabTextColor="@color/grey">
 
             <com.google.android.material.tabs.TabItem
