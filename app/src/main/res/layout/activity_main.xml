@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/app_backround">
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/nav_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="#F2171717"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:menu="@menu/bottom_nav_menu"-->
-<!--        app:itemTextColor="@drawable/nav_item_color"-->
-<!--        app:itemIconTint="@drawable/nav_item_color"-->
-<!--        />-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F2262626"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemTextColor="@drawable/nav_item_color"
+        app:itemIconTint="@drawable/nav_item_color"
+        />
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
