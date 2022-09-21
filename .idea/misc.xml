@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home_shimmer.xml" value="0.24818840579710144" />
         <entry key="app/src/main/res/layout/fragment_other_movies.xml" value="0.25" />
@@ -34,7 +35,7 @@
         <entry key="app/src/main/res/layout/item_shimmer_horizontal_movie.xml" value="0.24818840579710144" />
         <entry key="app/src/main/res/layout/item_shimmer_list_movie_rv.xml" value="0.24818840579710144" />
         <entry key="app/src/main/res/layout/item_trending_home.xml" value="0.22509057971014493" />
-        <entry key="app/src/main/res/layout/item_vertical_movie.xml" value="0.24818840579710144" />
+        <entry key="app/src/main/res/layout/item_vertical_movie.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_wallpaper.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/playground.xml" value="0.5" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
