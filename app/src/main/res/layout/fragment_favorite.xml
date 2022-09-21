@@ -1,22 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.favorite.FavoriteFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:background="@color/app_backround"
+        android:paddingTop="24dp"
+        android:paddingBottom="78dp"
+        android:paddingHorizontal="28dp">
+
+        <TextView
+            android:id="@+id/tv_popular_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorite Movies"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_popular_movies_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="See what’s your favorite movies"
+            android:textColor="@color/gray_text"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="-4dp"
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_movies"
+            />
+
+        <SearchView
+            android:id="@+id/sv_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:theme="@style/searchViewStyle"
+            android:queryBackground="@android:color/transparent"
+            android:searchIcon="@drawable/ic_search"
+            android:queryHint="Find your film here"
+            android:autofillHints="Find your film here"
+            android:iconifiedByDefault="false"
+            android:background="@drawable/bg_searchview"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_movies_desc"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_favorite_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
+            android:paddingHorizontal="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/sv_favorite"
+            tools:listitem="@layout/item_vertical_movie"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

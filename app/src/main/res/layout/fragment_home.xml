@@ -13,7 +13,7 @@
         android:clipToPadding="false"
         android:paddingHorizontal="28dp"
         android:paddingTop="24dp"
-        android:paddingBottom="70dp"
+        android:paddingBottom="78dp"
         >
 
         <ImageView
@@ -77,7 +77,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <SearchView
-            android:id="@+id/sv_film_tv"
+            android:id="@+id/sv_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -101,7 +101,7 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_carousel_home"
-            app:layout_constraintTop_toBottomOf="@id/sv_film_tv" />
+            app:layout_constraintTop_toBottomOf="@id/sv_home" />
 
 
         <TextView
