@@ -13,6 +13,7 @@
     <color name="primary_color">#007AFF</color>
 
     <color name="gray_text">#8B8B8B</color>
+    <color name="gray_genre_text">#C5C5C5</color>
     <color name="dark_grey">#3E3E3E</color>
     <color name="card_background">#262626</color>
     <color name="light_grey">#A3A3A3</color>

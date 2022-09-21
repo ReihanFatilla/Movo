@@ -6,6 +6,7 @@
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.29074074074074074" />
         <entry key="app/src/main/res/drawable/bg_bottom_nav.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/bg_carousel_home.xml" value="0.2075" />
+        <entry key="app/src/main/res/drawable/bg_detail_genre.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/black_shadow.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_back_detail.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/ic_half_stars.xml" value="0.157" />
@@ -19,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_home_shimmer.xml" value="0.24818840579710144" />
         <entry key="app/src/main/res/layout/item_carousel_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_credit_detail.xml" value="0.22509057971014493" />
+        <entry key="app/src/main/res/layout/item_genre_detail.xml" value="0.5219802856445312" />
         <entry key="app/src/main/res/layout/item_genre_list.xml" value="0.3759057971014493" />
         <entry key="app/src/main/res/layout/item_horizontal_movie.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_list_movie_rv.xml" value="0.24818840579710144" />
