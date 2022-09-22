@@ -9,10 +9,21 @@
         android:id="@+id/navigation_home"
         android:name="com.reift.movieapp.presentation.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_search"
+            app:destination="@id/navigation_search" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.reift.movieapp.presentation.favorite.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.reift.movieapp.presentation.search.SearchFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search" />
+
 </navigation>

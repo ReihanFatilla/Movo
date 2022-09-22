@@ -33,8 +33,6 @@ class DetailActivity : AppCompatActivity() {
     private var _viewModel: DetailViewModel? = null
     private val viewModel get() = _viewModel as DetailViewModel
 
-//    private lateinit var intentType: String
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -63,99 +61,7 @@ class DetailActivity : AppCompatActivity() {
             viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
             viewModel.getReviewList(Constant.MEDIA_MOVIE, id, "1")
         }
-        viewModel.detailResponse.observe(this){
-            setUpDetailView(it, intentType)
-        }
 
-        viewModel.similarResponse.observe(this){
-            setUpSimilarRecyclerView(it.results as List<ResultsItem>?)
-        }
-
-        viewModel.creditResponse.observe(this){
-            setUpCreditRecyclerView(it.cast as List<CastItem>?)
-        }
-
-
-        viewModel.reviewResponse.observe(this){
-            setUpReviewRecyclerView(it.results as List<ResultsItemReview>?)
-        }
-
-    }
-
-    private fun setUpReviewRecyclerView(list: List<ResultsItemReview>?) {
-        binding.rvReviews.apply {
-            val mAdapter = ReviewAdapter()
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(this@DetailActivity, RecyclerView.HORIZONTAL, false)
-            mAdapter.setData(list)
-        }
-    }
-
-    private fun setUpCreditRecyclerView(credit: List<CastItem>?) {
-        binding.rvCredits.apply {
-            val mAdapter = CreditAdapter()
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(this@DetailActivity, RecyclerView.HORIZONTAL, false)
-            mAdapter.setData(credit)
-        }
-    }
-
-    private fun setUpSimilarRecyclerView(movie: List<ResultsItem>?) {
-        binding.rvSimilar.apply {
-            val mAdapter = HorizontalListAdapter()
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(this@DetailActivity, RecyclerView.HORIZONTAL, false)
-            mAdapter.setData(movie)
-
-            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                override fun onItemClicked(data: ResultsItem) {
-                    val intent = Intent(this@DetailActivity, DetailActivity::class.java)
-                    if(data.title == null){
-                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
-                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_TV)
-                    } else {
-                        intent.putExtra(Constant.INTENT_TO_DETAIL, data.id)
-                        intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
-                    }
-                    startActivity(intent)
-                }
-            })
-        }
-    }
-
-    @SuppressLint("RestrictedApi")
-    private fun setUpDetailView(it: DetailResponse?, intentType: String?) {
-        binding.apply {
-            Glide.with(this@DetailActivity)
-                .load(Constant.IMAGE_BASE_URL+it?.posterPath)
-                .apply(RequestOptions())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .priority(Priority.HIGH)
-                .into(imgMoviePoster)
-            Glide.with(this@DetailActivity)
-                .load(Constant.IMAGE_BASE_URL+it?.posterPath)
-                .apply(RequestOptions.bitmapTransform(BlurTransformation(25, 5)))
-                .apply(RequestOptions())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .priority(Priority.HIGH)
-                .into(binding.imgDetailBackground)
-
-            tvOverview.text = it?.overview
-            tvRatingCount.text = it?.voteAverage.toString()
-            tvRatersCount.text = it?.voteCount.toString()
-            tvMinOrEpisode.text= it?.runtime.toString()
-            if(intentType == Constant.INTENT_TV){
-                tvMinOrEpisode.text = it?.numberOfEpisodes.toString()
-                tvDurationOrEpisode.text = it?.numberOfSeasons.toString()+" Seasons"
-                tvMin.text = "Eps"
-            } else {
-                tvMinOrEpisode.text= it?.runtime.toString()
-                tvDurationOrEpisode.text = "Duration"
-                tvMin.text = "min"
-            }
-            tvReleaseDate.text = HelperFunction.dateFormatter(it?.releaseDate ?: it?.firstRelease.toString())
-            collapsingToolbar.title = it?.title ?: it?.name
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

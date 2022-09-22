@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.reift.movieapp.R
 import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.adapter.GenreListAdapter
 import com.reift.movieapp.adapter.MovieTypeAdapter
@@ -48,6 +50,10 @@ class HomeFragment : Fragment() {
         viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
         viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
             setUpCarousel(it.results as List<ResultsItem>?)
+        }
+
+        binding.svHome.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
         }
 
         setUpTabBar()
