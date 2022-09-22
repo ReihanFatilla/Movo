@@ -8,11 +8,5 @@ data class WallpaperResponse(
 	val backdrops: List<BackdropsItem>,
 
 	@field:SerializedName("posters")
-	val posters: List<PostersItem>,
-
-	@field:SerializedName("id")
-	val id: Int,
-
-	@field:SerializedName("logos")
-	val logos: List<LogosItem>
+	val posters: List<PostersItem>
 )
