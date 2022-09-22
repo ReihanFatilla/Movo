@@ -6,86 +6,35 @@
     android:layout_height="match_parent"
     android:background="@color/app_backround">
 
-    <LinearLayout
-        android:id="@+id/ll_rating"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="@id/view_line"
-        app:layout_constraintBottom_toBottomOf="@id/view_line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/view_line"
-        tools:layout_editor_absoluteY="0dp">
-
-        <ImageView
-            android:id="@+id/ic_stars"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:src="@drawable/ic_stars" />
-
-        <TextView
-            android:id="@+id/tv_rating_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="4.7"
-            android:textColor="@color/yellow_star"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tv_raters_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="(4284)"
-            android:textColor="@color/gray_text"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view_line"
-        android:layout_width="3dp"
-        android:layout_height="50dp"
-        android:background="@color/dark_grey"
-        app:layout_constraintEnd_toStartOf="@+id/ll_rating"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ll_favorite"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <LinearLayout
-        android:id="@+id/ll_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="@id/view_line"
-        app:layout_constraintBottom_toBottomOf="@id/view_line"
-        app:layout_constraintEnd_toStartOf="@+id/view_line"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:tabMode="scrollable"
+        app:tabIndicatorGravity="stretch"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/gray_text"
+        app:tabIndicatorAnimationMode="elastic"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabIndicator="@drawable/tab_indicator"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp">
+        app:tabTextAppearance="@style/tabLayoutTextTheme"
+        app:layout_constraintTop_toBottomOf="@id/rv_upcoming_movies"
+        >
 
-        <ImageView
-            android:id="@+id/ic_favorite"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:src="@drawable/ic_favorite" />
-
-        <TextView
-            android:id="@+id/tv_add_or_remove_favorite"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Add To Favorite"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:text="Movies" />
 
-    </LinearLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TV Show" />
+
+    </com.google.android.material.tabs.TabLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
