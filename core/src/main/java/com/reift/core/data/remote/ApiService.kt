@@ -1,9 +1,9 @@
-package com.reift.movieapp.data.remote
+package com.reift.core.data.remote
 
 import com.reift.movieapp.data.MovieResponse
-import com.reift.movieapp.data.response.CreditResponse
-import com.reift.movieapp.data.response.DetailResponse
-import com.reift.movieapp.data.response.ReviewResponse
+import com.reift.core.data.response.CreditResponse
+import com.reift.core.data.response.DetailResponse
+import com.reift.core.data.response.ReviewResponse
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Path

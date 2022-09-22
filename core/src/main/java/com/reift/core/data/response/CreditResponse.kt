@@ -1,16 +1,16 @@
-package com.reift.movieapp.data.response
+package com.reift.core.data.response
 
 import com.google.gson.annotations.SerializedName
 
 data class CreditResponse(
 
-	@field:SerializedName("cast")
+    @field:SerializedName("cast")
 	val cast: List<CastItem?>? = null,
 
-	@field:SerializedName("id")
+    @field:SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("crew")
+    @field:SerializedName("crew")
 	val crew: List<CrewItem?>? = null
 )
 

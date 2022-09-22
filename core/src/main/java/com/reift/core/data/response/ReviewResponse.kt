@@ -1,22 +1,22 @@
-package com.reift.movieapp.data.response
+package com.reift.core.data.response
 
 import com.google.gson.annotations.SerializedName
 
 data class ReviewResponse(
 
-	@field:SerializedName("id")
+    @field:SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("page")
+    @field:SerializedName("page")
 	val page: Int? = null,
 
-	@field:SerializedName("total_pages")
+    @field:SerializedName("total_pages")
 	val totalPages: Int? = null,
 
-	@field:SerializedName("results")
+    @field:SerializedName("results")
 	val results: List<ResultsItemReview?>? = null,
 
-	@field:SerializedName("total_results")
+    @field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
 
@@ -37,24 +37,24 @@ data class AuthorDetails(
 
 data class ResultsItemReview(
 
-	@field:SerializedName("author_details")
+    @field:SerializedName("author_details")
 	val authorDetails: AuthorDetails? = null,
 
-	@field:SerializedName("updated_at")
+    @field:SerializedName("updated_at")
 	val updatedAt: String? = null,
 
-	@field:SerializedName("author")
+    @field:SerializedName("author")
 	val author: String? = null,
 
-	@field:SerializedName("created_at")
+    @field:SerializedName("created_at")
 	val createdAt: String? = null,
 
-	@field:SerializedName("id")
+    @field:SerializedName("id")
 	val id: String? = null,
 
-	@field:SerializedName("content")
+    @field:SerializedName("content")
 	val content: String? = null,
 
-	@field:SerializedName("url")
+    @field:SerializedName("url")
 	val url: String? = null
 )

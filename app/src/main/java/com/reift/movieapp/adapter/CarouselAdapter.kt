@@ -9,7 +9,7 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.`interface`.GetCurrentPosition
-import com.reift.movieapp.constant.Constant
+import com.reift.core.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.ItemCarouselHomeBinding
 import com.reift.movieapp.presentation.detail.DetailActivity

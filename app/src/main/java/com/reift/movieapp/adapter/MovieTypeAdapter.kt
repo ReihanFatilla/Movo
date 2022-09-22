@@ -1,19 +1,16 @@
 package com.reift.movieapp.adapter
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reift.movieapp.`interface`.OnItemClickCallback
-import com.reift.movieapp.constant.Constant
+import com.reift.core.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.ItemListMovieRvBinding
 import com.reift.movieapp.presentation.detail.DetailActivity
 import com.reift.movieapp.presentation.home.component.MovieTypeData
-import com.reift.movieapp.utils.MyDiffUtils
 
 class MovieTypeAdapter: RecyclerView.Adapter<MovieTypeAdapter.MyViewHolder>() {
     var listMovieType = ArrayList<MovieTypeData>()

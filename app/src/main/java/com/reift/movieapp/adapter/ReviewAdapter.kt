@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.reift.movieapp.data.response.ResultsItemReview
+import com.reift.core.data.response.ResultsItemReview
 import com.reift.movieapp.databinding.ItemReviewDetailBinding
 
 class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.MyViewHolder>() {

@@ -1,29 +1,12 @@
 package com.reift.movieapp.presentation.detail
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.utils.HelperFunction
-import com.reift.movieapp.`interface`.OnItemClickCallback
-import com.reift.movieapp.constant.Constant
-import com.reift.movieapp.data.ResultsItem
-import com.reift.movieapp.data.response.CastItem
-import com.reift.movieapp.data.response.DetailResponse
-import com.reift.movieapp.data.response.ResultsItemReview
+import com.reift.core.constant.Constant
 import com.reift.movieapp.databinding.ActivityDetailBinding
-import com.reift.movieapp.adapter.CreditAdapter
-import com.reift.movieapp.adapter.ReviewAdapter
-import com.reift.movieapp.adapter.HorizontalListAdapter
-import jp.wasabeef.glide.transformations.BlurTransformation
 
 
 class DetailActivity : AppCompatActivity() {

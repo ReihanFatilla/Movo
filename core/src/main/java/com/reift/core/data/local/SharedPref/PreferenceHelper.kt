@@ -1,4 +1,4 @@
-package com.reift.movieapp.data.local.SharedPref
+package com.reift.core.data.local.SharedPref
 
 import android.content.Context
 import android.content.SharedPreferences

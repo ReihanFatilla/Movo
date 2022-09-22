@@ -3,11 +3,11 @@ package com.reift.movieapp.presentation.detail
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.reift.movieapp.data.MovieRepository
+import com.reift.core.data.MovieRepository
 import com.reift.movieapp.data.MovieResponse
-import com.reift.movieapp.data.response.CreditResponse
-import com.reift.movieapp.data.response.DetailResponse
-import com.reift.movieapp.data.response.ReviewResponse
+import com.reift.core.data.response.CreditResponse
+import com.reift.core.data.response.DetailResponse
+import com.reift.core.data.response.ReviewResponse
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
     private val repository: MovieRepository = MovieRepository(application)

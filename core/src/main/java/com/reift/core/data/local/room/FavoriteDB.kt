@@ -1,4 +1,4 @@
-package com.reift.movieapp.data.local.room
+package com.reift.core.data.local.room
 
 import android.content.Context
 import androidx.room.Database

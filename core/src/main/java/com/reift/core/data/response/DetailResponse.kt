@@ -1,94 +1,94 @@
-package com.reift.movieapp.data.response
+package com.reift.core.data.response
 
 import com.google.gson.annotations.SerializedName
 
 data class DetailResponse(
 
-	@field:SerializedName("original_language")
+    @field:SerializedName("original_language")
 	val originalLanguage: String? = null,
 
-	@field:SerializedName("imdb_id")
+    @field:SerializedName("imdb_id")
 	val imdbId: String? = null,
 
-	@field:SerializedName("number_of_episodes")
+    @field:SerializedName("number_of_episodes")
 	val numberOfEpisodes: Int? = null,
 
-	@field:SerializedName("video")
+    @field:SerializedName("video")
 	val video: Boolean? = null,
 
-	@field:SerializedName("title")
+    @field:SerializedName("title")
 	val title: String? = null,
 
-	@field:SerializedName("backdrop_path")
+    @field:SerializedName("backdrop_path")
 	val backdropPath: String? = null,
 
-	@field:SerializedName("revenue")
+    @field:SerializedName("revenue")
 	val revenue: Int? = null,
 
-	@field:SerializedName("genres")
+    @field:SerializedName("genres")
 	val genres: List<GenresItem?>? = null,
 
-	@field:SerializedName("popularity")
+    @field:SerializedName("popularity")
 	val popularity: Double? = null,
 
-	@field:SerializedName("production_countries")
+    @field:SerializedName("production_countries")
 	val productionCountries: List<ProductionCountriesItem?>? = null,
 
-	@field:SerializedName("id")
+    @field:SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("number_of_seasons")
+    @field:SerializedName("number_of_seasons")
 	val numberOfSeasons: Int? = null,
 
-	@field:SerializedName("vote_count")
+    @field:SerializedName("vote_count")
 	val voteCount: Int? = null,
 
-	@field:SerializedName("budget")
+    @field:SerializedName("budget")
 	val budget: Int? = null,
 
-	@field:SerializedName("overview")
+    @field:SerializedName("overview")
 	val overview: String? = null,
 
-	@field:SerializedName("name")
+    @field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("seasons")
+    @field:SerializedName("seasons")
 	val seasons: List<SeasonsItem?>? = null,
 
-	@field:SerializedName("runtime")
+    @field:SerializedName("runtime")
 	val runtime: Int? = null,
 
-	@field:SerializedName("poster_path")
+    @field:SerializedName("poster_path")
 	val posterPath: String? = null,
 
-	@field:SerializedName("spoken_languages")
+    @field:SerializedName("spoken_languages")
 	val spokenLanguages: List<SpokenLanguagesItem?>? = null,
 
-	@field:SerializedName("production_companies")
+    @field:SerializedName("production_companies")
 	val productionCompanies: List<ProductionCompaniesItem?>? = null,
 
-	@field:SerializedName("release_date")
+    @field:SerializedName("release_date")
 	val releaseDate: String? = null,
 
-	@field:SerializedName("first_air_date")
+    @field:SerializedName("first_air_date")
 	val firstRelease: String? = null,
 
-	@field:SerializedName("vote_average")
+    @field:SerializedName("vote_average")
 	val voteAverage: Double? = null,
 
-	@field:SerializedName("belongs_to_collection")
+    @field:SerializedName("belongs_to_collection")
 	val belongsToCollection: BelongsToCollection? = null,
 
-	@field:SerializedName("tagline")
+    @field:SerializedName("tagline")
 	val tagline: String? = null,
 
-	@field:SerializedName("adult")
+    @field:SerializedName("adult")
 	val adult: Boolean? = null,
 
-	@field:SerializedName("homepage")
+    @field:SerializedName("homepage")
 	val homepage: String? = null,
 
-	@field:SerializedName("status")
+    @field:SerializedName("status")
 	val status: String? = null
 )
 
@@ -154,28 +154,28 @@ data class ProductionCountriesItem(
 
 data class SeasonsItem(
 
-	@field:SerializedName("air_date")
+    @field:SerializedName("air_date")
 	val airDate: String? = null,
 
-	@field:SerializedName("overview")
+    @field:SerializedName("overview")
 	val overview: String? = null,
 
-	@field:SerializedName("episode_count")
+    @field:SerializedName("episode_count")
 	val episodeCount: Int? = null,
 
-	@field:SerializedName("name")
+    @field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("season_number")
+    @field:SerializedName("season_number")
 	val seasonNumber: Int? = null,
 
-	@field:SerializedName("id")
+    @field:SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("networks")
+    @field:SerializedName("networks")
 	val networks: List<NetworksItem?>? = null,
 
-	@field:SerializedName("poster_path")
+    @field:SerializedName("poster_path")
 	val posterPath: String? = null
 )
 

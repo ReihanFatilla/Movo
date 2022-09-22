@@ -1,4 +1,4 @@
-package com.reift.movieapp.data.local.room
+package com.reift.core.data.local.room
 
 import android.os.Parcelable
 import androidx.room.Entity

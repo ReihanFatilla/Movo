@@ -1,4 +1,4 @@
-package com.reift.movieapp.data.remote
+package com.reift.core.data.remote
 
 import com.reift.movieapp.BuildConfig
 import okhttp3.OkHttpClient

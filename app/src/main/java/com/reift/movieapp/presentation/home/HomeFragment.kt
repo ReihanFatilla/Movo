@@ -17,7 +17,7 @@ import com.reift.movieapp.R
 import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.adapter.GenreListAdapter
 import com.reift.movieapp.adapter.MovieTypeAdapter
-import com.reift.movieapp.constant.Constant
+import com.reift.core.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager

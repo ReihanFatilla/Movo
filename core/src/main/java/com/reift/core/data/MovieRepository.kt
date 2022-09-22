@@ -1,12 +1,13 @@
-package com.reift.movieapp.data
+package com.reift.core.data
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import com.reift.movieapp.data.remote.ApiClient
-import com.reift.movieapp.data.response.CreditResponse
-import com.reift.movieapp.data.response.DetailResponse
-import com.reift.movieapp.data.response.ReviewResponse
+import com.reift.movieapp.data.MovieResponse
+import com.reift.core.data.remote.ApiClient
+import com.reift.core.data.response.CreditResponse
+import com.reift.core.data.response.DetailResponse
+import com.reift.core.data.response.ReviewResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 

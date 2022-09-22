@@ -1,4 +1,4 @@
-package com.reift.movieapp.constant
+package com.reift.core.constant
 
 object Constant {
 

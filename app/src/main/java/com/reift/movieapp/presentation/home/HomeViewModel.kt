@@ -1,16 +1,11 @@
 package com.reift.movieapp.presentation.home
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.reift.movieapp.constant.Constant
-import com.reift.movieapp.data.MovieRepository
+import com.reift.core.constant.Constant
+import com.reift.core.data.MovieRepository
 import com.reift.movieapp.data.MovieResponse
-import com.reift.movieapp.data.ResultsItem
-import com.reift.movieapp.presentation.home.component.MovieTypeData
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: MovieRepository = MovieRepository(application)
