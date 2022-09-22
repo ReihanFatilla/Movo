@@ -1,16 +1,13 @@
 package com.reift.movieapp.presentation.home
 
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
@@ -90,33 +87,6 @@ class HomeFragment : Fragment() {
                 it.results as List<ResultsItem>?
             ))
         }
-
-
-
-        binding.rvMovieTypeList.apply {
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(context)
-//            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-//                    super.onScrollStateChanged(recyclerView, newState)
-//                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-//                    val lastPosition = layoutManager.findLastVisibleItemPosition()
-//                    if (lastPosition == mAdapter.itemCount-1 && newState == RecyclerView.SCROLL_STATE_IDLE) {
-//                        Toast.makeText(context, "Last Page", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-////                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-////                    super.onScrolled(recyclerView, dx, dy)
-////
-////                    if (lastPosition == mAdapter.itemCount - 1) {
-//
-//////                        currentPage++
-//////                        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
-////                    }
-////                }
-//            })
-
-        }
     }
 
     private fun setUpTabBar() {
@@ -178,11 +148,11 @@ class HomeFragment : Fragment() {
 
     private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
         setUpGenreList(movie?.get(currentItem)?.genreIds as List<Int>?)
-        binding.tvTitle.text = movie?.get(currentItem)?.title ?: movie?.get(currentItem)?.originalName
+        binding.tvCarouselTitle.text = movie?.get(currentItem)?.title ?: movie?.get(currentItem)?.originalName
     }
 
     private fun setUpGenreList(movie: List<Int>?) {
-        binding.rvGenre.apply {
+        binding.rvCarouselGenre.apply {
             val mAdapter = GenreListAdapter()
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
