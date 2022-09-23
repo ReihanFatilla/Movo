@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import com.reift.movieapp.data.MovieResponse
-import com.reift.core.data.remote.ApiClient
 import com.reift.core.data.response.CreditResponse
 import com.reift.core.data.response.DetailResponse
 import com.reift.core.data.response.ReviewResponse
