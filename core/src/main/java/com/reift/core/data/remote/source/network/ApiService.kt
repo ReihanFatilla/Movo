@@ -2,6 +2,7 @@ package com.reift.core.data.remote.source.network
 
 import com.reift.core.data.remote.source.response.*
 import com.reift.core.data.remote.source.response.detail.actor.ActorResponse
+import com.reift.core.data.remote.source.response.detail.movie.MovieDetailResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
 import com.reift.core.data.remote.source.response.detail.tv.TvDetailResponse
 import com.reift.core.data.remote.source.response.detail.video.VideoResponse
@@ -31,18 +32,14 @@ interface ApiService {
 
     @GET("movie/{id}")
     fun getMovieDetail(
-        @Path("media")
-        media: String,
         @Path("id")
         id: String,
         @Query("api_key")
         apiKey: String,
-    ): Flowable<TvDetailResponse>
+    ): Flowable<MovieDetailResponse>
 
-    @GET("search/{searchBy}")
+    @GET("search/movie")
     fun searchMovieByQuery(
-        @Path("searchBy")
-        searchBy: String,
         @Query("api_key")
         apiKey: String,
         @Query("query")
@@ -93,13 +90,23 @@ interface ApiService {
 
     @GET("tv/{id}")
     fun getTvDetail(
-        @Path("media")
-        media: String,
         @Path("id")
         id: String,
         @Query("api_key")
         apiKey: String,
     ): Flowable<TvDetailResponse>
+
+    @GET("search/movie")
+    fun searchTvByQuery(
+        @Query("api_key")
+        apiKey: String,
+        @Query("query")
+        query: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<TvResponse>
 
     @GET("tv/{id}/similar")
     fun getSimilarTv(
