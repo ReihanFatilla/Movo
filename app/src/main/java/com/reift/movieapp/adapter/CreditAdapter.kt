@@ -8,7 +8,6 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.core.constant.Constant
-import com.reift.core.data.response.CastItem
 import com.reift.movieapp.databinding.ItemCreditDetailBinding
 
 class CreditAdapter: RecyclerView.Adapter<CreditAdapter.MyViewHolder>()  {

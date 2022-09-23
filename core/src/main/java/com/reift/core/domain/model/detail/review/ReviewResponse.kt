@@ -1,4 +1,4 @@
-package com.reift.core.data.response.detail.review
+package com.reift.core.domain.model.detail.review
 
 import com.google.gson.annotations.SerializedName
 import com.reift.core.domain.model.detail.review.ResultsItem

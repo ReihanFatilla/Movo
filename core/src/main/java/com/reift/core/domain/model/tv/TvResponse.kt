@@ -1,9 +1,8 @@
-package com.reift.core.data.response.movie
+package com.reift.core.domain.model.tv
 
 import com.google.gson.annotations.SerializedName
-import com.reift.core.domain.model.movie.ResultsItem
 
-data class MovieResponse(
+data class TvResponse(
 
 	@field:SerializedName("page")
 	val page: Int,

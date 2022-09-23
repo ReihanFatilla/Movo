@@ -1,4 +1,4 @@
-package com.reift.core.data.response.detail.movie
+package com.reift.core.domain.model.detail.movie
 
 import com.google.gson.annotations.SerializedName
 import com.reift.core.domain.model.detail.movie.GenresItem
