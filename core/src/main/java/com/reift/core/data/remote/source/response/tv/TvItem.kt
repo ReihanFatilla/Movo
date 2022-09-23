@@ -2,7 +2,7 @@ package com.reift.core.data.remote.source.response.tv
 
 import com.google.gson.annotations.SerializedName
 
-data class ResultsItem(
+data class TvItem(
 
 	@field:SerializedName("first_air_date")
 	val firstAirDate: String,

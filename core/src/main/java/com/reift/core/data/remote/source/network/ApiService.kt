@@ -1,21 +1,26 @@
 package com.reift.core.data.remote.source.network
 
-import com.reift.movieapp.data.MovieResponse
-import com.reift.core.data.response.CreditResponse
-import com.reift.core.data.response.DetailResponse
-import com.reift.core.data.response.ReviewResponse
+import com.reift.core.data.remote.source.response.*
+import com.reift.core.data.remote.source.response.detail.actor.ActorResponse
+import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
+import com.reift.core.data.remote.source.response.detail.tv.TvDetailResponse
+import com.reift.core.data.remote.source.response.detail.video.VideoResponse
+import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
+import com.reift.core.data.remote.source.response.movie.MovieResponse
+import com.reift.core.data.remote.source.response.tv.TvResponse
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("{media}/{type}")
-    fun getMovieTVList(
-        @Path("media")
-        media: String,
-        @Path("type")
-        type: String,
+
+    // Movie
+
+    @GET("movie/{category}")
+    fun getMovieByCategory(
+        @Path("category")
+        category: String,
         @Query("api_key")
         apiKey: String,
         @Query("region")
@@ -23,6 +28,104 @@ interface ApiService {
         @Query("page")
         page: String
     ): Flowable<MovieResponse>
+
+    @GET("movie/{id}")
+    fun getMovieDetail(
+        @Path("media")
+        media: String,
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+    ): Flowable<TvDetailResponse>
+
+    @GET("search/{searchBy}")
+    fun searchMovieByQuery(
+        @Path("searchBy")
+        searchBy: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("query")
+        query: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<MovieResponse>
+
+    @GET("movie/{id}/similar")
+    fun getSimilarMovies(
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<MovieResponse>
+
+    @GET("movie/{id}/recommendations")
+    fun getRecommendationsMovies(
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<MovieResponse>
+
+    // Tv Show
+
+    @GET("tv/{category}")
+    fun getTvByCategory(
+        @Path("category")
+        category: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<TvResponse>
+
+    @GET("tv/{id}")
+    fun getTvDetail(
+        @Path("media")
+        media: String,
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+    ): Flowable<TvDetailResponse>
+
+    @GET("tv/{id}/similar")
+    fun getSimilarTv(
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<TvResponse>
+
+    @GET("tv/{id}/recommendations")
+    fun getRecommendationsTv(
+        @Path("id")
+        id: String,
+        @Query("api_key")
+        apiKey: String,
+        @Query("region")
+        region: String,
+        @Query("page")
+        page: String
+    ): Flowable<TvResponse>
+
+    // Details
 
     @GET("{media}/{id}/reviews")
     fun getReviewList(
@@ -36,20 +139,6 @@ interface ApiService {
         page: String
     ): Flowable<ReviewResponse>
 
-    @GET("{media}/{id}/similar")
-    fun getSimilarList(
-        @Path("media")
-        media: String,
-        @Path("id")
-        id: String,
-        @Query("api_key")
-        apiKey: String,
-        @Query("region")
-        region: String,
-        @Query("page")
-        page: String
-    ): Flowable<MovieResponse>
-
     @GET("{media}/{id}/credits")
     fun getCreditList(
         @Path("media")
@@ -60,66 +149,26 @@ interface ApiService {
         apiKey: String,
         @Query("region")
         region: String
-    ): Flowable<CreditResponse>
+    ): Flowable<ActorResponse>
 
-    @GET("{media}/{id}")
-    fun getDetail(
+    @GET("{media}/{id}/videos")
+    fun getVideoList(
         @Path("media")
         media: String,
         @Path("id")
         id: String,
         @Query("api_key")
-        apiKey: String,
-    ): Flowable<DetailResponse>
+        apiKey: String
+    ): Flowable<VideoResponse>
 
-    @GET("trending/{media}/day")
-    fun getTrendingList(
+    @GET("{media}/{id}/images")
+    fun getWallpaperList(
         @Path("media")
         media: String,
-        @Query("api_key")
-        apiKey: String,
-        @Query("region")
-        region: String,
-        @Query("page")
-        page: String
-    ): Flowable<MovieResponse>
-
-    @GET("movie/{id}/recommendations")
-    fun getMovieRecommendationsById(
         @Path("id")
         id: String,
         @Query("api_key")
-        apiKey: String,
-        @Query("region")
-        region: String,
-        @Query("page")
-        page: String
-    ): Flowable<MovieResponse>
-
-    @GET("discover/movie")
-    fun getMovieSortBy(
-        @Query("api_key")
-        apiKey: String,
-        @Query("sort_by")
-        sortBy: String,
-        @Query("region")
-        region: String,
-        @Query("page")
-        page: String
-    ): Flowable<MovieResponse>
-
-    @GET("search/{searchBy}")
-    fun searchMovieBy(
-        @Path("searchBy")
-        searchBy: String,
-        @Query("api_key")
-        apiKey: String,
-        @Query("query")
-        query: String,
-        @Query("region")
-        region: String,
-        @Query("page")
-        page: String
-    ): Flowable<MovieResponse>
+        apiKey: String
+    ): Flowable<WallpaperResponse>
 
 }
