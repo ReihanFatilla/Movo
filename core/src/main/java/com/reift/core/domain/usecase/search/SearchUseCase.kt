@@ -7,6 +7,6 @@ import io.reactivex.rxjava3.core.Flowable
 
 
 interface SearchUseCase {
-    fun searchMovie(query: String): Flowable<Resource<MovieResult>>
-    fun searchTvShow(query: String): Flowable<Resource<TvResult>>
+    fun searchMovie(query: String, page: String): Flowable<Resource<MovieResult>>
+    fun searchTvShow(query: String, page: String): Flowable<Resource<TvResult>>
 }
