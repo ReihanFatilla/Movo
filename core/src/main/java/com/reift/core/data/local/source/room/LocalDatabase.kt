@@ -4,14 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.reift.core.data.local.source.room.movie.MovieDao
+import com.reift.core.data.local.source.room.movie.MovieEntity
 
-@Database(entities = [Favorite::class], version = 1)
-abstract class FavoriteDB: RoomDatabase(){
-    abstract val favoriteDao: FavoriteDao
+@Database(entities = [MovieEntity::class], version = 1)
+abstract class LocalDatabase: RoomDatabase(){
+    abstract val movieDao: MovieDao
 
     companion object{
         @Volatile
-        var instace: FavoriteDB? = null
+        var instace: LocalDatabase? = null
         private var LOCK = Any()
 
         operator fun invoke(context: Context) = instace ?: synchronized(LOCK) {
@@ -21,7 +23,7 @@ abstract class FavoriteDB: RoomDatabase(){
         }
 
         private fun buildDataBase(context: Context) =
-            Room.databaseBuilder(context, FavoriteDB::class.java, "favorite.db")
+            Room.databaseBuilder(context, LocalDatabase::class.java, "favorite.db")
                 .fallbackToDestructiveMigration()
                 .build()
     }

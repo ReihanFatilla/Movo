@@ -1,4 +1,4 @@
-package com.reift.core.data.local.source.room
+package com.reift.core.data.local.source.room.movie
 
 import android.os.Parcelable
 import androidx.room.Entity
@@ -7,13 +7,14 @@ import kotlinx.parcelize.Parcelize
 
 @Entity
 @Parcelize
-data class Favorite(
-    @PrimaryKey(autoGenerate = false)
+data class MovieEntity(
     val id: Int,
+    val video: Boolean,
     val title: String,
-    val posterPath: String,
-    val backdropPath: String,
+    val genres: List<String>,
     val overview: String,
+    val posterPath: String,
     val releaseDate: String,
-    val voteAverage: Double
+    val voteCount: Int,
+    val voteAverage: Double,
 ): Parcelable

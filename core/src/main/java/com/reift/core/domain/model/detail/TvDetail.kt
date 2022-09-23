@@ -3,6 +3,7 @@ package com.reift.core.domain.model.detail
 import com.google.gson.annotations.SerializedName
 
 data class TvDetail(
+	val title: String,
 	val numberOfEpisodes: Int,
 	val genres: List<String>,
 	val numberOfSeasons: Int,
@@ -11,5 +12,4 @@ data class TvDetail(
 	val overview: String,
 	val posterPath: String,
 	val voteAverage: Double,
-	val name: String,
 )
