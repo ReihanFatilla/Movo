@@ -14,16 +14,4 @@ class FavoriteRepositoryImpl: FavoriteRepository {
         TODO("Not yet implemented")
     }
 
-    override fun isFollowed(): Flow<Boolean?> {
-        TODO("Not yet implemented")
-    }
-
-    override fun insertFavoriteMovie(movie: Movie) {
-        TODO("Not yet implemented")
-    }
-
-    override fun insertFavoriteTv(tv: Tv) {
-        TODO("Not yet implemented")
-    }
-
 }

@@ -9,7 +9,7 @@ import com.reift.core.data.local.source.room.movie.MovieEntity
 
 @Dao
 interface TvDao {
-    @Query("SELECT * FROM MovieEntity")
+    @Query("SELECT * FROM TvEntity")
     fun getAllBookmark(): LiveData<List<TvEntity>>
 
     @Insert

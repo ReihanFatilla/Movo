@@ -8,10 +8,11 @@ import kotlinx.parcelize.Parcelize
 @Entity
 @Parcelize
 data class MovieEntity(
+    @PrimaryKey
     val id: Int,
     val video: Boolean,
     val title: String,
-    val genres: List<String>,
+//    val genres: List<String>,
     val overview: String,
     val posterPath: String,
     val releaseDate: String,

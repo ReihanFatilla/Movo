@@ -8,10 +8,11 @@ import kotlinx.parcelize.Parcelize
 @Entity
 @Parcelize
 data class TvEntity(
+    @PrimaryKey
     val id: Int,
     val title: String,
     val numberOfEpisodes: Int,
-    val genres: List<String>,
+//    val genres: List<String>,
     val numberOfSeasons: Int,
     val voteCount: Int,
     val firstAirDate: String,

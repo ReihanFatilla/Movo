@@ -8,6 +8,4 @@ import kotlinx.coroutines.flow.Flow
 interface FavoriteUseCase {
     fun getFavoriteMovies(): Flow<List<Movie>>
     fun getFavoriteTv(): Flow<List<Tv>>
-
-
 }
