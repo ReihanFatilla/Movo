@@ -2,8 +2,11 @@ package com.reift.core.domain.usecase.detail
 
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
+import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.tv.Tv
 import com.reift.core.domain.repository.detail.DetailRepository
 import io.reactivex.rxjava3.core.Flowable
+import kotlinx.coroutines.flow.Flow
 
 class DetailInteractor(
     private val detailRepository: DetailRepository
@@ -38,5 +41,25 @@ class DetailInteractor(
 
     override fun getTvActors(id: String): Flowable<Resource<Actor>> {
         return detailRepository.getTvActors(id)
+    }
+
+    override fun isFollowed(id: String): Flow<Boolean?> {
+        return detailRepository.isFollowed(id)
+    }
+
+    override fun insertFavoriteMovie(movie: Movie) {
+        return detailRepository.insertFavoriteMovie(movie)
+    }
+
+    override fun insertFavoriteTv(tv: Tv) {
+        return detailRepository.insertFavoriteTv(tv)
+    }
+
+    override fun deleteFavoriteMovie(movie: Movie) {
+        return detailRepository.deleteFavoriteMovie(movie)
+    }
+
+    override fun deleteFavoriteTv(tv: Tv) {
+        return detailRepository.deleteFavoriteTv(tv)
     }
 }

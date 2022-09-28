@@ -15,16 +15,4 @@ class FavoriteInteractor(
     override fun getFavoriteTv(): Flow<List<Tv>> {
         return favoriteRepository.getFavoriteTv()
     }
-
-    override fun isFollowed(): Flow<Boolean?> {
-        return favoriteRepository.isFollowed()
-    }
-
-    override fun insertFavoriteMovie(movie: Movie) {
-        favoriteRepository.insertFavoriteMovie(movie)
-    }
-
-    override fun insertFavoriteTv(tv: Tv) {
-        favoriteRepository.insertFavoriteTv(tv)
-    }
 }

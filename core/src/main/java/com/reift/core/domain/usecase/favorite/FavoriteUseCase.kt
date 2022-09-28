@@ -9,8 +9,5 @@ interface FavoriteUseCase {
     fun getFavoriteMovies(): Flow<List<Movie>>
     fun getFavoriteTv(): Flow<List<Tv>>
 
-    fun isFollowed(): Flow<Boolean?>
 
-    fun insertFavoriteMovie(movie: Movie)
-    fun insertFavoriteTv(tv: Tv)
 }
