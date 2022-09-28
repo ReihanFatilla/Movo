@@ -20,6 +20,7 @@ import com.reift.core.constant.Constant
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
 import com.reift.movieapp.presentation.home.component.MovieTypeData
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class HomeFragment : Fragment() {
@@ -27,8 +28,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private var _viewModel: HomeViewModel? = null
-    private val viewModel get() = _viewModel!!
+    private val viewModel: HomeViewModel by viewModel()
 
     private var currentPage = 1
 
@@ -38,7 +38,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
 //        binding.includedShimmer.frameShimmer.startShimmer()

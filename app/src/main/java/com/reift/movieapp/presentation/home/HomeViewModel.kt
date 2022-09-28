@@ -1,17 +1,38 @@
 package com.reift.movieapp.presentation.home
 
 import android.app.Application
+import android.arch.lifecycle.ViewModel
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.reift.core.constant.Constant
+import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.domain.usecase.home.HomeUseCase
 
-class HomeViewModel(homeUseCase: HomeUseCase): ViewModel() {
+class HomeViewModel(val homeUseCase: HomeUseCase): ViewModel() {
+
+    var nowPlayingResponse = MediatorLiveData<Resource<MovieResult>>()
+
+    var currentPage = MutableLiveData(1)
+
+    fun getNowPlayingMovie(){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            homeUseCase.getMovies(Constant.NOW_PLAYING, currentPage.value.toString())
+        )
+
+        nowPlayingResponse.addSource(source){
+            nowPlayingResponse.postValue(it)
+            nowPlayingResponse.removeSource(source)
+        }
+    }
+
 
 //    private val repository: MovieRepository = MovieRepository(application)
 //
-//    var nowPlayingResponse = MutableLiveData<MovieResponse>()
+
 //    var trendingResponse = MutableLiveData<MovieResponse>()
 //    var topRatedResponse = MutableLiveData<MovieResponse>()
 //    var popularResponse = MutableLiveData<MovieResponse>()
