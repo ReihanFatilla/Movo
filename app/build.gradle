@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
-    id 'com.google.secrets_gradle_plugin' version '0.4'
 }
 
 apply from: '../shared.gradle'

@@ -11,4 +11,8 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:3.0.0"
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+
+    // Dagger
+    implementation "com.google.dagger:dagger:2.29.1"
+    kapt "com.google.dagger:dagger-compiler:2.29.1"
 }
