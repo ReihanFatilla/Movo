@@ -52,7 +52,7 @@ class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHo
 //            )
         }
         holder.itemView.setOnClickListener {
-            onItemClickCallBack?.onItemClicked(listMovie[position])
+//            onItemClickCallBack?.onItemClicked(listMovie[position])
         }
     }
 

@@ -17,7 +17,6 @@ import com.reift.movieapp.R
 import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.adapter.GenreListAdapter
 import com.reift.core.constant.Constant
-import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
 import com.reift.movieapp.presentation.home.component.MovieTypeData
@@ -44,77 +43,77 @@ class HomeFragment : Fragment() {
 
 //        binding.includedShimmer.frameShimmer.startShimmer()
 
-        setUpMovieTypeList()
-
-        viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
-        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
-            setUpCarousel(it.results as List<ResultsItem>?)
-        }
+//        setUpMovieTypeList()
+//
+//        viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
+//        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
+//            setUpCarousel(it.results as List<ResultsItem>?)
+//        }
 
         binding.svHome.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
         }
 
-        setUpTabBar()
+//        setUpTabBar()
         return binding.root
     }
 
 
-    private fun setUpMovieTypeList() {
-        val mAdapter = MovieTypeAdapter()
+//    private fun setUpMovieTypeList() {
+//        val mAdapter = MovieTypeAdapter()
+//
+//        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
+//        viewModel.topRatedResponse.observe(viewLifecycleOwner){
+//            mAdapter.setData(MovieTypeData(
+//                "Top Rated",
+//                "See what's Top Rated",
+//                it.results as List<ResultsItem>?
+//            ))
+//            Log.i("setUpMovieTypeList", it.results.toString())
+//        }
+//
+//        viewModel.getTrendingList(Constant.MEDIA_MOVIE, Constant.UNITED_STATES, currentPage.toString())
+//        viewModel.trendingResponse.observe(viewLifecycleOwner){
+//            mAdapter.setData(MovieTypeData(
+//                "Trending",
+//                "See what's Trending",
+//                it.results as List<ResultsItem>?
+//            ))
+//            Log.i("setUpMovieTypeList2", it.results.toString())
+//
+//        }
+//
+//        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.UPCOMING, Constant.UNITED_STATES, currentPage.toString())
+//        viewModel.upcomingResponse.observe(viewLifecycleOwner){
+//            mAdapter.setData(MovieTypeData(
+//                "Upcoming",
+//                "See what's Upcoming",
+//                it.results as List<ResultsItem>?
+//            ))
+//        }
+//    }
 
-        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
-        viewModel.topRatedResponse.observe(viewLifecycleOwner){
-            mAdapter.setData(MovieTypeData(
-                "Top Rated",
-                "See what's Top Rated",
-                it.results as List<ResultsItem>?
-            ))
-            Log.i("setUpMovieTypeList", it.results.toString())
-        }
-
-        viewModel.getTrendingList(Constant.MEDIA_MOVIE, Constant.UNITED_STATES, currentPage.toString())
-        viewModel.trendingResponse.observe(viewLifecycleOwner){
-            mAdapter.setData(MovieTypeData(
-                "Trending",
-                "See what's Trending",
-                it.results as List<ResultsItem>?
-            ))
-            Log.i("setUpMovieTypeList2", it.results.toString())
-
-        }
-
-        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.UPCOMING, Constant.UNITED_STATES, currentPage.toString())
-        viewModel.upcomingResponse.observe(viewLifecycleOwner){
-            mAdapter.setData(MovieTypeData(
-                "Upcoming",
-                "See what's Upcoming",
-                it.results as List<ResultsItem>?
-            ))
-        }
-    }
-
-    private fun setUpTabBar() {
-        binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                when(tab.position){
+//    private fun setUpTabBar() {
+//        binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+//            override fun onTabSelected(tab: TabLayout.Tab) {
+//                when(tab.position){
+////                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
+////                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
+//                }
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//                currentPage += 1
+//                when(tab?.position){
 //                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
 //                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
-                }
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                currentPage += 1
-                when(tab?.position){
-                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
-                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
-                }
-            }
-        })
-    }
+//                }
+//            }
+//        })
+//    }
 
     private fun setUpCarousel(movie: List<ResultsItem>?) {
         binding.rvCarousel.apply {
@@ -156,7 +155,7 @@ class HomeFragment : Fragment() {
         binding.tvCarouselTitle.text = movie?.get(currentItem)?.title ?: movie?.get(currentItem)?.originalName
     }
 
-    private fun setUpGenreList(movie: List<Int>?) {
+    private fun setUpGenreList(movie: List<String>?) {
         binding.rvCarouselGenre.apply {
             val mAdapter = GenreListAdapter()
             adapter = mAdapter

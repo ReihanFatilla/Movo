@@ -33,17 +33,17 @@ class DetailActivity : AppCompatActivity() {
 
         Log.i("intentType", "$intentType")
 
-        if(intentType == Constant.INTENT_TV) {
-            viewModel.getDetail(Constant.MEDIA_TV, id)
-            viewModel.getSimilarList(Constant.MEDIA_TV, id, Constant.UNITED_STATES, "1")
-            viewModel.getCreditList(Constant.MEDIA_TV, id, Constant.UNITED_STATES)
-            viewModel.getReviewList(Constant.MEDIA_TV, id, "1")
-        } else {
-            viewModel.getDetail(Constant.MEDIA_MOVIE, id)
-            viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
-            viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
-            viewModel.getReviewList(Constant.MEDIA_MOVIE, id, "1")
-        }
+//        if(intentType == Constant.INTENT_TV) {
+//            viewModel.getDetail(Constant.MEDIA_TV, id)
+//            viewModel.getSimilarList(Constant.MEDIA_TV, id, Constant.UNITED_STATES, "1")
+//            viewModel.getCreditList(Constant.MEDIA_TV, id, Constant.UNITED_STATES)
+//            viewModel.getReviewList(Constant.MEDIA_TV, id, "1")
+//        } else {
+//            viewModel.getDetail(Constant.MEDIA_MOVIE, id)
+//            viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
+//            viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
+//            viewModel.getReviewList(Constant.MEDIA_MOVIE, id, "1")
+//        }
 
     }
 
