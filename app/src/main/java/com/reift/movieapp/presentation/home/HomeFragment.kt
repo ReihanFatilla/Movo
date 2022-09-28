@@ -16,7 +16,6 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.reift.movieapp.R
 import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.adapter.GenreListAdapter
-import com.reift.movieapp.adapter.MovieTypeAdapter
 import com.reift.core.constant.Constant
 import com.reift.movieapp.data.ResultsItem
 import com.reift.movieapp.databinding.FragmentHomeBinding

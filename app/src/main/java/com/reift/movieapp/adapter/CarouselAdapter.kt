@@ -10,16 +10,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.`interface`.GetCurrentPosition
 import com.reift.core.constant.Constant
-import com.reift.movieapp.data.ResultsItem
+import com.reift.core.data.remote.source.response.movie.MovieItem
 import com.reift.movieapp.databinding.ItemCarouselHomeBinding
 import com.reift.movieapp.presentation.detail.DetailActivity
 
 class CarouselAdapter(
 ): RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
-    private val listMovie = ArrayList<ResultsItem>()
+    private val listMovie = ArrayList<MovieItem>()
 
-    fun setData(data: List<ResultsItem>?) {
+    fun setData(data: List<MovieItem>?) {
         if (data == null) return
         listMovie.clear()
         listMovie.addAll(data)
@@ -48,13 +48,8 @@ class CarouselAdapter(
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-                if(listMovie[position].title == null){
-                    intent.putExtra(Constant.INTENT_TO_DETAIL, listMovie[position].id)
-                    intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_TV)
-                } else {
-                    intent.putExtra(Constant.INTENT_TO_DETAIL, listMovie[position].id)
-                    intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
-                }
+            intent.putExtra(Constant.INTENT_TO_DETAIL, listMovie[position].id)
+            intent.putExtra(Constant.INTENT_TYPE, Constant.INTENT_MOVIE)
             holder.itemView.context.startActivity(intent)
         }
     }

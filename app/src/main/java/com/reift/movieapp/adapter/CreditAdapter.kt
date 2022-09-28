@@ -8,14 +8,16 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.core.constant.Constant
+import com.reift.core.domain.model.detail.Actor
+import com.reift.core.domain.model.detail.Review
 import com.reift.movieapp.databinding.ItemCreditDetailBinding
 
 class CreditAdapter: RecyclerView.Adapter<CreditAdapter.MyViewHolder>()  {
-    private val listCredit = ArrayList<CastItem>()
+    private val listCredit = ArrayList<Actor>()
 
     class MyViewHolder(val binding: ItemCreditDetailBinding): RecyclerView.ViewHolder(binding.root)
 
-    fun setData(list: List<CastItem>?){
+    fun setData(list: List<Actor>?){
         if (list == null) return
         listCredit.clear()
         listCredit.addAll(list)

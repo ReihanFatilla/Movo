@@ -7,13 +7,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.reift.core.data.response.ResultsItemReview
+import com.reift.core.domain.model.detail.Review
 import com.reift.movieapp.databinding.ItemReviewDetailBinding
 
 class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.MyViewHolder>() {
-    private var listReview = ArrayList<ResultsItemReview>()
+    private var listReview = ArrayList<Review>()
 
-    fun setData(list: List<ResultsItemReview>?) {
+    fun setData(list: List<Review>?) {
         if (list == null) return
         listReview.clear()
         listReview.addAll(list)
@@ -32,11 +32,11 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            tvNameReview.text = listReview[position].author
-            tvUsernameReview.text = "@"+listReview[position].authorDetails?.username
+            tvNameReview.text = listReview[position].name
+            tvUsernameReview.text = "@"+listReview[position].username
             tvMessage.text = listReview[position].content
             Glide.with(imgProfileReview.context)
-                .load(listReview[position].authorDetails?.avatarPath.toString().drop(1))
+                .load(listReview[position].avatarPath.drop(1))
                 .apply(RequestOptions())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)

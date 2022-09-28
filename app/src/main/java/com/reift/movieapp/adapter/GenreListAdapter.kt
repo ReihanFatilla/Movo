@@ -8,12 +8,12 @@ import com.reift.movieapp.databinding.ItemGenreListBinding
 
 class GenreListAdapter:RecyclerView.Adapter<GenreListAdapter.GenreViewHolder>() {
 
-    val genreList = ArrayList<Int>()
+    val listGenre = ArrayList<String>()
 
-    fun setData(data: List<Int>?) {
+    fun setData(data: List<String>?) {
         if (data == null) return
-        genreList.clear()
-        genreList.addAll(data)
+        listGenre.clear()
+        listGenre.addAll(data)
     }
 
     class GenreViewHolder(val binding: ItemGenreListBinding):RecyclerView.ViewHolder(binding.root)
@@ -24,10 +24,9 @@ class GenreListAdapter:RecyclerView.Adapter<GenreListAdapter.GenreViewHolder>() 
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
         holder.binding.apply {
-            val genre = HelperFunction.getGenreById(genreList[position].toString())
-            tvGenre.text = genre
+            tvGenre.text = listGenre[position]
         }
     }
 
-    override fun getItemCount() = if(genreList.size <= 3) genreList.size else 3
+    override fun getItemCount() = if(listGenre.size <= 3) listGenre.size else 3
 }
