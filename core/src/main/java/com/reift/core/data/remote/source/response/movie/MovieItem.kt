@@ -13,6 +13,9 @@ data class MovieItem(
 	@field:SerializedName("poster_path")
 	val posterPath: String,
 
+	@field:SerializedName("genre_ids")
+	val genreIds: List<Int>,
+
 	@field:SerializedName("vote_average")
 	val voteAverage: Double,
 

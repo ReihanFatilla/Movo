@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
 
-abstract class NetworkBoundResource<ResultType, RequestType> {
+abstract class NetworkResource<ResultType, RequestType> {
 
     private var result = PublishSubject.create<Resource<ResultType>>()
 
