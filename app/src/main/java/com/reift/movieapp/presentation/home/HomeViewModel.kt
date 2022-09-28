@@ -1,11 +1,10 @@
 package com.reift.movieapp.presentation.home
 
 import android.app.Application
-import android.arch.lifecycle.ViewModel
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.Movie

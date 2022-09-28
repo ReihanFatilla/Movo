@@ -11,15 +11,16 @@ import com.bumptech.glide.request.RequestOptions
 import com.reift.movieapp.`interface`.GetCurrentPosition
 import com.reift.core.constant.Constant
 import com.reift.core.data.remote.source.response.movie.MovieItem
+import com.reift.core.domain.model.movie.Movie
 import com.reift.movieapp.databinding.ItemCarouselHomeBinding
 import com.reift.movieapp.presentation.detail.DetailActivity
 
 class CarouselAdapter(
 ): RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
-    private val listMovie = ArrayList<MovieItem>()
+    private val listMovie = ArrayList<Movie>()
 
-    fun setData(data: List<MovieItem>?) {
+    fun setData(data: List<Movie>?) {
         if (data == null) return
         listMovie.clear()
         listMovie.addAll(data)

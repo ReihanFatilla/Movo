@@ -11,7 +11,7 @@ data class MovieItem(
 	val title: String,
 
 	@field:SerializedName("poster_path")
-	val posterPath: String,
+	val posterPath: String? = "/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg",
 
 	@field:SerializedName("genre_ids")
 	val genreIds: List<Int>,

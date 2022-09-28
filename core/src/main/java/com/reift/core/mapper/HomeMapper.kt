@@ -1,5 +1,6 @@
 package com.reift.core.mapper
 
+import android.util.Log
 import com.reift.core.data.remote.source.response.movie.MovieResponse
 import com.reift.core.data.remote.source.response.tv.TvResponse
 import com.reift.core.domain.model.movie.Movie
@@ -10,7 +11,7 @@ import com.reift.core.utils.GenreFormatter
 
 object HomeMapper {
     fun mapResponseToDomain(input: MovieResponse): MovieResult{
-        return with(input){
+        val result =  with(input){
             MovieResult(
                 page,
                 totalPages,
@@ -18,12 +19,14 @@ object HomeMapper {
                 input.results.map { movie ->
                 with(movie){
                         Movie(
-                            title, genreIds.map { GenreFormatter.format(it) },posterPath, voteAverage, id, adult
+                            title, genreIds.map { GenreFormatter.format(it) },posterPath ?: "/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg" , voteAverage, id, adult
                         )
                     }
                 }
             )
         }
+        Log.i("sdasdsadads", "setUpCarousel: ${result}")
+        return result
     }
 
     fun mapResponseToDomain(input: TvResponse): TvResult{

@@ -1,8 +1,8 @@
 package com.reift.movieapp.presentation.detail
 
 import android.app.Application
-import android.arch.lifecycle.ViewModel
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.reift.core.domain.usecase.detail.DetailUseCase
 
 class DetailViewModel(detailUseCase: DetailUseCase): ViewModel() {

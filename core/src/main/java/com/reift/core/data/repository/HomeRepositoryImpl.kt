@@ -1,5 +1,6 @@
 package com.reift.core.data.repository
 
+import android.util.Log
 import com.reift.core.data.NetworkResource
 import com.reift.core.data.local.LocalDataSource
 import com.reift.core.data.remote.RemoteDataSource

@@ -1,5 +1,6 @@
 package com.reift.core.data
 
+import android.util.Log
 import com.reift.core.domain.model.Resource
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.BackpressureStrategy
@@ -29,11 +30,19 @@ abstract class NetworkResource<ResultType, RequestType> {
             .doOnComplete {
                 mCompositeDisposable.dispose()
             }
-            .subscribe {
-                result.onNext(
-                    Resource.Success(createResult(it))
-                )
-            }
+            .subscribe (
+                {
+                    result.onNext(
+
+                        Resource.Success(createResult(it))
+                    )
+                },{
+                    result.onNext(
+
+                        Resource.Error(it.message.toString())
+                    )
+                }
+                    )
         mCompositeDisposable.add(response)
     }
 

@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.reift.movieapp.R
 import com.reift.movieapp.adapter.CarouselAdapter
 import com.reift.movieapp.adapter.GenreListAdapter
-import com.reift.core.constant.Constant
+import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.movie.MovieResult
 import com.reift.movieapp.databinding.FragmentHomeBinding
 import com.reift.movieapp.presentation.home.component.CenterItemLayoutManager
-import com.reift.movieapp.presentation.home.component.MovieTypeData
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -44,10 +43,10 @@ class HomeFragment : Fragment() {
 
 //        setUpMovieTypeList()
 //
-//        viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
-//        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
-//            setUpCarousel(it.results as List<ResultsItem>?)
-//        }
+        viewModel.getNowPlayingMovie()
+        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
+            setUpCarousel(it)
+        }
 
         binding.svHome.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
@@ -58,7 +57,48 @@ class HomeFragment : Fragment() {
     }
 
 
-//    private fun setUpMovieTypeList() {
+//    }
+
+//    }
+
+    private fun setUpCarouselMovieData(movie: List<Movie>, currentItem: Int) {
+        setUpGenreList(movie.get(currentItem).genre)
+        binding.tvCarouselTitle.text = movie[currentItem].title
+    }
+
+    private fun setUpCarousel(movie: Resource<MovieResult>) {
+        binding.rvCarousel.apply {
+            val mAdapter = CarouselAdapter()
+            adapter = mAdapter
+            val mLayoutManager = CenterItemLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            layoutManager = mLayoutManager
+            movie.data?.let { setUpCarouselMovieData(it.movie, 0) }
+            mAdapter.setData(movie.data?.movie)
+
+            LinearSnapHelper().attachToRecyclerView(this)
+            onFlingListener = null
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        val position: Int = getCurrentItem()
+                        movie.data?.let { setUpCarouselMovieData(it.movie, position + 1) }
+                    }
+                }
+            })
+
+//            Handler().postDelayed({
+//                binding.includedShimmer.frameShimmer.stopShimmer()
+//                binding.includedShimmer.frameShimmer.visibility = View.INVISIBLE
+//                binding.contraintHome.visibility = View.VISIBLE
+//            }, 1000)
+
+
+        }
+    }
+
+    //    private fun setUpMovieTypeList() {
 //        val mAdapter = MovieTypeAdapter()
 //
 //        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
@@ -90,8 +130,6 @@ class HomeFragment : Fragment() {
 //                it.results as List<ResultsItem>?
 //            ))
 //        }
-//    }
-
 //    private fun setUpTabBar() {
 //        binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
 //            override fun onTabSelected(tab: TabLayout.Tab) {
@@ -112,49 +150,14 @@ class HomeFragment : Fragment() {
 //                }
 //            }
 //        })
-//    }
 
-    private fun setUpCarousel(movie: List<ResultsItem>?) {
-        binding.rvCarousel.apply {
-            val mAdapter = CarouselAdapter()
-            adapter = mAdapter
-            val mLayoutManager = CenterItemLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            layoutManager = mLayoutManager
-            setUpCarouselMovieData(movie, 0)
-            mAdapter.setData(movie)
-            PagerSnapHelper().attachToRecyclerView(this)
-
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        val position: Int = getCurrentItem()
-                        setUpCarouselMovieData(movie, position + 1)
-                    }
-                }
-            })
-
-//            Handler().postDelayed({
-//                binding.includedShimmer.frameShimmer.stopShimmer()
-//                binding.includedShimmer.frameShimmer.visibility = View.INVISIBLE
-//                binding.contraintHome.visibility = View.VISIBLE
-//            }, 1000)
-
-
-        }
-    }
 
     private fun getCurrentItem(): Int {
         return (binding.rvCarousel.layoutManager as CenterItemLayoutManager)
             .findFirstVisibleItemPosition()
     }
 
-    private fun setUpCarouselMovieData(movie: List<ResultsItem>?, currentItem: Int) {
-        setUpGenreList(movie?.get(currentItem)?.genreIds as List<Int>?)
-        binding.tvCarouselTitle.text = movie?.get(currentItem)?.title ?: movie?.get(currentItem)?.originalName
-    }
-
-    private fun setUpGenreList(movie: List<String>?) {
+    private fun setUpGenreList(movie: List<String>) {
         binding.rvCarouselGenre.apply {
             val mAdapter = GenreListAdapter()
             adapter = mAdapter
