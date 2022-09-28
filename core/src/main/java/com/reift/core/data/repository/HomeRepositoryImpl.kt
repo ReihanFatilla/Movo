@@ -11,11 +11,8 @@ import com.reift.core.domain.model.tv.TvResult
 import com.reift.core.domain.repository.home.HomeRepository
 import com.reift.core.mapper.HomeMapper
 import io.reactivex.rxjava3.core.Flowable
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class HomeRepositoryImpl @Inject constructor(
+class HomeRepositoryImpl(
     val localDataSource: LocalDataSource,
     val remoteDataSource: RemoteDataSource
 ): HomeRepository {
