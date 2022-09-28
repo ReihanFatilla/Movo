@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 data class AuthorDetails(
 
 	@field:SerializedName("avatar_path")
-	val avatarPath: String,
+	val avatarPath: String? = null,
 
 	@field:SerializedName("name")
-	val name: String,
+	val name: String? = null,
 
 	@field:SerializedName("rating")
-	val rating: Double,
+	val rating: Double? = null,
 
 	@field:SerializedName("username")
-	val username: String
+	val username: String? = null
 )

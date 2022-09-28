@@ -5,23 +5,23 @@ import com.google.gson.annotations.SerializedName
 data class SeasonsItem(
 
 	@field:SerializedName("air_date")
-	val airDate: String,
+	val airDate: String? = null,
 
 	@field:SerializedName("overview")
-	val overview: String,
+	val overview: String? = null,
 
 	@field:SerializedName("episode_count")
-	val episodeCount: Int,
+	val episodeCount: Int? = null,
 
 	@field:SerializedName("name")
-	val name: String,
+	val name: String? = null,
 
 	@field:SerializedName("season_number")
-	val seasonNumber: Int,
+	val seasonNumber: Int? = null,
 
 	@field:SerializedName("id")
-	val id: Int,
+	val id: Int? = null,
 
 	@field:SerializedName("poster_path")
-	val posterPath: String
+	val posterPath: String? = null
 )

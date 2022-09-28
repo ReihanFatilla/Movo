@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 data class CastItem(
 
 	@field:SerializedName("character")
-	val character: String,
+	val character: String? = null,
 
 	@field:SerializedName("name")
-	val name: String,
+	val name: String? = null,
 
 	@field:SerializedName("profile_path")
-	val profilePath: String,
+	val profilePath: String? = null,
 )

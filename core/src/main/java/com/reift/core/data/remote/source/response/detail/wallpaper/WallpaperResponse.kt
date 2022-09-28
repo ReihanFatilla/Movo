@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class WallpaperResponse(
 
     @field:SerializedName("backdrops")
-	val backdrops: List<BackdropsItem>,
+	val backdrops: List<BackdropsItem>? = null,
 
     @field:SerializedName("posters")
-	val posters: List<PostersItem>
+	val posters: List<PostersItem>? = null
 )

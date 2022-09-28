@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class ReviewResponse(
 
 	@field:SerializedName("page")
-	val page: Int,
+	val page: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ReviewItem>
+	val results: List<ReviewItem>? = null
 
 )

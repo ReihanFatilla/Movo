@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class VideoResponse(
 	@field:SerializedName("results")
-	val results: List<VideoItem>
+	val results: List<VideoItem>? = null
 )
