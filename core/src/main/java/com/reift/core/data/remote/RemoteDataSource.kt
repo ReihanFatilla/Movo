@@ -27,34 +27,34 @@ class RemoteDataSource(
        category: String,
        page: String
    ): Flowable<MovieResponse> {
-       return subscribeFlowable(apiService.getMovieByCategory(category, apiKey, region, page))
+       return apiService.getMovieByCategory(category, apiKey, region, page)
    }
 
     fun getMovieDetail(
         id: String
     ): Flowable<MovieDetailResponse> {
-        return subscribeFlowable(apiService.getMovieDetail(id, apiKey))
+        return apiService.getMovieDetail(id, apiKey)
     }
 
     fun searchMovieByQuery(
         query: String,
         page: String
     ): Flowable<MovieResponse> {
-        return subscribeFlowable(apiService.searchMovieByQuery(apiKey, query, region, page))
+        return apiService.searchMovieByQuery(apiKey, query, region, page)
     }
 
     fun getSimilarMovies(
         id: String,
         page: String
     ): Flowable<MovieResponse> {
-        return subscribeFlowable(apiService.getSimilarMovies(id, apiKey, region, page))
+        return apiService.getSimilarMovies(id, apiKey, region, page)
     }
 
     fun getRecommendationsMovies(
         id: String,
         page: String
     ): Flowable<MovieResponse> {
-        return subscribeFlowable(apiService.getRecommendationsMovies(id, apiKey, region, page))
+        return apiService.getRecommendationsMovies(id, apiKey, region, page)
     }
 
     // Tv Show
@@ -63,34 +63,34 @@ class RemoteDataSource(
         category: String,
         page: String
     ): Flowable<TvResponse> {
-        return subscribeFlowable(apiService.getTvByCategory(category, apiKey, region, page))
+        return apiService.getTvByCategory(category, apiKey, region, page)
     }
 
     fun getTvDetail(
         id: String
     ): Flowable<TvDetailResponse> {
-        return subscribeFlowable(apiService.getTvDetail(id, apiKey))
+        return apiService.getTvDetail(id, apiKey)
     }
 
     fun searchTvByQuery(
         query: String,
         page: String
     ): Flowable<TvResponse> {
-        return subscribeFlowable(apiService.searchTvByQuery(apiKey ,query, region, page))
+        return apiService.searchTvByQuery(apiKey ,query, region, page)
     }
 
     fun getSimilarTv(
         id: String,
         page: String
     ): Flowable<TvResponse> {
-        return subscribeFlowable(apiService.getSimilarTv(id, apiKey, region, page))
+        return apiService.getSimilarTv(id, apiKey, region, page)
     }
 
     fun getRecommendationsTv(
         id: String,
         page: String
     ): Flowable<TvResponse> {
-        return subscribeFlowable(apiService.getRecommendationsTv(id, apiKey, region, page))
+        return apiService.getRecommendationsTv(id, apiKey, region, page)
     }
 
     // Detail
@@ -100,43 +100,29 @@ class RemoteDataSource(
         id: String,
         page: String
     ): Flowable<ReviewResponse> {
-        return subscribeFlowable(apiService.getReviewList(media, id, apiKey, page))
+        return apiService.getReviewList(media, id, apiKey, page)
     }
 
     fun getCreditList(
         media: String,
         id: String,
     ): Flowable<ActorResponse> {
-        return subscribeFlowable(apiService.getCreditList(media, id, apiKey, region))
+        return apiService.getCreditList(media, id, apiKey, region)
     }
 
     fun getVideoList(
         media: String,
         id: String,
     ): Flowable<VideoResponse> {
-        return subscribeFlowable(apiService.getVideoList(media, id, apiKey))
+        return apiService.getVideoList(media, id, apiKey)
     }
 
     fun getWallpaperList(
         media: String,
         id: String,
     ): Flowable<VideoResponse> {
-        return subscribeFlowable(apiService.getVideoList(media, id, apiKey))
+        return apiService.getVideoList(media, id, apiKey)
     }
 
-    private fun <T> subscribeFlowable(flowable: Flowable<T>): Flowable<T> {
 
-        val result = PublishSubject.create<T>()
-
-        flowable.subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                val dataArray = it
-                result.onNext(
-                    dataArray
-                )
-            }
-
-        return result.toFlowable(BackpressureStrategy.BUFFER)
-    }
 }
