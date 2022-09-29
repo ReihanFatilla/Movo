@@ -32,7 +32,7 @@ class TvDetailRepositoryImpl(
         TODO("Not yet implemented")
     }
 
-    override fun isFollowed(id: String): Flow<Boolean?> {
+    override fun isFollowed(id: String): Flow<Boolean> {
         TODO("Not yet implemented")
     }
 

@@ -20,6 +20,42 @@ object HelperFunction {
         }
     }
 
+    //    fun setUpRatingStars(context: Context, binding: ItemHorizontalMovieBinding, originRating: Double) {
+//        val rating = originRating / 2
+//        if(rating >= 0.5){
+//            binding.stars1.setColorFilter(getColor(context, R.color.yellow_star))
+//            if(rating >= 1.0){
+//                binding.stars1.setColorFilter(getColor(context, R.color.yellow_star))
+//                if(rating >= 1.5){
+//                    binding.stars2.setColorFilter(getColor(context, R.color.yellow_star))
+//                    if(rating >= 2.0){
+//                        binding.stars2.setColorFilter(getColor(context, R.color.yellow_star))
+//                        if(rating >= 2.5){
+//                            binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
+//                            if(rating >= 3.0){
+//                                binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
+//                                if(rating >= 3.5){
+//                                    binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
+//                                    if(rating >= 4.0){
+//                                        binding.stars4.setColorFilter(getColor(context, R.color.yellow_star))
+//                                        if(rating >= 4.5){
+//                                            binding.stars4.setColorFilter(getColor(context, R.color.yellow_star))
+//                                            if(rating == 5.0){
+//                                                binding.stars5.setColorFilter(getColor(context, R.color.yellow_star))
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+    fun durationFormatter(minute: Int): String {
+        return "${minute / 60}h ${minute % 60}min"
+    }
+
     fun dateFormatter(originalDate: String): String{
         var year = ""
         var month = ""
@@ -55,38 +91,6 @@ object HelperFunction {
         }
     }
 
-//    fun setUpRatingStars(context: Context, binding: ItemHorizontalMovieBinding, originRating: Double) {
-//        val rating = originRating / 2
-//        if(rating >= 0.5){
-//            binding.stars1.setColorFilter(getColor(context, R.color.yellow_star))
-//            if(rating >= 1.0){
-//                binding.stars1.setColorFilter(getColor(context, R.color.yellow_star))
-//                if(rating >= 1.5){
-//                    binding.stars2.setColorFilter(getColor(context, R.color.yellow_star))
-//                    if(rating >= 2.0){
-//                        binding.stars2.setColorFilter(getColor(context, R.color.yellow_star))
-//                        if(rating >= 2.5){
-//                            binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
-//                            if(rating >= 3.0){
-//                                binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
-//                                if(rating >= 3.5){
-//                                    binding.stars3.setColorFilter(getColor(context, R.color.yellow_star))
-//                                    if(rating >= 4.0){
-//                                        binding.stars4.setColorFilter(getColor(context, R.color.yellow_star))
-//                                        if(rating >= 4.5){
-//                                            binding.stars4.setColorFilter(getColor(context, R.color.yellow_star))
-//                                            if(rating == 5.0){
-//                                                binding.stars5.setColorFilter(getColor(context, R.color.yellow_star))
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
 //    }
 
     fun getColor(context: Context, color: Any): Int {

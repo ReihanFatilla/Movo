@@ -23,7 +23,8 @@ object MovieDetailMapper {
             overview = overview.orEmpty(),
             posterPath = posterPath.orEmpty(),
             releaseDate = releaseDate.orEmpty(),
-            voteAverage = voteAverage ?: 0.0
+            voteAverage = voteAverage ?: 0.0,
+            duration = runtime ?: 0
         )
     }
 

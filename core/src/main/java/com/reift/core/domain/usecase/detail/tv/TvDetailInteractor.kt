@@ -27,7 +27,7 @@ class TvDetailInteractor(
         return tvDetailRepository.getTvActors(id)
     }
 
-    override fun isFollowed(id: String): Flow<Boolean?> {
+    override fun isFollowed(id: String): Flow<Boolean> {
         return tvDetailRepository.isFollowed(id)
     }
 
