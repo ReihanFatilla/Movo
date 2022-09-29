@@ -4,11 +4,9 @@ import com.reift.core.data.local.source.room.movie.MovieEntity
 import com.reift.core.data.remote.source.response.detail.actor.ActorResponse
 import com.reift.core.data.remote.source.response.detail.movie.MovieDetailResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
+import com.reift.core.data.remote.source.response.detail.video.VideoResponse
 import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
-import com.reift.core.domain.model.detail.Actor
-import com.reift.core.domain.model.detail.MovieDetail
-import com.reift.core.domain.model.detail.Review
-import com.reift.core.domain.model.detail.Wallpaper
+import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.utils.GenreFormatter
@@ -60,6 +58,19 @@ object MovieDetailMapper {
                     character = character.orEmpty(),
                     name = name.orEmpty(),
                     profilePath = profilePath.orEmpty()
+                )
+            }
+        } ?: listOf()
+    }
+
+    fun VideoResponse.map(): List<Video> {
+        return results?.map {
+            with(it){
+                Video(
+                    name = name.orEmpty(),
+                    official = official ?: false,
+                    id = id.orEmpty(),
+                    key = key.orEmpty()
                 )
             }
         } ?: listOf()

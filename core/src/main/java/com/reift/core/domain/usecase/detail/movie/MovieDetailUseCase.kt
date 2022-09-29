@@ -12,6 +12,7 @@ interface MovieDetailUseCase {
     fun getMovieReviews(id: String): Flowable<Resource<List<Review>>>
     fun getMovieWallpapers(id: String): Flowable<Resource<Wallpaper>>
     fun getMovieActors(id: String): Flowable<Resource<List<Actor>>>
+    fun getMovieVideos(id: String): Flowable<Resource<List<Video>>>
 
     fun isFollowed(id: String): Flow<Boolean>
 

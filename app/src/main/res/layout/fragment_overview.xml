@@ -26,7 +26,7 @@
             <WebView
                 android:id="@+id/web_view_trailer"
                 android:layout_width="match_parent"
-                android:layout_height="192dp"
+                android:layout_height="match_parent"
                 />
 
         </com.google.android.material.card.MaterialCardView>

@@ -7,6 +7,7 @@ import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.data.remote.source.response.detail.actor.ActorResponse
 import com.reift.core.data.remote.source.response.detail.movie.MovieDetailResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
+import com.reift.core.data.remote.source.response.detail.video.VideoResponse
 import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
@@ -72,6 +73,19 @@ class MovieDetailRepositoryImpl(
 
             override fun createCall(): Flowable<ActorResponse> {
                 return remoteDataSource.getCreditList(MOVIE, id)
+            }
+
+        }.asFlowable()
+    }
+
+    override fun getMovieVideos(id: String): Flowable<Resource<List<Video>>> {
+        return object : NetworkResource<List<Video>, VideoResponse>(){
+            override fun createResult(data: VideoResponse): List<Video> {
+                return data.map()
+            }
+
+            override fun createCall(): Flowable<VideoResponse> {
+                return remoteDataSource.getVideoList(MOVIE, id)
             }
 
         }.asFlowable()

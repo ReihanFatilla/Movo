@@ -27,6 +27,10 @@ class MovieDetailInteractor(
         return movieDetailRepository.getMovieActors(id)
     }
 
+    override fun getMovieVideos(id: String): Flowable<Resource<List<Video>>> {
+        return movieDetailRepository.getMovieVideos(id)
+    }
+
     override fun isFollowed(id: String): Flow<Boolean> {
         return movieDetailRepository.isFollowed(id)
     }

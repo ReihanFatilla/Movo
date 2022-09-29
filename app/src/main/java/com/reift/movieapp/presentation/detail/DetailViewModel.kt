@@ -5,10 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import com.reift.core.data.remote.source.response.detail.actor.ActorResponse
 import com.reift.core.domain.model.Resource
-import com.reift.core.domain.model.detail.Actor
-import com.reift.core.domain.model.detail.MovieDetail
-import com.reift.core.domain.model.detail.Review
-import com.reift.core.domain.model.detail.Wallpaper
+import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.usecase.detail.movie.MovieDetailUseCase
 
@@ -20,6 +17,7 @@ class DetailViewModel(val movieDetailUseCase: MovieDetailUseCase): ViewModel() {
     val actorResponse = MediatorLiveData<Resource<List<Actor>>>()
     val reviewResponse = MediatorLiveData<Resource<List<Review>>>()
     val wallpaperResponse = MediatorLiveData<Resource<Wallpaper>>()
+    val videoResponse = MediatorLiveData<Resource<List<Video>>>()
 
     fun getMovieDetail(id: String){
         val source = LiveDataReactiveStreams.fromPublisher(
@@ -51,6 +49,17 @@ class DetailViewModel(val movieDetailUseCase: MovieDetailUseCase): ViewModel() {
         wallpaperResponse.addSource(source){
             wallpaperResponse.postValue(it)
             wallpaperResponse.removeSource(source)
+        }
+    }
+
+    fun getMovieTrailer(id: String){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            movieDetailUseCase.getMovieVideos(id)
+        )
+
+        videoResponse.addSource(source){
+            videoResponse.postValue(it)
+            videoResponse.removeSource(source)
         }
     }
 

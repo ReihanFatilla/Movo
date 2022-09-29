@@ -1,23 +1,26 @@
 package com.reift.movieapp.presentation.detail.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.Actor
 import com.reift.core.domain.model.detail.MovieDetail
+import com.reift.core.domain.model.detail.Video
 import com.reift.core.domain.model.detail.Wallpaper
 import com.reift.movieapp.adapter.ActorAdapter
-import com.reift.movieapp.adapter.ReviewAdapter
 import com.reift.movieapp.adapter.WallpaperAdapter
 import com.reift.movieapp.databinding.FragmentOverviewBinding
 import com.reift.movieapp.presentation.detail.DetailViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class OverviewFragment : Fragment() {
 
@@ -45,6 +48,18 @@ class OverviewFragment : Fragment() {
         return binding.root
     }
 
+    private fun setTrailerWebView(resource: Resource<List<Video>>) {
+        binding.apply {
+            if(resource.data == null) return
+            val frameVideo =
+"<html><body style=\"margin: 0\"><br><iframe  width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/${resource.data!![0].key}\" frameborder=\"0\" allowfullscreen></iframe></body></html>"
+
+            val webSettings = webViewTrailer.settings
+            webSettings.javaScriptEnabled = true;
+            webViewTrailer.loadData(frameVideo, "text/html", "utf-8")
+        }
+    }
+
     private fun initObserver() {
         viewModel.getMovieActor(id)
         viewModel.actorResponse.observe(viewLifecycleOwner){
@@ -54,6 +69,11 @@ class OverviewFragment : Fragment() {
         viewModel.getMovieWallpaper(id)
         viewModel.wallpaperResponse.observe(viewLifecycleOwner){
             setUpWallpaperRV(it)
+        }
+
+        viewModel.getMovieTrailer(id)
+        viewModel.videoResponse.observe(viewLifecycleOwner){
+            setTrailerWebView(it)
         }
     }
 
