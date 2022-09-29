@@ -5,10 +5,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.reift.core.constant.Constant
+import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.detail.MovieDetail
 import com.reift.movieapp.presentation.detail.fragments.OtherFragment
 import com.reift.movieapp.presentation.detail.fragments.OverviewFragment
 
-class DetailViewPagerAdapter(fa: FragmentActivity, val id: String) : FragmentStateAdapter(fa) {
+class DetailViewPagerAdapter(
+    fa: FragmentActivity,
+    val id: String,
+    val movieDetail: MovieDetail
+) : FragmentStateAdapter(fa) {
 
     override fun getItemCount() = 2
 
@@ -18,6 +24,7 @@ class DetailViewPagerAdapter(fa: FragmentActivity, val id: String) : FragmentSta
         val overviewFragment = OverviewFragment()
         val bundle = Bundle()
         bundle.putString(Constant.BUNDLE_MOVIE_ID, id)
+        bundle.putParcelable(Constant.BUNDLE_MOVIE_DETAIL, movieDetail)
         otherFragment.arguments = bundle
         overviewFragment.arguments = bundle
 

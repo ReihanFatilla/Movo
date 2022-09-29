@@ -52,4 +52,5 @@ object Constant {
 
     // Shared Preference
     const val BUNDLE_MOVIE_ID = "BUNDLE_MOVIE_ID"
+    const val BUNDLE_MOVIE_DETAIL = "BUNDLE_MOVIE_DETAIL"
 }

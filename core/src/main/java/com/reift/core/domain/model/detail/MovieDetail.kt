@@ -1,5 +1,9 @@
 package com.reift.core.domain.model.detail
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MovieDetail(
 	val id: Int,
 	val video: Boolean,
@@ -11,4 +15,4 @@ data class MovieDetail(
 	val posterPath: String,
 	val releaseDate: String,
 	val voteAverage: Double,
-)
+): Parcelable
