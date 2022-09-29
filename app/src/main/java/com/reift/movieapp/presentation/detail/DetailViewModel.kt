@@ -1,63 +1,32 @@
 package com.reift.movieapp.presentation.detail
 
+import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.detail.Actor
+import com.reift.core.domain.model.detail.MovieDetail
+import com.reift.core.domain.model.detail.Review
+import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.usecase.detail.movie.MovieDetailUseCase
 
-class DetailViewModel(movieDetailUseCase: MovieDetailUseCase): ViewModel() {
-//    private val repository: MovieRepository = MovieRepository(application)
-//
-//    val detailResponse = MutableLiveData<DetailResponse>()
-//    val similarResponse = MutableLiveData<MovieResponse>()
-//    val creditResponse = MutableLiveData<CreditResponse>()
-//    val reviewResponse = MutableLiveData<ReviewResponse>()
-//
-//
-//    fun getDetail(media: String, id: String){
-//        repository.getDetail(
-//            {
-//                detailResponse.value = it
-//            },
-//            {},
-//            media,
-//            id
-//        )
-//    }
-//
-//    fun getReviewList(media: String, id: String, page: String){
-//        repository.getReviewList(
-//            {
-//                reviewResponse.value = it
-//            },
-//            {},
-//            media,
-//            id,
-//            page
-//        )
-//    }
-//
-//    fun getSimilarList(media: String, id: String, region: String, page: String){
-//        repository.getSimilarList(
-//            {
-//                similarResponse.value = it
-//            },
-//            {},
-//            media,
-//            id,
-//            region,
-//            page
-//        )
-//    }
-//
-//    fun getCreditList(media: String, id: String, region: String){
-//        repository.getCreditList(
-//            {
-//                creditResponse.value = it
-//            },
-//            {},
-//            media,
-//            id,
-//            region,
-//        )
-//    }
+class DetailViewModel(val movieDetailUseCase: MovieDetailUseCase): ViewModel() {
+
+    val detailResponse = MediatorLiveData<Resource<MovieDetail>>()
+    val similarResponse = MediatorLiveData<Resource<Movie>>()
+    val recommendationsResponse = MediatorLiveData<Resource<Movie>>()
+    val actorResponse = MediatorLiveData<Resource<Actor>>()
+    val reviewResponse = MediatorLiveData<Resource<Review>>()
+
+    fun getMovieDetail(id: String){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            movieDetailUseCase.getMovieDetail(id)
+        )
+
+        detailResponse.addSource(source){
+            detailResponse.postValue(it)
+            detailResponse.removeSource(source)
+        }
+    }
 
 }
