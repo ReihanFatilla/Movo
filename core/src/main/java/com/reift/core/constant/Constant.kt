@@ -51,5 +51,5 @@ object Constant {
     const val INTENT_TV = "EXTRA_INTENT_TV"
 
     // Shared Preference
-    const val PREF_BOOKMARK_ID = "PREF_BOOKMARK_ID"
+    const val BUNDLE_MOVIE_ID = "BUNDLE_MOVIE_ID"
 }

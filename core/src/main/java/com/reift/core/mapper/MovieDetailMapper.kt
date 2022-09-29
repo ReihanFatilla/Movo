@@ -16,6 +16,7 @@ import com.reift.core.utils.GenreFormatter
 object MovieDetailMapper {
     fun MovieDetailResponse.map(): MovieDetail{
         return MovieDetail(
+            id = id ?: 0,
             video = video ?: false,
             title = title.orEmpty(),
             genres = genres?.map { GenreFormatter.format(it.id ?: 0) } ?: listOf(),

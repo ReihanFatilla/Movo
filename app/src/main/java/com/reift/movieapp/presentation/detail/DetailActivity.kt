@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.movieapp.utils.HelperFunction
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.MovieDetail
+import com.reift.movieapp.R
 import com.reift.movieapp.databinding.ActivityDetailBinding
+import com.reift.movieapp.presentation.detail.fragments.adapter.DetailViewPagerAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -19,6 +22,11 @@ class DetailActivity : AppCompatActivity() {
 
     private val viewModel: DetailViewModel by viewModel()
 
+    private var _movieDetail: Resource<MovieDetail>? = null
+    private val movieDetail get() = _movieDetail as Resource<MovieDetail>
+
+    private lateinit var id: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -28,20 +36,33 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         HelperFunction.transparentStatusbar(this)
 
-        val id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
+        id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
 
-        viewModel.getMovieDetail(id)
-        viewModel.detailResponse.observe(this){
-            setUpMovieDetail(it)
-        }
-
-
+        initView()
+        initObserver()
+        setUpTabBar()
     }
 
-    private fun setUpMovieDetail(resource: Resource<MovieDetail>) {
+    private fun initView() {
+        binding.toolbarDetail.apply {
+            setNavigationIcon(R.drawable.ic_back)
+            setSupportActionBar(this)
+        }
+    }
+
+    private fun setUpTabBar() {
+        binding.vpOverviewAndOther.adapter = DetailViewPagerAdapter(this, id)
+        TabLayoutMediator(binding.tabDetail, binding.vpOverviewAndOther) { tab, position ->
+            when (position) {
+                0 -> tab.text = getString(R.string.others)
+                1 -> tab.text = getString(R.string.overview)
+            }
+        }.attach()
+    }
+
+    private fun setUpMovieDetail() {
         binding.apply {
-            Log.i("YahaaErroLagi", "setUpMovieDetail: ${resource.message}")
-            with(resource.data){
+            with(movieDetail.data){
                 if(this == null) return
                 Glide.with(applicationContext)
                     .load(Constant.IMAGE_BASE_URL+posterPath)
@@ -53,6 +74,15 @@ class DetailActivity : AppCompatActivity() {
                 tvRatersCount.text = "($voteCount)"
                 tvDurationOrEpisode.text = HelperFunction.durationFormatter(duration)
             }
+        }
+    }
+
+    private fun initObserver() {
+
+        viewModel.getMovieDetail(id)
+        viewModel.detailResponse.observe(this){
+            _movieDetail = it
+            setUpMovieDetail()
         }
     }
 
