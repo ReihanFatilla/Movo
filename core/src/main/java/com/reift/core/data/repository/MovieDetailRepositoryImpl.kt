@@ -10,15 +10,15 @@ import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.tv.Tv
-import com.reift.core.domain.repository.detail.DetailRepository
+import com.reift.core.domain.repository.detail.movie.MovieDetailRepository
 import com.reift.core.mapper.MovieDetailMapper.map
 import io.reactivex.rxjava3.core.Flowable
 import kotlinx.coroutines.flow.Flow
 
-class DetailRepositoryImpl(
+class MovieDetailRepositoryImpl(
     val localDataSource: LocalDataSource,
     val remoteDataSource: RemoteDataSource
-): DetailRepository {
+): MovieDetailRepository {
     override fun getMovieDetail(id: String): Flowable<Resource<MovieDetail>> {
         return object : NetworkResource<MovieDetail, MovieDetailResponse>(){
             override fun createResult(data: MovieDetailResponse): MovieDetail {

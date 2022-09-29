@@ -1,6 +1,6 @@
 package com.reift.movieapp.di
 
-import com.reift.core.domain.usecase.detail.movie.MovieMovieDetailInteractor
+import com.reift.core.domain.usecase.detail.movie.MovieDetailInteractor
 import com.reift.core.domain.usecase.detail.movie.MovieDetailUseCase
 import com.reift.core.domain.usecase.home.HomeInteractor
 import com.reift.core.domain.usecase.home.HomeUseCase
@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val useCaseModule = module {
     single<HomeUseCase> { HomeInteractor(get()) }
-    single<MovieDetailUseCase> { MovieMovieDetailInteractor(get()) }
+    single<MovieDetailUseCase> { MovieDetailInteractor(get()) }
 }
 
 val viewModelModule = module {
