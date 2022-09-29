@@ -12,7 +12,7 @@ data class TvEntity(
     val id: Int,
     val title: String,
     val numberOfEpisodes: Int,
-//    val genres: List<String>,
+    val genres: String,
     val numberOfSeasons: Int,
     val voteCount: Int,
     val firstAirDate: String,

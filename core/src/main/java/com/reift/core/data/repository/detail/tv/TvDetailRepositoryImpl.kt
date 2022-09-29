@@ -24,7 +24,7 @@ class TvDetailRepositoryImpl(
         TODO("Not yet implemented")
     }
 
-    override fun getTvWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
+    override fun getTvWallpapers(id: String): Flowable<Resource<Wallpaper>> {
         TODO("Not yet implemented")
     }
 

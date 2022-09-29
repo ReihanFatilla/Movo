@@ -12,7 +12,7 @@ data class MovieEntity(
     val id: Int,
     val video: Boolean,
     val title: String,
-//    val genres: List<String>,
+    val genres: String,
     val overview: String,
     val posterPath: String,
     val releaseDate: String,
