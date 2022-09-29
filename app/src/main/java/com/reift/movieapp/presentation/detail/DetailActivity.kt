@@ -2,6 +2,7 @@ package com.reift.movieapp.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.movieapp.utils.HelperFunction
@@ -39,7 +40,6 @@ class DetailActivity : AppCompatActivity() {
 
         initView()
         initObserver()
-        setUpTabBar()
     }
 
     private fun initView() {
@@ -50,6 +50,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpTabBar() {
+        if(movieDetail.data == null) return
         binding.vpOverviewAndOther.adapter = movieDetail.data?.let { DetailViewPagerAdapter(this, id, it) }
         TabLayoutMediator(binding.tabDetail, binding.vpOverviewAndOther) { tab, position ->
             when (position) {
@@ -82,6 +83,7 @@ class DetailActivity : AppCompatActivity() {
         viewModel.detailResponse.observe(this){
             _movieDetail = it
             setUpMovieDetail()
+            setUpTabBar()
         }
     }
 

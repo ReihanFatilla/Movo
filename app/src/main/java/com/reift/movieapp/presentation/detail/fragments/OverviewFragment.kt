@@ -5,10 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.detail.Actor
 import com.reift.core.domain.model.detail.MovieDetail
-import com.reift.movieapp.R
+import com.reift.core.domain.model.detail.Wallpaper
+import com.reift.movieapp.adapter.ActorAdapter
+import com.reift.movieapp.adapter.ReviewAdapter
+import com.reift.movieapp.adapter.WallpaperAdapter
 import com.reift.movieapp.databinding.FragmentOverviewBinding
 import com.reift.movieapp.presentation.detail.DetailViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,6 +46,38 @@ class OverviewFragment : Fragment() {
     }
 
     private fun initObserver() {
-//        viewModel.
+        viewModel.getMovieActor(id)
+        viewModel.actorResponse.observe(viewLifecycleOwner){
+            setUpActorRV(it)
+        }
+
+        viewModel.getMovieWallpaper(id)
+        viewModel.wallpaperResponse.observe(viewLifecycleOwner){
+            setUpWallpaperRV(it)
+        }
+    }
+
+    private fun setUpWallpaperRV(resource: Resource<Wallpaper>?) {
+        binding.rvWallpaper.apply {
+            with(resource?.data){
+                if(this == null) return
+                val mAdapter = WallpaperAdapter()
+                layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                adapter = mAdapter
+                mAdapter.setData(this.wallpaperUrl)
+            }
+        }
+    }
+
+    private fun setUpActorRV(resource: Resource<List<Actor>>?) {
+        binding.rvActors.apply {
+            with(resource?.data){
+                if (this == null) return
+                val mAdapter = ActorAdapter()
+                layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                adapter = mAdapter
+                mAdapter.setData(this)
+            }
+        }
     }
 }
