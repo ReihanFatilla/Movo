@@ -2,49 +2,53 @@ package com.reift.movieapp.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.reift.movieapp.utils.HelperFunction
 import com.reift.core.constant.Constant
+import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.detail.MovieDetail
 import com.reift.movieapp.databinding.ActivityDetailBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class DetailActivity : AppCompatActivity() {
+
     private var _binding: ActivityDetailBinding? = null
     private val binding get() = _binding as ActivityDetailBinding
 
-    private var _viewModel: DetailViewModel? = null
-    private val viewModel get() = _viewModel as DetailViewModel
+    private val viewModel: DetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
-
         setSupportActionBar(binding.toolbarDetail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         HelperFunction.transparentStatusbar(this)
 
         val id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
-        val intentType = intent.getStringExtra(Constant.INTENT_TYPE)
 
-        Log.i("intentType", "$intentType")
+        viewModel.detailResponse.observe(this){
+            setUpMovieDetail(it)
+        }
 
-//        if(intentType == Constant.INTENT_TV) {
-//            viewModel.getDetail(Constant.MEDIA_TV, id)
-//            viewModel.getSimilarList(Constant.MEDIA_TV, id, Constant.UNITED_STATES, "1")
-//            viewModel.getCreditList(Constant.MEDIA_TV, id, Constant.UNITED_STATES)
-//            viewModel.getReviewList(Constant.MEDIA_TV, id, "1")
-//        } else {
-//            viewModel.getDetail(Constant.MEDIA_MOVIE, id)
-//            viewModel.getSimilarList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES, "1")
-//            viewModel.getCreditList(Constant.MEDIA_MOVIE, id, Constant.UNITED_STATES)
-//            viewModel.getReviewList(Constant.MEDIA_MOVIE, id, "1")
-//        }
 
+    }
+
+    private fun setUpMovieDetail(resource: Resource<MovieDetail>) {
+        binding.apply {
+            with(resource.data){
+                if(this == null) return
+                Glide.with(applicationContext)
+                    .load(posterPath)
+                    .into(imgPoster)
+
+                tvTitle.text = title
+                tvRatingCount.text = voteAverage.toString()
+                tvRatersCount.text = voteCount.toString()
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
