@@ -2,8 +2,10 @@ package com.reift.core.mapper
 
 import com.reift.core.data.remote.source.response.detail.movie.MovieDetailResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
+import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
 import com.reift.core.domain.model.detail.MovieDetail
 import com.reift.core.domain.model.detail.Review
+import com.reift.core.domain.model.detail.Wallpaper
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.utils.GenreFormatter
@@ -34,5 +36,15 @@ object MovieDetailMapper {
                 )
             }
         } ?: listOf()
+    }
+
+    fun WallpaperResponse.map(): Wallpaper {
+        val listWallpaper = backdrops?.map { wallpaper ->
+             wallpaper.filePath.orEmpty()
+        } ?: listOf()
+        val listPoster = posters?.map { poster ->
+            poster.filePath.orEmpty()
+        } ?: listOf()
+        return Wallpaper(listPoster, listWallpaper)
     }
 }

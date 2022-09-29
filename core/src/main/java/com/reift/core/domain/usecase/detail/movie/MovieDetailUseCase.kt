@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface MovieDetailUseCase {
     fun getMovieDetail(id: String): Flowable<Resource<MovieDetail>>
     fun getMovieReviews(id: String): Flowable<Resource<List<Review>>>
-    fun getMovieWallpapers(id: String): Flowable<Resource<List<Wallpaper>>>
+    fun getMovieWallpapers(id: String): Flowable<Resource<Wallpaper>>
     fun getMovieActors(id: String): Flowable<Resource<List<Actor>>>
 
     fun insertFavoriteMovie(movie: Movie)

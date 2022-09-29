@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface TvDetailRepository {
     fun getTvDetail(id: String): Flowable<Resource<TvDetail>>
     fun getTvReviews(id: String): Flowable<Resource<List<Actor>>>
-    fun getTvWallpapers(id: String): Flowable<Resource<List<Wallpaper>>>
+    fun getTvWallpapers(id: String): Flowable<Resource<Wallpaper>>
     fun getTvActors(id: String): Flowable<Resource<List<Actor>>>
 
     fun isFollowed(id: String): Flow<Boolean?>

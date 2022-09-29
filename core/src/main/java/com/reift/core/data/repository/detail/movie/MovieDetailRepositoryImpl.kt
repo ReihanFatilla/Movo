@@ -6,6 +6,7 @@ import com.reift.core.data.local.LocalDataSource
 import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.data.remote.source.response.detail.movie.MovieDetailResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
+import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
@@ -39,14 +40,23 @@ class MovieDetailRepositoryImpl(
             }
 
             override fun createCall(): Flowable<ReviewResponse> {
-                return remoteDataSource.getReviewList(Constant.MEDIA_MOVIE, id, PAGE)
+                return remoteDataSource.getReviewList(MOVIE, id, PAGE)
             }
 
         }.asFlowable()
     }
 
-    override fun getMovieWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
-        TODO("Not yet implemented")
+    override fun getMovieWallpapers(id: String): Flowable<Resource<Wallpaper>> {
+        return object : NetworkResource<Wallpaper, WallpaperResponse>(){
+            override fun createResult(data: WallpaperResponse): Wallpaper {
+                return data.map()
+            }
+
+            override fun createCall(): Flowable<WallpaperResponse> {
+                return remoteDataSource.getWallpaperList(MOVIE, id)
+            }
+
+        }.asFlowable()
     }
 
     override fun getMovieActors(id: String): Flowable<Resource<List<Actor>>> {
@@ -67,6 +77,7 @@ class MovieDetailRepositoryImpl(
 
     companion object{
         const val PAGE = "0"
+        const val MOVIE = "movie"
     }
 
 }

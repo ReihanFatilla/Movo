@@ -6,8 +6,10 @@ import com.reift.core.data.remote.source.response.detail.movie.MovieDetailRespon
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
 import com.reift.core.data.remote.source.response.detail.tv.TvDetailResponse
 import com.reift.core.data.remote.source.response.detail.video.VideoResponse
+import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
 import com.reift.core.data.remote.source.response.movie.MovieResponse
 import com.reift.core.data.remote.source.response.tv.TvResponse
+import com.reift.core.domain.model.detail.Wallpaper
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Flowable
@@ -120,8 +122,8 @@ class RemoteDataSource(
     fun getWallpaperList(
         media: String,
         id: String,
-    ): Flowable<VideoResponse> {
-        return apiService.getVideoList(media, id, apiKey)
+    ): Flowable<WallpaperResponse> {
+        return apiService.getWallpaperList(media, id, apiKey)
     }
 
 

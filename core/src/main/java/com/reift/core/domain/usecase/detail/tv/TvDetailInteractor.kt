@@ -19,7 +19,7 @@ class TvDetailInteractor(
         return tvDetailRepository.getTvReviews(id)
     }
 
-    override fun getTvWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
+    override fun getTvWallpapers(id: String): Flowable<Resource<Wallpaper>> {
         return tvDetailRepository.getTvWallpapers(id)
     }
 

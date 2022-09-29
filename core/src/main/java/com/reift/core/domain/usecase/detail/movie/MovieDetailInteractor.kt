@@ -19,7 +19,7 @@ class MovieDetailInteractor(
         return movieDetailRepository.getMovieReviews(id)
     }
 
-    override fun getMovieWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
+    override fun getMovieWallpapers(id: String): Flowable<Resource<Wallpaper>> {
         return movieDetailRepository.getMovieWallpapers(id)
     }
 
@@ -27,39 +27,11 @@ class MovieDetailInteractor(
         return movieDetailRepository.getMovieActors(id)
     }
 
-    override fun getTvDetail(id: String): Flowable<Resource<TvDetail>> {
-        return movieDetailRepository.getTvDetail(id)
-    }
-
-    override fun getTvReviews(id: String): Flowable<Resource<List<Actor>>> {
-        return movieDetailRepository.getTvReviews(id)
-    }
-
-    override fun getTvWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
-        return movieDetailRepository.getTvWallpapers(id)
-    }
-
-    override fun getTvActors(id: String): Flowable<Resource<List<Actor>>> {
-        return movieDetailRepository.getTvActors(id)
-    }
-
-    override fun isFollowed(id: String): Flow<Boolean?> {
-        return movieDetailRepository.isFollowed(id)
-    }
-
     override fun insertFavoriteMovie(movie: Movie) {
         return movieDetailRepository.insertFavoriteMovie(movie)
     }
 
-    override fun insertFavoriteTv(tv: Tv) {
-        return movieDetailRepository.insertFavoriteTv(tv)
-    }
-
     override fun deleteFavoriteMovie(movie: Movie) {
         return movieDetailRepository.deleteFavoriteMovie(movie)
-    }
-
-    override fun deleteFavoriteTv(tv: Tv) {
-        return movieDetailRepository.deleteFavoriteTv(tv)
     }
 }
