@@ -36,7 +36,7 @@ class DetailRepositoryImpl(
     override fun getMovieReviews(id: String): Flowable<Resource<List<Review>>> {
         return object : NetworkResource<List<Review>, ReviewResponse>(){
             override fun createResult(data: ReviewResponse): List<Review> {
-
+                return data.map()
             }
 
             override fun createCall(): Flowable<ReviewResponse> {
