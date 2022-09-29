@@ -2,6 +2,7 @@ package com.reift.movieapp.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.reift.movieapp.utils.HelperFunction
 import com.reift.core.constant.Constant
@@ -29,6 +30,7 @@ class DetailActivity : AppCompatActivity() {
 
         val id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
 
+        viewModel.getMovieDetail(id)
         viewModel.detailResponse.observe(this){
             setUpMovieDetail(it)
         }
@@ -38,15 +40,18 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpMovieDetail(resource: Resource<MovieDetail>) {
         binding.apply {
+            Log.i("YahaaErroLagi", "setUpMovieDetail: ${resource.message}")
             with(resource.data){
                 if(this == null) return
                 Glide.with(applicationContext)
-                    .load(posterPath)
+                    .load(Constant.IMAGE_BASE_URL+posterPath)
                     .into(imgPoster)
 
                 tvTitle.text = title
-                tvRatingCount.text = voteAverage.toString()
-                tvRatersCount.text = voteCount.toString()
+                collapsingToolbar.title = title
+                tvRatingCount.text = voteAverage.toString().take(3)
+                tvRatersCount.text = "($voteCount)"
+                tvDurationOrEpisode.text = HelperFunction.durationFormatter(duration)
             }
         }
     }
