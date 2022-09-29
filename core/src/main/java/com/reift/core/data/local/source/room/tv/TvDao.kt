@@ -6,15 +6,20 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.reift.core.data.local.source.room.movie.MovieEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TvDao {
+
     @Query("SELECT * FROM TvEntity")
-    fun getAllBookmark(): LiveData<List<TvEntity>>
+    fun getFavoriteTv(): Flow<List<TvEntity>>
+
+    @Query("SELECT * FROM TvEntity WHERE id LIKE :id")
+    fun getFavoriteById(id: String): Flow<TvEntity>
 
     @Insert
-    suspend fun addBookmark(book: TvEntity)
+    suspend fun insertFavoriteTv(tv: TvEntity)
 
     @Delete
-    suspend fun deleteBookmark(book: TvEntity)
+    suspend fun deleteFavoriteTv(tv: TvEntity)
 }
