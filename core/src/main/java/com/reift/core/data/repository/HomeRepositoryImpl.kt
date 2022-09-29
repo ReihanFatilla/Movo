@@ -1,6 +1,5 @@
 package com.reift.core.data.repository
 
-import android.util.Log
 import com.reift.core.data.NetworkResource
 import com.reift.core.data.local.LocalDataSource
 import com.reift.core.data.remote.RemoteDataSource
@@ -10,7 +9,7 @@ import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.domain.model.tv.TvResult
 import com.reift.core.domain.repository.home.HomeRepository
-import com.reift.core.mapper.HomeMapper
+import com.reift.core.mapper.HomeMapper.map
 import io.reactivex.rxjava3.core.Flowable
 
 class HomeRepositoryImpl(
@@ -20,7 +19,7 @@ class HomeRepositoryImpl(
     override fun getMovies(category: String, page: String): Flowable<Resource<MovieResult>> {
         return object : NetworkResource<MovieResult, MovieResponse>() {
             override fun createResult(data: MovieResponse): MovieResult {
-                return HomeMapper.mapResponseToDomain(data)
+                return data.map()
             }
 
             override fun createCall(): Flowable<MovieResponse> {
@@ -33,7 +32,7 @@ class HomeRepositoryImpl(
     override fun getTvShow(category: String, page: String): Flowable<Resource<TvResult>> {
         return object : NetworkResource<TvResult, TvResponse>() {
             override fun createResult(data: TvResponse): TvResult {
-                return HomeMapper.mapResponseToDomain(data)
+                return data.map()
             }
 
             override fun createCall(): Flowable<TvResponse> {

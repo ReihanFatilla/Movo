@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class TvResponse(
 
 	@field:SerializedName("page")
-	val page: Int? = null,
+	val page: Int? = 1,
 
 	@field:SerializedName("total_pages")
 	val totalPages: Int? = null,

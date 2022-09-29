@@ -1,6 +1,5 @@
 package com.reift.core.mapper
 
-import android.util.Log
 import com.reift.core.data.remote.source.response.movie.MovieResponse
 import com.reift.core.data.remote.source.response.tv.TvResponse
 import com.reift.core.domain.model.movie.Movie
@@ -10,39 +9,45 @@ import com.reift.core.domain.model.tv.TvResult
 import com.reift.core.utils.GenreFormatter
 
 object HomeMapper {
-    fun mapResponseToDomain(input: MovieResponse): MovieResult{
-        val result =  with(input){
-            MovieResult(
-                page,
-                totalPages,
-                totalResults,
-                input.results.map { movie ->
-                with(movie){
-                        Movie(
-                            title, genreIds.map { GenreFormatter.format(it) },posterPath ?: "/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg" , voteAverage, id, adult
-                        )
-                    }
-                }
-            )
+    fun MovieResponse.map(): MovieResult {
+        val list = results?.map { movie ->
+            with(movie) {
+                Movie(
+                    title.orEmpty(),
+                    genre = genreIds?.map { genre -> GenreFormatter.format(genre) } ?: listOf(),
+                    posterPath = posterPath ?: "/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg",
+                    voteAverage = voteAverage ?: 0.0,
+                    id = id ?: 0,
+                    adult = adult ?: false
+                )
+            }
         }
-        Log.i("sdasdsadads", "setUpCarousel: ${result}")
-        return result
+        return MovieResult(
+            page = page ?: 0,
+            totalPages = totalPages ?: 0,
+            totalResults = totalResults ?: 0,
+            movie = list ?: listOf()
+        )
     }
 
-    fun mapResponseToDomain(input: TvResponse): TvResult{
-        return with(input){
-            TvResult(
-                page,
-                totalPages,
-                totalResults,
-                input.results.map { tv ->
-                    with(tv){
-                        Tv(
-                            firstAirDate, genreIds.map { GenreFormatter.format(it) },posterPath, voteAverage, name, id
-                        )
-                    }
-                }
-            )
+    fun TvResponse.map(): TvResult {
+        val list = results?.map { tv ->
+            with(tv) {
+                Tv(
+                    firstAirDate = firstAirDate.orEmpty(),
+                    genre = genreIds?.map { GenreFormatter.format(it) } ?: listOf(),
+                    posterPath = posterPath.orEmpty(),
+                    voteAverage =  voteAverage ?: 0.0,
+                    name =  name.orEmpty(),
+                    id =  id ?: 0
+                )
+            }
         }
+        return TvResult(
+            page = page ?: 0,
+            totalPages = totalPages ?: 0,
+            totalResults =  totalResults ?: 0,
+            tv = list ?: listOf()
+        )
     }
 }
