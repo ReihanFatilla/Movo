@@ -15,15 +15,15 @@ class DetailInteractor(
         return detailRepository.getMovieDetail(id)
     }
 
-    override fun getMovieReviews(id: String): Flowable<Resource<Review>> {
+    override fun getMovieReviews(id: String): Flowable<Resource<List<Review>>> {
         return detailRepository.getMovieReviews(id)
     }
 
-    override fun getMovieWallpapers(id: String): Flowable<Resource<Wallpaper>> {
+    override fun getMovieWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
         return detailRepository.getMovieWallpapers(id)
     }
 
-    override fun getMovieActors(id: String): Flowable<Resource<Actor>> {
+    override fun getMovieActors(id: String): Flowable<Resource<List<Actor>>> {
         return detailRepository.getMovieActors(id)
     }
 
@@ -31,15 +31,15 @@ class DetailInteractor(
         return detailRepository.getTvDetail(id)
     }
 
-    override fun getTvReviews(id: String): Flowable<Resource<Actor>> {
+    override fun getTvReviews(id: String): Flowable<Resource<List<Actor>>> {
         return detailRepository.getTvReviews(id)
     }
 
-    override fun getTvWallpapers(id: String): Flowable<Resource<Wallpaper>> {
+    override fun getTvWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
         return detailRepository.getTvWallpapers(id)
     }
 
-    override fun getTvActors(id: String): Flowable<Resource<Actor>> {
+    override fun getTvActors(id: String): Flowable<Resource<List<Actor>>> {
         return detailRepository.getTvActors(id)
     }
 
