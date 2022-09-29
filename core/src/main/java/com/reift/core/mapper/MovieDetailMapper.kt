@@ -8,7 +8,7 @@ import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.utils.GenreFormatter
 
-object DetailMapper {
+object MovieDetailMapper {
     fun MovieDetailResponse.map(): MovieDetail{
         return MovieDetail(
             video = video ?: false,

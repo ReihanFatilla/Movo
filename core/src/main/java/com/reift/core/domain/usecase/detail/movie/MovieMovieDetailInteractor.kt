@@ -1,4 +1,4 @@
-package com.reift.core.domain.usecase.detail
+package com.reift.core.domain.usecase.detail.movie
 
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
@@ -8,9 +8,9 @@ import com.reift.core.domain.repository.detail.DetailRepository
 import io.reactivex.rxjava3.core.Flowable
 import kotlinx.coroutines.flow.Flow
 
-class DetailInteractor(
+class MovieMovieDetailInteractor(
     private val detailRepository: DetailRepository
-): DetailUseCase {
+): MovieDetailUseCase {
     override fun getMovieDetail(id: String): Flowable<Resource<MovieDetail>> {
         return detailRepository.getMovieDetail(id)
     }

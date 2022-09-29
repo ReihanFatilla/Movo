@@ -6,13 +6,12 @@ import com.reift.core.data.local.LocalDataSource
 import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.data.remote.source.response.detail.movie.MovieDetailResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
-import com.reift.core.data.remote.source.response.movie.MovieResponse
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.tv.Tv
 import com.reift.core.domain.repository.detail.DetailRepository
-import com.reift.core.mapper.DetailMapper.map
+import com.reift.core.mapper.MovieDetailMapper.map
 import io.reactivex.rxjava3.core.Flowable
 import kotlinx.coroutines.flow.Flow
 

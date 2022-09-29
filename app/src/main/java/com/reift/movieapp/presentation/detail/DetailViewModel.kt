@@ -1,11 +1,9 @@
 package com.reift.movieapp.presentation.detail
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
-import com.reift.core.domain.usecase.detail.DetailUseCase
+import com.reift.core.domain.usecase.detail.movie.MovieDetailUseCase
 
-class DetailViewModel(detailUseCase: DetailUseCase): ViewModel() {
+class DetailViewModel(movieDetailUseCase: MovieDetailUseCase): ViewModel() {
 //    private val repository: MovieRepository = MovieRepository(application)
 //
 //    val detailResponse = MutableLiveData<DetailResponse>()
