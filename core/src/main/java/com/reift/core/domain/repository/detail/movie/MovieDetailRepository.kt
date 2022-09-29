@@ -13,7 +13,7 @@ interface MovieDetailRepository {
     fun getMovieWallpapers(id: String): Flowable<Resource<Wallpaper>>
     fun getMovieActors(id: String): Flowable<Resource<List<Actor>>>
 
-    fun isFollowed(id: String): Flow<Boolean?>
+    fun isFollowed(id: String): Flow<Boolean>
 
     fun insertFavoriteMovie(movie: Movie)
 

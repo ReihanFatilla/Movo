@@ -1,5 +1,6 @@
 package com.reift.core.mapper
 
+import com.reift.core.data.local.source.room.movie.MovieEntity
 import com.reift.core.data.remote.source.response.detail.actor.ActorResponse
 import com.reift.core.data.remote.source.response.detail.movie.MovieDetailResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
@@ -60,5 +61,18 @@ object MovieDetailMapper {
                 )
             }
         } ?: listOf()
+    }
+
+    fun Movie.asEntity(): MovieEntity{
+        return MovieEntity(
+            id = id,
+            title = title,
+            genres = genre.toString(),
+            overview = overview,
+            posterPath = posterPath,
+            releaseDate = releaseDate,
+            voteCount = voteCount,
+            voteAverage = voteAverage
+        )
     }
 }

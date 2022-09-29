@@ -27,6 +27,10 @@ class MovieDetailInteractor(
         return movieDetailRepository.getMovieActors(id)
     }
 
+    override fun isFollowed(id: String): Flow<Boolean> {
+        return movieDetailRepository.isFollowed(id)
+    }
+
     override fun insertFavoriteMovie(movie: Movie) {
         return movieDetailRepository.insertFavoriteMovie(movie)
     }

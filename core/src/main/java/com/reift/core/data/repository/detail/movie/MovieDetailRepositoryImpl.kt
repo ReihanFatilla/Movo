@@ -11,11 +11,15 @@ import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResp
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
-import com.reift.core.domain.model.tv.Tv
 import com.reift.core.domain.repository.detail.movie.MovieDetailRepository
+import com.reift.core.mapper.MovieDetailMapper.asEntity
 import com.reift.core.mapper.MovieDetailMapper.map
 import io.reactivex.rxjava3.core.Flowable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class MovieDetailRepositoryImpl(
     val localDataSource: LocalDataSource,
@@ -73,16 +77,22 @@ class MovieDetailRepositoryImpl(
         }.asFlowable()
     }
 
-    override fun isFollowed(id: String): Flow<Boolean?> {
-        TODO("Not yet implemented")
+    override fun isFollowed(id: String): Flow<Boolean> {
+        return localDataSource.getMovieFavoriteById(id).map {
+            it != null
+        }
     }
 
     override fun insertFavoriteMovie(movie: Movie) {
-        TODO("Not yet implemented")
+        CoroutineScope(Dispatchers.IO).launch {
+            localDataSource.insertFavoriteMovie(movie.asEntity())
+        }
     }
 
     override fun deleteFavoriteMovie(movie: Movie) {
-        TODO("Not yet implemented")
+        CoroutineScope(Dispatchers.IO).launch {
+            localDataSource.deleteFavoriteMovie(movie.asEntity())
+        }
     }
 
     companion object{

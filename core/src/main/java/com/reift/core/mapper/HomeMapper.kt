@@ -13,12 +13,15 @@ object HomeMapper {
         val list = results?.map { movie ->
             with(movie) {
                 Movie(
-                    title.orEmpty(),
+                    title ?: originalTitle.orEmpty(),
                     genre = genreIds?.map { genre -> GenreFormatter.format(genre) } ?: listOf(),
                     posterPath = posterPath ?: "/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg",
                     voteAverage = voteAverage ?: 0.0,
                     id = id ?: 0,
-                    adult = adult ?: false
+                    adult = adult ?: false,
+                    overview = overview.orEmpty(),
+                    releaseDate = releaseDate.orEmpty(),
+                    voteCount = voteCount ?: 0
                 )
             }
         }

@@ -13,7 +13,7 @@ interface TvDetailUseCase {
     fun getTvWallpapers(id: String): Flowable<Resource<Wallpaper>>
     fun getTvActors(id: String): Flowable<Resource<List<Actor>>>
 
-    fun isFollowed(id: String): Flow<Boolean?>
+    fun isFollowed(id: String): Flow<Boolean>
 
     fun deleteFavoriteTv(tv: Tv)
     fun insertFavoriteTv(tv: Tv)

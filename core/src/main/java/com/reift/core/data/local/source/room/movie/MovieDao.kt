@@ -15,7 +15,7 @@ interface MovieDao {
     fun getFavoriteMovie(): Flow<List<MovieEntity>>
 
     @Query("SELECT * FROM MovieEntity WHERE id LIKE :id")
-    fun getFavoriteById(id: String): Flow<MovieEntity>
+    fun getFavoriteById(id: String): Flow<MovieEntity?>
 
     @Insert
     suspend fun insertFavoriteMovie(movie: MovieEntity)

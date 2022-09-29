@@ -13,8 +13,9 @@ interface MovieDetailUseCase {
     fun getMovieWallpapers(id: String): Flowable<Resource<Wallpaper>>
     fun getMovieActors(id: String): Flowable<Resource<List<Actor>>>
 
-    fun insertFavoriteMovie(movie: Movie)
+    fun isFollowed(id: String): Flow<Boolean>
 
+    fun insertFavoriteMovie(movie: Movie)
     fun deleteFavoriteMovie(movie: Movie)
 
 }

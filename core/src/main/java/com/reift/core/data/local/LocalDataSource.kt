@@ -16,16 +16,16 @@ class LocalDataSource(
         return movieDao.getFavoriteMovie()
     }
 
-    fun getMovieFavoriteById(id: String): Flow<MovieEntity>{
+    fun getMovieFavoriteById(id: String): Flow<MovieEntity?>{
         return movieDao.getFavoriteById(id)
     }
 
-    suspend fun insertFavoriteMovie(movie: TvEntity){
-        tvDao.insertFavoriteTv(movie)
+    suspend fun insertFavoriteMovie(movie: MovieEntity){
+        movieDao.insertFavoriteMovie(movie)
     }
 
-    suspend fun deleteFavoriteMovie(movie: TvEntity){
-        tvDao.deleteFavoriteTv(movie)
+    suspend fun deleteFavoriteMovie(movie: MovieEntity){
+        movieDao.deleteFavoriteMovie(movie)
     }
     fun getFavoriteTv(): Flow<List<TvEntity>>{
         return tvDao.getFavoriteTv()
