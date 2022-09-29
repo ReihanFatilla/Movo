@@ -1,4 +1,4 @@
-package com.reift.core.data.repository
+package com.reift.core.data.repository.allmovie
 
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.MovieResult

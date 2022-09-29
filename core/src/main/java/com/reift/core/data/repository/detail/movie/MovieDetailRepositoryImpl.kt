@@ -1,4 +1,4 @@
-package com.reift.core.data.repository
+package com.reift.core.data.repository.detail.movie
 
 import com.reift.core.constant.Constant
 import com.reift.core.data.NetworkResource
@@ -53,22 +53,6 @@ class MovieDetailRepositoryImpl(
         TODO("Not yet implemented")
     }
 
-    override fun getTvDetail(id: String): Flowable<Resource<TvDetail>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getTvReviews(id: String): Flowable<Resource<List<Actor>>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getTvWallpapers(id: String): Flowable<Resource<List<Wallpaper>>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getTvActors(id: String): Flowable<Resource<List<Actor>>> {
-        TODO("Not yet implemented")
-    }
-
     override fun isFollowed(id: String): Flow<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -77,15 +61,7 @@ class MovieDetailRepositoryImpl(
         TODO("Not yet implemented")
     }
 
-    override fun insertFavoriteTv(tv: Tv) {
-        TODO("Not yet implemented")
-    }
-
     override fun deleteFavoriteMovie(movie: Movie) {
-        TODO("Not yet implemented")
-    }
-
-    override fun deleteFavoriteTv(tv: Tv) {
         TODO("Not yet implemented")
     }
 

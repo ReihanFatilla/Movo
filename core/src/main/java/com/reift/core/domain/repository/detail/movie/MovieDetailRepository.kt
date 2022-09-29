@@ -13,16 +13,9 @@ interface MovieDetailRepository {
     fun getMovieWallpapers(id: String): Flowable<Resource<List<Wallpaper>>>
     fun getMovieActors(id: String): Flowable<Resource<List<Actor>>>
 
-    fun getTvDetail(id: String): Flowable<Resource<TvDetail>>
-    fun getTvReviews(id: String): Flowable<Resource<List<Actor>>>
-    fun getTvWallpapers(id: String): Flowable<Resource<List<Wallpaper>>>
-    fun getTvActors(id: String): Flowable<Resource<List<Actor>>>
-
     fun isFollowed(id: String): Flow<Boolean?>
 
     fun insertFavoriteMovie(movie: Movie)
-    fun insertFavoriteTv(tv: Tv)
 
     fun deleteFavoriteMovie(movie: Movie)
-    fun deleteFavoriteTv(tv: Tv)
 }

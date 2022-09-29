@@ -1,4 +1,4 @@
-package com.reift.core.data.repository
+package com.reift.core.data.repository.home
 
 import com.reift.core.data.NetworkResource
 import com.reift.core.data.local.LocalDataSource

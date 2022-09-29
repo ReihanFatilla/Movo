@@ -1,4 +1,4 @@
-package com.reift.core.data.repository
+package com.reift.core.data.repository.favorite
 
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.tv.Tv
