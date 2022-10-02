@@ -5,7 +5,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.reift.movo.databinding.ActivityMainBinding
+import com.reift.movieapp.R
+import com.reift.movieapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

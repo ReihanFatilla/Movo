@@ -13,6 +13,6 @@ dependencyResolutionManagement {
         jcenter()
     }
 }
-rootProject.name = "MovieApp"
+rootProject.name = "Movo"
 include ':app'
 include ':core'
