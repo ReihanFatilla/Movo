@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MovieApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Movo" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -29,12 +29,12 @@
         <item name="fontFamily">@font/poppins_semibold</item>
     </style>
 
-    <style name="transparentStatusBar" parent="Theme.MovieApp">
+    <style name="transparentStatusBar" parent="Theme.Movo">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
-    <style name="Theme.MovieApp.NoActionBar">
+    <style name="Theme.Movo.NoActionBar">
 
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>

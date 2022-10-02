@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.reift.movieapp.presentation.home.HomeFragment"
+        android:name="com.reift.movo.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,13 +16,13 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.reift.movieapp.presentation.favorite.FavoriteFragment"
+        android:name="com.reift.movo.presentation.favorite.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.reift.movieapp.presentation.search.SearchFragment"
+        android:name="com.reift.movo.presentation.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search" />
 
