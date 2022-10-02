@@ -5,8 +5,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.reift.movieapp.R
-import com.reift.movieapp.databinding.ActivityMainBinding
+import com.reift.movo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +18,7 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
     }
 }

@@ -50,7 +50,11 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpTabBar() {
         if(movieDetail.data == null) return
-        binding.vpOverviewAndOther.adapter = movieDetail.data?.let { DetailViewPagerAdapter(this, id, it) }
+        binding.vpOverviewAndOther.apply {
+            adapter = movieDetail.data?.let { DetailViewPagerAdapter(this@DetailActivity, this@DetailActivity.id, it) }
+            isUserInputEnabled = false;
+        }
+
         TabLayoutMediator(binding.tabDetail, binding.vpOverviewAndOther) { tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.others)
