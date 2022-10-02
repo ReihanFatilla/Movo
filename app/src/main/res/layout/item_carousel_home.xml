@@ -4,10 +4,8 @@
     android:layout_width="220dp"
     android:layout_height="320dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
     app:cardCornerRadius="25dp"
     app:cardUseCompatPadding="true"
-    card_view:cardCornerRadius="12dp"
     app:cardElevation="0dp"
     >
 
@@ -15,7 +13,6 @@
         android:id="@+id/img_movie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:adjustViewBounds="true"
         android:src="@drawable/sample_movie_poster"
         android:scaleType="centerCrop"/>
 
