@@ -101,7 +101,7 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_recommended"
+            android:id="@+id/rv_recommendations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

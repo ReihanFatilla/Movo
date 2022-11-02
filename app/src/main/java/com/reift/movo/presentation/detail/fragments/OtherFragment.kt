@@ -56,6 +56,25 @@ class OtherFragment : Fragment() {
             setUpSimilarMovies(it)
         }
 
+        viewModel.getRecommendationsMovies(id)
+        viewModel.recommendationsResponse.observe(viewLifecycleOwner){
+            setUpRecommendationsMovies(it)
+        }
+
+    }
+
+    private fun setUpRecommendationsMovies(resource: Resource<MovieResult>?) {
+        when(resource){
+            is Resource.Success -> {
+                if(resource.data == null) return
+                binding.rvRecommendations.apply {
+                    val mAdapter = HorizontalListAdapter()
+                    adapter = mAdapter
+                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    mAdapter.setData(resource.data?.movie)
+                }
+            }
+        }
     }
 
     private fun setUpSimilarMovies(resource: Resource<MovieResult>?) {
