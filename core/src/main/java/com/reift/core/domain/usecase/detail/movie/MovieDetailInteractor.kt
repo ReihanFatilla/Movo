@@ -3,6 +3,7 @@ package com.reift.core.domain.usecase.detail.movie
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.domain.model.tv.Tv
 import com.reift.core.domain.repository.detail.movie.MovieDetailRepository
 import io.reactivex.rxjava3.core.Flowable
@@ -41,5 +42,13 @@ class MovieDetailInteractor(
 
     override fun deleteFavoriteMovie(movie: Movie) {
         return movieDetailRepository.deleteFavoriteMovie(movie)
+    }
+
+    override fun getRecommendationsMovies(id: String): Flowable<Resource<MovieResult>> {
+        return movieDetailRepository.getRecommendationsMovies(id)
+    }
+
+    override fun getSimilarMovies(id: String): Flowable<Resource<MovieResult>> {
+        return movieDetailRepository.getSimilarMovies(id)
     }
 }

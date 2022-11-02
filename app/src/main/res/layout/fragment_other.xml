@@ -1,14 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.detail.fragments.OtherFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/app_backround"
+        android:paddingHorizontal="28dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="64dp"
+        android:clipToPadding="false">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_reviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reviews"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="24dp"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_reviews"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="-24dp"
+            android:layout_marginEnd="-24dp"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_review_detail"
+            app:layout_constraintTop_toBottomOf="@id/tv_reviews"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/tv_similar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Similar Movies"
+            app:layout_constraintTop_toBottomOf="@id/rv_reviews"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="28dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_see_all_similar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See all"
+            android:textColor="@color/primary_color"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="13sp"
+            app:layout_constraintTop_toTopOf="@id/tv_similar"
+            app:layout_constraintBottom_toBottomOf="@id/tv_similar"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_similar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
+            android:paddingHorizontal="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/tv_similar"
+            tools:listitem="@layout/item_horizontal_movie"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/tv_recommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recommended Movies"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="28dp"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/rv_similar"
+            />
+
+        <TextView
+            android:id="@+id/tv_see_all_recommended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See all"
+            android:textColor="@color/primary_color"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="13sp"
+            app:layout_constraintTop_toTopOf="@id/tv_recommended"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommended"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
+            android:paddingHorizontal="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommended"
+            tools:listitem="@layout/item_horizontal_movie"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

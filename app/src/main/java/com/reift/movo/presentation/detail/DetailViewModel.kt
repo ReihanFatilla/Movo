@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModel
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.domain.usecase.detail.movie.MovieDetailUseCase
 
 class DetailViewModel(val movieDetailUseCase: MovieDetailUseCase): ViewModel() {
 
     val detailResponse = MediatorLiveData<Resource<MovieDetail>>()
-    val similarResponse = MediatorLiveData<Resource<Movie>>()
-    val recommendationsResponse = MediatorLiveData<Resource<Movie>>()
+    val similarResponse = MediatorLiveData<Resource<MovieResult>>()
+    val recommendationsResponse = MediatorLiveData<Resource<MovieResult>>()
     val actorResponse = MediatorLiveData<Resource<List<Actor>>>()
     val reviewResponse = MediatorLiveData<Resource<List<Review>>>()
     val wallpaperResponse = MediatorLiveData<Resource<Wallpaper>>()
@@ -59,6 +60,39 @@ class DetailViewModel(val movieDetailUseCase: MovieDetailUseCase): ViewModel() {
         videoResponse.addSource(source){
             videoResponse.postValue(it)
             videoResponse.removeSource(source)
+        }
+    }
+
+    fun getMovieReviews(id: String){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            movieDetailUseCase.getMovieReviews(id)
+        )
+
+        reviewResponse.addSource(source){
+            reviewResponse.postValue(it)
+            reviewResponse.removeSource(source)
+        }
+    }
+
+    fun getRecommendationsMovies(id: String){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            movieDetailUseCase.getRecommendationsMovies(id)
+        )
+
+        recommendationsResponse.addSource(source){
+            recommendationsResponse.postValue(it)
+            recommendationsResponse.removeSource(source)
+        }
+    }
+
+    fun getSimilarMovies(id: String){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            movieDetailUseCase.getSimilarMovies(id)
+        )
+
+        similarResponse.addSource(source){
+            similarResponse.postValue(it)
+            similarResponse.removeSource(source)
         }
     }
 

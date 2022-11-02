@@ -57,8 +57,8 @@ class DetailActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.tabDetail, binding.vpOverviewAndOther) { tab, position ->
             when (position) {
-                0 -> tab.text = getString(R.string.others)
-                1 -> tab.text = getString(R.string.overview)
+                0 -> tab.text = getString(R.string.overview)
+                1 -> tab.text = getString(R.string.others)
             }
         }.attach()
     }

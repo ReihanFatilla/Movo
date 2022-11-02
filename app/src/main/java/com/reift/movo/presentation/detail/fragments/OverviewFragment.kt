@@ -42,8 +42,13 @@ class OverviewFragment : Fragment() {
         id = arguments?.getString(Constant.BUNDLE_MOVIE_ID) ?: "0"
 
         initObserver()
+        setUpView()
 
         return binding.root
+    }
+
+    private fun setUpView() {
+        binding.tvSynopsis.text = movieDetail.overview
     }
 
     private fun setTrailerWebView(resource: Resource<List<Video>>) {

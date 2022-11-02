@@ -9,10 +9,13 @@ import com.reift.core.data.remote.source.response.detail.movie.MovieDetailRespon
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
 import com.reift.core.data.remote.source.response.detail.video.VideoResponse
 import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
+import com.reift.core.data.remote.source.response.movie.MovieResponse
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.domain.repository.detail.movie.MovieDetailRepository
+import com.reift.core.mapper.HomeMapper.map
 import com.reift.core.mapper.MovieDetailMapper.asEntity
 import com.reift.core.mapper.MovieDetailMapper.map
 import io.reactivex.rxjava3.core.Flowable
@@ -91,6 +94,32 @@ class MovieDetailRepositoryImpl(
         }.asFlowable()
     }
 
+    override fun getRecommendationsMovies(id: String): Flowable<Resource<MovieResult>> {
+        return object : NetworkResource<MovieResult, MovieResponse>(){
+            override fun createResult(data: MovieResponse): MovieResult {
+                return data.map()
+            }
+
+            override fun createCall(): Flowable<MovieResponse> {
+                return remoteDataSource.getRecommendationsMovies(id, PAGE)
+            }
+
+        }.asFlowable()
+    }
+
+    override fun getSimilarMovies(id: String): Flowable<Resource<MovieResult>> {
+        return object : NetworkResource<MovieResult, MovieResponse>(){
+            override fun createResult(data: MovieResponse): MovieResult {
+                return data.map()
+            }
+
+            override fun createCall(): Flowable<MovieResponse> {
+                return remoteDataSource.getSimilarMovies(id, PAGE)
+            }
+
+        }.asFlowable()
+    }
+
     override fun isFollowed(id: String): Flow<Boolean> {
         return localDataSource.getMovieFavoriteById(id).map {
             it != null
@@ -110,7 +139,7 @@ class MovieDetailRepositoryImpl(
     }
 
     companion object{
-        const val PAGE = "0"
+        const val PAGE = "1"
         const val MOVIE = "movie"
     }
 

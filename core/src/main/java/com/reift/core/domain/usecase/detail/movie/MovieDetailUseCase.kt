@@ -3,6 +3,7 @@ package com.reift.core.domain.usecase.detail.movie
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.domain.model.tv.Tv
 import io.reactivex.rxjava3.core.Flowable
 import kotlinx.coroutines.flow.Flow
@@ -18,5 +19,8 @@ interface MovieDetailUseCase {
 
     fun insertFavoriteMovie(movie: Movie)
     fun deleteFavoriteMovie(movie: Movie)
+
+    fun getRecommendationsMovies(id: String): Flowable<Resource<MovieResult>>
+    fun getSimilarMovies(id: String): Flowable<Resource<MovieResult>>
 
 }
