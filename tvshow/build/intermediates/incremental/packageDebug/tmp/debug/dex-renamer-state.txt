@@ -1,0 +1,7 @@
+#Wed Nov 02 10:31:17 WIB 2022
+base.1=/Users/reift/Documents/Programming/Projects/My IT Projects/MovieApp/tvshow/build/intermediates/dex/debug/mergeProjectDexDebug/7/classes.dex
+path.1=7/classes.dex
+base.0=/Users/reift/Documents/Programming/Projects/My IT Projects/MovieApp/tvshow/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=0/classes.dex
