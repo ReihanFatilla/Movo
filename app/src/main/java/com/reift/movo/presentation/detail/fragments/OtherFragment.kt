@@ -12,6 +12,8 @@ import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.MovieDetail
 import com.reift.core.domain.model.detail.Review
+import com.reift.core.domain.model.movie.MovieResult
+import com.reift.movo.adapter.HorizontalListAdapter
 import com.reift.movo.adapter.ReviewAdapter
 import com.reift.movo.databinding.FragmentOtherBinding
 import com.reift.movo.presentation.detail.DetailViewModel
@@ -47,6 +49,26 @@ class OtherFragment : Fragment() {
         viewModel.getMovieReviews(id)
         viewModel.reviewResponse.observe(viewLifecycleOwner) {
             setUpReviews(it)
+        }
+
+        viewModel.getSimilarMovies(id)
+        viewModel.similarResponse.observe(viewLifecycleOwner){
+            setUpSimilarMovies(it)
+        }
+
+    }
+
+    private fun setUpSimilarMovies(resource: Resource<MovieResult>?) {
+        when(resource){
+            is Resource.Success -> {
+                if(resource.data == null) return
+                binding.rvSimilar.apply {
+                    val mAdapter = HorizontalListAdapter()
+                    adapter = mAdapter
+                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    mAdapter.setData(resource.data?.movie)
+                }
+            }
         }
     }
 
