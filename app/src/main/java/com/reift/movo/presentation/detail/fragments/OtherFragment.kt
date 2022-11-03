@@ -27,9 +27,6 @@ class OtherFragment : Fragment() {
     private var _binding: FragmentOtherBinding? = null
     private val binding get() = _binding as FragmentOtherBinding
 
-    private var _movieDetail: MovieDetail? = null
-    private val movieDetail get() = _movieDetail as MovieDetail
-
     private val viewModel: DetailViewModel by viewModel()
 
     private lateinit var id: String
@@ -40,7 +37,6 @@ class OtherFragment : Fragment() {
     ): View {
         _binding = FragmentOtherBinding.inflate(layoutInflater)
 
-        _movieDetail = arguments?.getParcelable(Constant.BUNDLE_MOVIE_DETAIL)
         id = arguments?.getString(Constant.BUNDLE_MOVIE_ID) ?: "0"
 
         initObserver()

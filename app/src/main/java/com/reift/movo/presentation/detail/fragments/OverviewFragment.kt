@@ -54,8 +54,7 @@ class OverviewFragment : Fragment() {
     private fun setTrailerWebView(resource: Resource<List<Video>>) {
         binding.apply {
             if(resource.data == null) return
-            val frameVideo =
-"<html><body style=\"margin: 0\"><br><iframe  width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/${resource.data!![0].key}\" frameborder=\"0\" allowfullscreen></iframe></body></html>"
+            val frameVideo = "<html><body style=\"margin: 0;margin-top: -30px;\"><br><iframe  width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/${resource.data!![0].key}\" frameborder=\"0\" allowfullscreen></iframe></body></html>"
 
             val webSettings = webViewTrailer.settings
             webSettings.javaScriptEnabled = true;
