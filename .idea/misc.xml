@@ -18,7 +18,7 @@
         <entry key="app/src/main/res/drawable/nav_item_color.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.189" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.28229166666666666" />

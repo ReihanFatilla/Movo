@@ -12,10 +12,12 @@ import com.reift.core.domain.usecase.home.HomeUseCase
 class HomeViewModel(val homeUseCase: HomeUseCase): ViewModel() {
 
     var nowPlayingResponse = MediatorLiveData<Resource<MovieResult>>()
+    var popularResponse = MediatorLiveData<Resource<MovieResult>>()
+    var upcomingResponse = MediatorLiveData<Resource<MovieResult>>()
 
     var currentPage = MutableLiveData(1)
 
-    fun getNowPlayingMovie(){
+    fun getNowPlayingMovies(){
         val source = LiveDataReactiveStreams.fromPublisher(
             homeUseCase.getMovies(Constant.NOW_PLAYING, currentPage.value.toString())
         )
@@ -23,6 +25,28 @@ class HomeViewModel(val homeUseCase: HomeUseCase): ViewModel() {
         nowPlayingResponse.addSource(source){
             nowPlayingResponse.postValue(it)
             nowPlayingResponse.removeSource(source)
+        }
+    }
+
+    fun getPopularMovies(){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            homeUseCase.getMovies(Constant.POPULAR_MOVIE, currentPage.value.toString())
+        )
+
+        popularResponse.addSource(source){
+            popularResponse.postValue(it)
+            popularResponse.removeSource(source)
+        }
+    }
+
+    fun getUpComingMovies(){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            homeUseCase.getMovies(Constant.UPCOMING, currentPage.value.toString())
+        )
+
+        upcomingResponse.addSource(source){
+            upcomingResponse.postValue(it)
+            upcomingResponse.removeSource(source)
         }
     }
 

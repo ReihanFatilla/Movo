@@ -1,5 +1,6 @@
 package com.reift.movo.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.reift.core.constant.Constant
 import com.reift.movo.R
 import com.reift.movo.adapter.CarouselAdapter
 import com.reift.movo.adapter.GenreListAdapter
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
+import com.reift.movo.`interface`.OnItemClickCallback
+import com.reift.movo.adapter.HorizontalListAdapter
 import com.reift.movo.databinding.FragmentHomeBinding
+import com.reift.movo.presentation.detail.DetailActivity
 import com.reift.movo.presentation.home.component.CenterItemLayoutManager
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -41,26 +47,86 @@ class HomeFragment : Fragment() {
 
 //        setUpMovieTypeList()
 //
-        viewModel.getNowPlayingMovie()
-        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
-            setUpCarousel(it)
-        }
-
-        binding.svHome.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
-        }
+        initObserver()
+        setUpView()
 
 //        setUpTabBar()
         return binding.root
     }
 
+    private fun setUpView() {
+        binding.svHomeClick.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
+        }
+    }
 
-//    }
+    private fun initObserver() {
+        viewModel.getNowPlayingMovies()
+        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
+            setUpCarousel(it)
+        }
 
-//    }
+        viewModel.getPopularMovies()
+        viewModel.popularResponse.observe(viewLifecycleOwner){
+            setUpPopularMovies(it)
+        }
+
+        viewModel.getUpComingMovies()
+        viewModel.upcomingResponse.observe(viewLifecycleOwner){
+            setUpUpcomingMovies(it)
+        }
+    }
+
+    private fun setUpUpcomingMovies(resource: Resource<MovieResult>?) {
+        when(resource){
+            is Resource.Success -> {
+                if(resource.data == null) return
+                binding.rvPopularMovies.apply {
+                    val mAdapter = HorizontalListAdapter()
+                    adapter = mAdapter
+                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    mAdapter.setData(resource.data?.movie)
+
+                    mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                        override fun onItemClicked(id: Int) {
+                            startActivity(
+                                Intent(context, DetailActivity::class.java)
+                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                            )
+                        }
+
+                    })
+                }
+            }
+        }
+    }
+
+    private fun setUpPopularMovies(resource: Resource<MovieResult>?) {
+        when(resource){
+            is Resource.Success -> {
+                if(resource.data == null) return
+                binding.rvUpcomingMovies.apply {
+                    val mAdapter = HorizontalListAdapter()
+                    adapter = mAdapter
+                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    mAdapter.setData(resource.data?.movie)
+
+                    mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                        override fun onItemClicked(id: Int) {
+                            startActivity(
+                                Intent(context, DetailActivity::class.java)
+                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                            )
+                        }
+
+                    })
+                }
+            }
+        }
+    }
 
     private fun setUpCarouselMovieData(movie: List<Movie>, currentItem: Int) {
-        setUpGenreList(movie.get(currentItem).genre)
+        setUpGenreList(movie[currentItem].genre)
         binding.tvCarouselTitle.text = movie[currentItem].title
     }
 
@@ -73,7 +139,7 @@ class HomeFragment : Fragment() {
             movie.data?.let { setUpCarouselMovieData(it.movie, 0) }
             mAdapter.setData(movie.data?.movie)
 
-            LinearSnapHelper().attachToRecyclerView(this)
+            PagerSnapHelper().attachToRecyclerView(this)
             onFlingListener = null
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -86,48 +152,10 @@ class HomeFragment : Fragment() {
                 }
             })
 
-//            Handler().postDelayed({
-//                binding.includedShimmer.frameShimmer.stopShimmer()
-//                binding.includedShimmer.frameShimmer.visibility = View.INVISIBLE
-//                binding.contraintHome.visibility = View.VISIBLE
-//            }, 1000)
-
 
         }
     }
 
-    //    private fun setUpMovieTypeList() {
-//        val mAdapter = MovieTypeAdapter()
-//
-//        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.TOP_RATED, Constant.UNITED_STATES, currentPage.toString())
-//        viewModel.topRatedResponse.observe(viewLifecycleOwner){
-//            mAdapter.setData(MovieTypeData(
-//                "Top Rated",
-//                "See what's Top Rated",
-//                it.results as List<ResultsItem>?
-//            ))
-//            Log.i("setUpMovieTypeList", it.results.toString())
-//        }
-//
-//        viewModel.getTrendingList(Constant.MEDIA_MOVIE, Constant.UNITED_STATES, currentPage.toString())
-//        viewModel.trendingResponse.observe(viewLifecycleOwner){
-//            mAdapter.setData(MovieTypeData(
-//                "Trending",
-//                "See what's Trending",
-//                it.results as List<ResultsItem>?
-//            ))
-//            Log.i("setUpMovieTypeList2", it.results.toString())
-//
-//        }
-//
-//        viewModel.getListByType(Constant.MEDIA_MOVIE, Constant.UPCOMING, Constant.UNITED_STATES, currentPage.toString())
-//        viewModel.upcomingResponse.observe(viewLifecycleOwner){
-//            mAdapter.setData(MovieTypeData(
-//                "Upcoming",
-//                "See what's Upcoming",
-//                it.results as List<ResultsItem>?
-//            ))
-//        }
 //    private fun setUpTabBar() {
 //        binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
 //            override fun onTabSelected(tab: TabLayout.Tab) {
