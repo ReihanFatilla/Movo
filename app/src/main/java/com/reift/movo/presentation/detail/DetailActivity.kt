@@ -2,6 +2,7 @@ package com.reift.movo.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.movo.utils.HelperFunction
@@ -35,7 +36,8 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         HelperFunction.transparentStatusbar(this)
 
-        id = intent.getIntExtra(Constant.INTENT_TO_DETAIL, 0).toString()
+        id = intent.getIntExtra(Constant.EXTRA_MOVIE_ID, 0).toString()
+        Log.i("onCreateSAdad", "onCreate: $id")
 
         initView()
         initObserver()

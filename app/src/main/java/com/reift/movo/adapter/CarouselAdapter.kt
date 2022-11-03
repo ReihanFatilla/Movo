@@ -48,7 +48,7 @@ class CarouselAdapter(
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra(Constant.INTENT_TO_DETAIL, listMovie[position].id)
+            intent.putExtra(Constant.EXTRA_MOVIE_ID, listMovie[position].id)
             holder.itemView.context.startActivity(intent)
         }
     }

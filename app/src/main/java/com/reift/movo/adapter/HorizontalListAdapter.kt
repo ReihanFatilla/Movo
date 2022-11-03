@@ -34,8 +34,6 @@ class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHo
     )
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val ratingCount = listMovie[position].voteAverage
-//        val ratingString = "(${ratingCount.toString().take(3)})"
         holder.binding.apply {
             Glide.with(imgMovie.context)
                 .load(Constant.IMAGE_BASE_URL+listMovie[position].posterPath)
@@ -44,15 +42,9 @@ class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHo
                 .priority(Priority.HIGH)
                 .into(imgMovie)
             tvTitle.text = listMovie[position].title
-//            tvRating.text = ratingString
-//            HelperFunction.setUpRatingStars(
-//                holder.itemView.context,
-//                holder.binding,
-//                ratingCount!!
-//            )
         }
         holder.itemView.setOnClickListener {
-//            onItemClickCallBack?.onItemClicked(listMovie[position])
+            onItemClickCallBack?.onItemClicked(listMovie[position].id)
         }
     }
 

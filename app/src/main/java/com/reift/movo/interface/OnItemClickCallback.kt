@@ -1,6 +1,8 @@
 package com.reift.movo.`interface`
 
+import com.reift.core.domain.model.detail.MovieDetail
+
 
 interface OnItemClickCallback {
-//    fun onItemClicked(data: ResultsItem)
+    fun onItemClicked(id: Int)
 }

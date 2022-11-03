@@ -45,10 +45,7 @@ object Constant {
     const val IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w1280"
 
     // Intent Key
-    const val INTENT_TO_DETAIL = "EXTRA_INTENT_DETAIL"
-    const val INTENT_TYPE = "EXTRA_INTENT_TYPE"
-    const val INTENT_MOVIE = "EXTRA_INTENT_MOVIE"
-    const val INTENT_TV = "EXTRA_INTENT_TV"
+    const val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
 
     // Shared Preference
     const val BUNDLE_MOVIE_ID = "BUNDLE_MOVIE_ID"
