@@ -65,7 +65,6 @@ class OtherFragment : Fragment() {
     private fun setUpRecommendationsMovies(resource: Resource<MovieResult>?) {
         when(resource){
             is Resource.Success -> {
-                if(resource.data == null) return
                 binding.rvRecommendations.apply {
                     val mAdapter = HorizontalListAdapter()
                     adapter = mAdapter
@@ -89,7 +88,6 @@ class OtherFragment : Fragment() {
     private fun setUpSimilarMovies(resource: Resource<MovieResult>?) {
         when(resource){
             is Resource.Success -> {
-                if(resource.data == null) return
                 binding.rvSimilar.apply {
                     val mAdapter = HorizontalListAdapter()
                     adapter = mAdapter
@@ -113,7 +111,6 @@ class OtherFragment : Fragment() {
     private fun setUpReviews(resource: Resource<List<Review>>?) {
         when (resource) {
             is Resource.Success -> {
-                if (resource.data == null) return
                 binding.rvReviews.apply {
                     val mAdapter = ReviewAdapter()
                     adapter = mAdapter

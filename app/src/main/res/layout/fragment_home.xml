@@ -96,6 +96,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:cardBackgroundColor="@android:color/transparent"
+            android:alpha="0"
             app:layout_constraintTop_toTopOf="@id/sv_home"
             app:layout_constraintBottom_toBottomOf="@id/sv_home"
             app:layout_constraintStart_toStartOf="@id/sv_home"
@@ -277,7 +278,7 @@
 
         </com.google.android.material.tabs.TabLayout>
 
-        <androidx.viewpager.widget.ViewPager
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

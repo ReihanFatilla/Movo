@@ -53,53 +53,69 @@ class OverviewFragment : Fragment() {
 
     private fun setTrailerWebView(resource: Resource<List<Video>>) {
         binding.apply {
-            if(resource.data == null) return
-            val frameVideo = "<html><body style=\"margin: 0;margin-top: -30px;\"><br><iframe  width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/${resource.data!![0].key}\" frameborder=\"0\" allowfullscreen></iframe></body></html>"
+            when (resource) {
+                is Resource.Success -> {
+                    if(resource.data?.isEmpty() == true) {
 
-            val webSettings = webViewTrailer.settings
-            webSettings.javaScriptEnabled = true;
-            webViewTrailer.loadData(frameVideo, "text/html", "utf-8")
+                    } else {
+                        val frameVideo = "<html><body style=\"margin: 0;margin-top: -30px;\"><br><iframe  width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/${
+                            resource.data?.get(
+                                0
+                            )?.key
+                        }\" frameborder=\"0\" allowfullscreen></iframe></body></html>"
+
+                        val webSettings = webViewTrailer.settings
+                        webSettings.javaScriptEnabled = true;
+                        webViewTrailer.loadData(frameVideo, "text/html", "utf-8")
+                    }
+
+                }
+            }
         }
     }
 
     private fun initObserver() {
         viewModel.getMovieActor(id)
-        viewModel.actorResponse.observe(viewLifecycleOwner){
+        viewModel.actorResponse.observe(viewLifecycleOwner) {
             setUpActorRV(it)
         }
 
         viewModel.getMovieWallpaper(id)
-        viewModel.wallpaperResponse.observe(viewLifecycleOwner){
+        viewModel.wallpaperResponse.observe(viewLifecycleOwner) {
             setUpWallpaperRV(it)
         }
 
         viewModel.getMovieTrailer(id)
-        viewModel.videoResponse.observe(viewLifecycleOwner){
+        viewModel.videoResponse.observe(viewLifecycleOwner) {
             setTrailerWebView(it)
         }
     }
 
     private fun setUpWallpaperRV(resource: Resource<Wallpaper>?) {
-        binding.rvWallpaper.apply {
-            with(resource?.data){
-                if(this == null) return
-                val mAdapter = WallpaperAdapter()
-                layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                adapter = mAdapter
-                mAdapter.setData(this.wallpaperUrl)
+        when (resource) {
+            is Resource.Success -> {
+                binding.rvWallpaper.apply {
+                    val mAdapter = WallpaperAdapter()
+                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    adapter = mAdapter
+                    resource.data?.wallpaperUrl?.let { mAdapter.setData(it) }
+                }
             }
         }
+
     }
 
     private fun setUpActorRV(resource: Resource<List<Actor>>?) {
-        binding.rvActors.apply {
-            with(resource?.data){
-                if (this == null) return
-                val mAdapter = ActorAdapter()
-                layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                adapter = mAdapter
-                mAdapter.setData(this)
+        when (resource) {
+            is Resource.Success -> {
+                binding.rvActors.apply {
+                    val mAdapter = ActorAdapter()
+                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    adapter = mAdapter
+                    mAdapter.setData(resource.data)
+                }
             }
         }
+
     }
 }
