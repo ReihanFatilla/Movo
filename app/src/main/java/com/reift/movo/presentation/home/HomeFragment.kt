@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.tabs.TabLayout
 import com.reift.core.constant.Constant
 import com.reift.movo.R
 import com.reift.movo.adapter.CarouselAdapter
@@ -98,6 +99,7 @@ class HomeFragment : Fragment() {
                     })
                 }
             }
+            else -> {}
         }
     }
 
@@ -122,6 +124,7 @@ class HomeFragment : Fragment() {
                     })
                 }
             }
+            else -> {}
         }
     }
 
@@ -156,10 +159,10 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    private fun setUpTabBar() {
-//        binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+    private fun setUpTabBar() {
+//        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 //            override fun onTabSelected(tab: TabLayout.Tab) {
-//                when(tab.position){
+//                when (tab.position) {
 ////                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
 ////                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
 //                }
@@ -170,12 +173,19 @@ class HomeFragment : Fragment() {
 //
 //            override fun onTabReselected(tab: TabLayout.Tab?) {
 //                currentPage += 1
-//                when(tab?.position){
-//                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
-//                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
+//                when (tab?.position) {
+//                    0 -> viewModel.getNowPlayingMovie(
+//                        Constant.UNITED_STATES,
+//                        currentPage.toString()
+//                    )
+//                    1 -> viewModel.getAiringTodayTvShow(
+//                        Constant.UNITED_STATES,
+//                        currentPage.toString()
+//                    )
 //                }
 //            }
 //        })
+    }
 
 
     private fun getCurrentItem(): Int {

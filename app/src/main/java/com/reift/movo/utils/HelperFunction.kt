@@ -95,9 +95,9 @@ object HelperFunction {
 
     fun getColor(context: Context, color: Any): Int {
         return when(color){
-            is String -> context.resources.getColor(context.resources.getIdentifier(color, "color", context.packageName))
-            is Int -> context.resources.getColor(color)
-            else -> context.resources.getColor(context.resources.getIdentifier("colorPrimary", "color", context.packageName))
+            is String -> context.getColor(context.resources.getIdentifier(color, "color", context.packageName))
+            is Int -> context.getColor(color)
+            else -> context.getColor(context.resources.getIdentifier("colorPrimary", "color", context.packageName))
         }
     }
 }

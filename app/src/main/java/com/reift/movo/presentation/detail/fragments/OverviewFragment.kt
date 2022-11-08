@@ -70,6 +70,7 @@ class OverviewFragment : Fragment() {
                     }
 
                 }
+                else -> {}
             }
         }
     }
@@ -101,6 +102,7 @@ class OverviewFragment : Fragment() {
                     resource.data?.wallpaperUrl?.let { mAdapter.setData(it) }
                 }
             }
+            else -> {}
         }
 
     }
@@ -115,6 +117,7 @@ class OverviewFragment : Fragment() {
                     mAdapter.setData(resource.data)
                 }
             }
+            else -> {}
         }
 
     }

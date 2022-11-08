@@ -82,6 +82,7 @@ class OtherFragment : Fragment() {
                     })
                 }
             }
+            else -> {}
         }
     }
 
@@ -105,6 +106,7 @@ class OtherFragment : Fragment() {
                     })
                 }
             }
+            else -> {}
         }
     }
 
@@ -118,6 +120,7 @@ class OtherFragment : Fragment() {
                     mAdapter.setData(resource.data)
                 }
             }
+            else -> {}
         }
 
     }

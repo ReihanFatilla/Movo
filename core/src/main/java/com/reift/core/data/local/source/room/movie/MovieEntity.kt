@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity
 @Parcelize
+@Entity
 data class MovieEntity(
     @PrimaryKey
     val id: Int,
