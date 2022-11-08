@@ -4,6 +4,7 @@ import com.reift.core.domain.usecase.detail.movie.MovieDetailInteractor
 import com.reift.core.domain.usecase.detail.movie.MovieDetailUseCase
 import com.reift.core.domain.usecase.home.HomeInteractor
 import com.reift.core.domain.usecase.home.HomeUseCase
+import com.reift.movo.presentation.allmovietv.AllMovieTvViewModel
 import com.reift.movo.presentation.detail.DetailViewModel
 import com.reift.movo.presentation.home.HomeViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -17,4 +18,5 @@ val useCaseModule = module {
 val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { DetailViewModel(get()) }
+    viewModel { AllMovieTvViewModel() }
 }
