@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/app_backround"
-    android:layout_marginTop="24dp">
+    android:clickable="true"
+    android:layout_marginTop="24dp"
+    android:focusable="true">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_poster"

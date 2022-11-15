@@ -1,16 +1,20 @@
 package com.reift.movo.presentation.home.fragment
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.core.constant.Constant
-import com.reift.movo.R
-import com.reift.movo.databinding.FragmentHomeBinding
+import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.movie.MovieResult
+import com.reift.movo.`interface`.OnItemClickCallback
+import com.reift.movo.adapter.VerticalListAdapter
 import com.reift.movo.databinding.FragmentHomeTabBinding
+import com.reift.movo.presentation.detail.DetailActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeTabFragment : Fragment() {
@@ -38,15 +42,32 @@ class HomeTabFragment : Fragment() {
     private fun initObservers() {
         viewModel.getMoviesByCategory(category)
         viewModel.movieResponse.observe(viewLifecycleOwner){
-            setUpHomeTabRv()
+            setUpHomeTabRv(it)
         }
     }
 
-    private fun setUpHomeTabRv() {
-        binding.rvHomeTab.apply {
-            layoutManager = LinearLayoutManager(context)
+    private fun setUpHomeTabRv(resource: Resource<MovieResult>) {
+        when(resource){
+            is Resource.Success -> {
+                binding.rvHomeTab.apply {
+                    val mAdapter = VerticalListAdapter()
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = mAdapter
+                    mAdapter.setData(resource.data?.movie)
+                    mAdapter.setOnItemClickCallback(object: OnItemClickCallback{
+                        override fun onItemClicked(id: Int) {
+                            startActivity(
+                                Intent(context, DetailActivity::class.java)
+                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                            )
+                        }
 
+                    })
+                }
+            }
+            else -> {}
         }
+
     }
 
 }

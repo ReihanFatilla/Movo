@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.core.constant.Constant
 import com.reift.movo.R
 import com.reift.movo.adapter.CarouselAdapter
@@ -24,6 +23,7 @@ import com.reift.movo.adapter.HorizontalListAdapter
 import com.reift.movo.databinding.FragmentHomeBinding
 import com.reift.movo.presentation.detail.DetailActivity
 import com.reift.movo.presentation.home.component.CenterItemLayoutManager
+import com.reift.movo.presentation.home.fragment.adapter.HomeViewPagerAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -44,14 +44,10 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-//        binding.includedShimmer.frameShimmer.startShimmer()
-
-//        setUpMovieTypeList()
-//
         initObserver()
         setUpView()
+        setUpTabBar()
 
-//        setUpTabBar()
         return binding.root
     }
 
@@ -81,7 +77,6 @@ class HomeFragment : Fragment() {
     private fun setUpUpcomingMovies(resource: Resource<MovieResult>?) {
         when(resource){
             is Resource.Success -> {
-                if(resource.data == null) return
                 binding.rvPopularMovies.apply {
                     val mAdapter = HorizontalListAdapter()
                     adapter = mAdapter
@@ -106,7 +101,6 @@ class HomeFragment : Fragment() {
     private fun setUpPopularMovies(resource: Resource<MovieResult>?) {
         when(resource){
             is Resource.Success -> {
-                if(resource.data == null) return
                 binding.rvUpcomingMovies.apply {
                     val mAdapter = HorizontalListAdapter()
                     adapter = mAdapter
@@ -160,31 +154,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpTabBar() {
-//        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-//            override fun onTabSelected(tab: TabLayout.Tab) {
-//                when (tab.position) {
-////                    0 -> viewModel.getNowPlayingMovie(Constant.UNITED_STATES, currentPage.toString())
-////                    1 -> viewModel.getAiringTodayTvShow(Constant.UNITED_STATES, currentPage.toString())
-//                }
-//            }
-//
-//            override fun onTabUnselected(tab: TabLayout.Tab?) {
-//            }
-//
-//            override fun onTabReselected(tab: TabLayout.Tab?) {
-//                currentPage += 1
-//                when (tab?.position) {
-//                    0 -> viewModel.getNowPlayingMovie(
-//                        Constant.UNITED_STATES,
-//                        currentPage.toString()
-//                    )
-//                    1 -> viewModel.getAiringTodayTvShow(
-//                        Constant.UNITED_STATES,
-//                        currentPage.toString()
-//                    )
-//                }
-//            }
-//        })
+        binding.vpHome.apply {
+            adapter = activity?.let { HomeViewPagerAdapter(it) }
+        }
+
+        TabLayoutMediator(binding.tabLayout, binding.vpHome) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Top Rated Movie"
+                1 -> tab.text = "Latest Movie"
+            }
+        }.attach()
     }
 
 

@@ -30,21 +30,21 @@ object HelperFunction {
             if (rating >= 1.0) {
                 binding.stars1.setImageResource(R.drawable.ic_stars)
                 if (rating >= 1.5) {
-                    binding.stars1.setImageResource(R.drawable.ic_half_stars)
+                    binding.stars2.setImageResource(R.drawable.ic_half_stars)
                     if (rating >= 2.0) {
-                        binding.stars1.setImageResource(R.drawable.ic_stars)
+                        binding.stars2.setImageResource(R.drawable.ic_stars)
                         if (rating >= 2.5) {
-                            binding.stars1.setImageResource(R.drawable.ic_half_stars)
+                            binding.stars3.setImageResource(R.drawable.ic_half_stars)
                             if (rating >= 3.0) {
-                                binding.stars1.setImageResource(R.drawable.ic_stars)
+                                binding.stars3.setImageResource(R.drawable.ic_stars)
                                 if (rating >= 3.5) {
-                                    binding.stars1.setImageResource(R.drawable.ic_half_stars)
+                                    binding.stars4.setImageResource(R.drawable.ic_half_stars)
                                     if (rating >= 4.0) {
-                                        binding.stars1.setImageResource(R.drawable.ic_stars)
+                                        binding.stars4.setImageResource(R.drawable.ic_stars)
                                         if (rating >= 4.5) {
-                                            binding.stars1.setImageResource(R.drawable.ic_half_stars)
+                                            binding.stars5.setImageResource(R.drawable.ic_half_stars)
                                             if (rating == 5.0) {
-                                                binding.stars1.setImageResource(R.drawable.ic_stars)
+                                                binding.stars5.setImageResource(R.drawable.ic_stars)
                                             }
                                         }
                                     }
@@ -67,7 +67,7 @@ object HelperFunction {
         listGenre.forEach {
             result += "$it, "
         }
-        return result
+        return result.dropLast(1)
     }
 
 
