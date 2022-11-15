@@ -30,7 +30,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding as FragmentHomeBinding
 
     private val viewModel: HomeViewModel by viewModel()
 
