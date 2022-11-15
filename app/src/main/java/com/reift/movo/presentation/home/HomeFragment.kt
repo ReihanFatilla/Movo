@@ -2,6 +2,7 @@ package com.reift.movo.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -144,7 +145,7 @@ class HomeFragment : Fragment() {
                     super.onScrollStateChanged(recyclerView, newState)
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val position: Int = getCurrentItem()
-                        movie.data?.let { setUpCarouselMovieData(it.movie, position + 1) }
+                        movie.data?.let { setUpCarouselMovieData(it.movie, position) }
                     }
                 }
             })

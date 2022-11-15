@@ -14,12 +14,13 @@ import com.reift.core.domain.model.movie.MovieResult
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.VerticalListAdapter
 import com.reift.movo.databinding.FragmentHomeTabBinding
+import com.reift.movo.presentation.allmovietv.AllMovieTvViewModel
 import com.reift.movo.presentation.detail.DetailActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeTabFragment : Fragment() {
 
-    private val viewModel: HomeTabViewModel by viewModel()
+    private val viewModel: AllMovieTvViewModel by viewModel()
 
     private var _binding: FragmentHomeTabBinding? = null
     private val binding get() = _binding as FragmentHomeTabBinding
