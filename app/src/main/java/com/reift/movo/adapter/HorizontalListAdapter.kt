@@ -10,10 +10,12 @@ import com.bumptech.glide.request.RequestOptions
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.movie.MovieResult
 import com.reift.movo.databinding.ItemHorizontalMovieBinding
 
-class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHolder>() {
-    val listMovie = ArrayList<Movie>()
+class HorizontalListAdapter<T>: RecyclerView.Adapter<HorizontalListAdapter.MyViewHolder>() {
+
+    val listMovie = ArrayList<T>()
 
     private var onItemClickCallBack: OnItemClickCallback? = null
 
@@ -21,7 +23,7 @@ class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHo
         this.onItemClickCallBack = onItemClickCallback
     }
 
-    fun setData(data: List<Movie>?) {
+    fun setData(data: List<T>?) {
         if (data == null) return
         listMovie.clear()
         listMovie.addAll(data)
@@ -35,17 +37,26 @@ class HorizontalListAdapter: RecyclerView.Adapter<HorizontalListAdapter.MyViewHo
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            Glide.with(imgMovie.context)
-                .load(Constant.IMAGE_BASE_URL+listMovie[position].posterPath)
-                .apply(RequestOptions())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .priority(Priority.HIGH)
-                .into(imgMovie)
-            tvTitle.text = listMovie[position].title
-        }
-        holder.itemView.setOnClickListener {
-            onItemClickCallBack?.onItemClicked(listMovie[position].id)
-        }
+            when(listMovie[position]){
+                is Movie -> {
+                    with(listMovie[position] as Movie){
+                        Glide.with(imgMovie.context)
+                            .load(Constant.IMAGE_BASE_URL+posterPath)
+                            .apply(RequestOptions())
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .priority(Priority.HIGH)
+                            .into(imgMovie)
+                        tvTitle.text = title
+
+                        holder.itemView.setOnClickListener {
+                            onItemClickCallBack?.onItemClicked(id)
+                        }
+                    }
+                }
+
+                }
+            }
+
     }
 
     override fun getItemCount() = listMovie.size

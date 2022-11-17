@@ -13,6 +13,7 @@ import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.MovieDetail
 import com.reift.core.domain.model.detail.Review
+import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.HorizontalListAdapter
@@ -66,7 +67,7 @@ class OtherFragment : Fragment() {
         when(resource){
             is Resource.Success -> {
                 binding.rvRecommendations.apply {
-                    val mAdapter = HorizontalListAdapter()
+                    val mAdapter = HorizontalListAdapter<Movie>()
                     adapter = mAdapter
                     layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                     mAdapter.setData(resource.data?.movie)
@@ -90,7 +91,7 @@ class OtherFragment : Fragment() {
         when(resource){
             is Resource.Success -> {
                 binding.rvSimilar.apply {
-                    val mAdapter = HorizontalListAdapter()
+                    val mAdapter = HorizontalListAdapter<Movie>()
                     adapter = mAdapter
                     layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                     mAdapter.setData(resource.data?.movie)

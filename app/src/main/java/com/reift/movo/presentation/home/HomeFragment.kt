@@ -19,6 +19,7 @@ import com.reift.movo.adapter.GenreListAdapter
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
+import com.reift.core.domain.model.tv.TvResult
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.HorizontalListAdapter
 import com.reift.movo.databinding.FragmentHomeBinding
@@ -78,8 +79,8 @@ class HomeFragment : Fragment() {
     private fun setUpUpcomingMovies(resource: Resource<MovieResult>?) {
         when(resource){
             is Resource.Success -> {
-                binding.rvPopularMovies.apply {
-                    val mAdapter = HorizontalListAdapter()
+                binding.rvUpcomingMovies.apply {
+                    val mAdapter = HorizontalListAdapter<Movie>()
                     adapter = mAdapter
                     layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                     mAdapter.setData(resource.data?.movie)
@@ -99,25 +100,34 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUpPopularMovies(resource: Resource<MovieResult>?) {
+    private fun <T> setUpPopularMovies(resource: Resource<T>?) {
         when(resource){
             is Resource.Success -> {
-                binding.rvUpcomingMovies.apply {
-                    val mAdapter = HorizontalListAdapter()
-                    adapter = mAdapter
-                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                    mAdapter.setData(resource.data?.movie)
+                when(resource.data){
+                    is MovieResult -> {
+                        val result = resource.data as MovieResult
+                        binding.rvPopularMovies.apply {
+                            val mAdapter = HorizontalListAdapter<Movie>()
+                            adapter = mAdapter
+                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            mAdapter.setData(result.movie)
 
-                    mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                        override fun onItemClicked(id: Int) {
-                            startActivity(
-                                Intent(context, DetailActivity::class.java)
-                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
-                            )
+                            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                                override fun onItemClicked(id: Int) {
+                                    startActivity(
+                                        Intent(context, DetailActivity::class.java)
+                                            .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                                    )
+                                }
+
+                            })
                         }
-
-                    })
+                    }
+                    is TvResult -> {
+                        val result = resource.data as TvResult
+                    }
                 }
+
             }
             else -> {}
         }
