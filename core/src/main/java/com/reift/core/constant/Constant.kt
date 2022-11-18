@@ -15,18 +15,17 @@ object Constant {
     const val SORT_TITLE = "original_title.desc"
 
     // Movie List By
-    const val LATEST = "latest"
-    const val NOW_PLAYING = "now_playing"
-    const val POPULAR_MOVIE = "popular"
-    const val TOP_RATED_MOVIE = "top_rated"
-    const val UPCOMING = "upcoming"
+    const val LATEST_MOVIE = "latest"
+    const val NOW_PLAYING_MOVIE = "now_playing"
+    const val POPULAR_MOVIE = "popular_movie"
+    const val TOP_RATED_MOVIE = "top_rated_movie"
+    const val UPCOMING_MOVIE = "upcoming"
 
     // TV Show List By
-    const val AIRING_TODAY = "airing_today"
-    const val TOP_RATED_TVSHOW = "top_rated"
-    const val POPULAR_TVSHOW = "popular"
-    const val TOP_RATED = "top_rated"
-    const val ON_THE_AIR = "on_the_air"
+    const val AIRING_TODAY_TV = "airing_today"
+    const val TOP_RATED_TV = "top_rated_tv"
+    const val POPULAR_TV = "popular_tv"
+    const val ON_THE_AIR_TV = "on_the_air"
 
     // Movie Search By
     const val MOVIE = "movie"

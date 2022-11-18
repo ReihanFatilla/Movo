@@ -33,7 +33,7 @@ class SeeAllTabFragment : Fragment() {
     ): View {
         _binding = FragmentSeeAllTabBinding.inflate(layoutInflater)
 
-        category = arguments?.getString(Constant.BUNDLE_MOVIE_CATEGORY) ?: Constant.NOW_PLAYING
+        category = arguments?.getString(Constant.BUNDLE_MOVIE_CATEGORY) ?: Constant.NOW_PLAYING_MOVIE
         page = arguments?.getInt(Constant.BUNDLE_MOVIE_PAGE) ?: 1
 
         initObservers()

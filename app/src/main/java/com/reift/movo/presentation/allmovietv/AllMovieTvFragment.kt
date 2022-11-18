@@ -22,8 +22,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class AllMovieTvFragment : Fragment() {
 
-    private val viewModel: AllMovieTvViewModel by viewModel()
-
     private var _binding: FragmentAllMovieTvBinding? = null
     private val binding get() = _binding as FragmentAllMovieTvBinding
 
@@ -35,11 +33,31 @@ class AllMovieTvFragment : Fragment() {
     ): View {
         _binding = FragmentAllMovieTvBinding.inflate(layoutInflater)
 
-        category = arguments?.getString(Constant.BUNDLE_MOVIE_CATEGORY) ?: Constant.NOW_PLAYING
+        category = arguments?.getString(Constant.BUNDLE_MOVIE_CATEGORY) ?: Constant.NOW_PLAYING_MOVIE
 
         setUpPageBar()
+        setUpSeeAllTitle()
 
         return binding.root
+    }
+
+    private fun setUpSeeAllTitle() {
+        binding.tvMovieTvCategory.text = categoryTextFormatter()
+    }
+
+    private fun categoryTextFormatter(): String {
+        return when(category){
+            Constant.POPULAR_MOVIE -> "Popular Movie"
+            Constant.TOP_RATED_MOVIE -> "Top Rated Movie"
+            Constant.UPCOMING_MOVIE -> "Upcoming Movie"
+            Constant.NOW_PLAYING_MOVIE -> "Now Playing Movie"
+            Constant.LATEST_MOVIE -> "Latest Movie"
+            Constant.AIRING_TODAY_TV -> "Airing Today Tv"
+            Constant.POPULAR_TV -> "Popular Tv Show"
+            Constant.TOP_RATED_TV -> "Top Rated Tv"
+            Constant.ON_THE_AIR_TV -> "On The Air Tv"
+            else -> category
+        }
     }
 
     private fun setUpPageBar() {
