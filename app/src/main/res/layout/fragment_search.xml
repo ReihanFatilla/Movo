@@ -73,16 +73,25 @@
             app:layout_constraintTop_toBottomOf="@id/btn_back"
             />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_favorite_movies"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/search_media_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            tools:listitem="@layout/item_vertical_movie"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/sv_search"
-            />
+            android:elevation="0dp"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
+            android:backgroundTint="@color/app_backround"
+            app:tabIndicatorColor="@color/primary_color"
+            app:tabSelectedTextColor="@color/primary_color"
+            app:tabTextColor="@color/gray_text"
+            app:tabMode="fixed"
+            app:layout_constraintTop_toBottomOf="@id/sv_search"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/search_media_tabs" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
