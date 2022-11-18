@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.MovieResult
@@ -36,41 +37,16 @@ class AllMovieTvFragment : Fragment() {
 
         category = arguments?.getString(Constant.BUNDLE_MOVIE_CATEGORY) ?: Constant.NOW_PLAYING
 
-        initObservers()
+        setUpPageBar()
+
         return binding.root
     }
 
-    private fun initObservers() {
-        viewModel.getMoviesByCategory(category)
-        viewModel.movieResponse.observe(viewLifecycleOwner){
-            setUpHomeTabRv(it)
-        }
+    private fun setUpPageBar() {
+        TabLayoutMediator(binding.pageTabs, binding.vpPage){ tab, position ->
+            tab.text = position.toString()
+        }.attach()
     }
 
-    private fun setUpHomeTabRv(resource: Resource<MovieResult>) {
-        when(resource){
-            is Resource.Success -> {
-                binding.rvMovieTvCategory.apply {
-                    val mAdapter = VerticalListAdapter()
-                    layoutManager = LinearLayoutManager(context)
-                    adapter = mAdapter
-                    mAdapter.setData(resource.data?.movie)
-
-                    mAdapter.setOnItemClickCallback(object: OnItemClickCallback {
-                        override fun onItemClicked(id: Int) {
-                            startActivity(
-                                Intent(context, DetailActivity::class.java)
-                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
-                            )
-                        }
-
-                    })
-
-                }
-            }
-            else -> {}
-        }
-
-    }
 
 }

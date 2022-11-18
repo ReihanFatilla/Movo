@@ -51,13 +51,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/btn_back" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_movie_tv_category"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/page_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_vertical_movie"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_tv_category"/>
+            android:elevation="0dp"
+            android:backgroundTint="@color/app_backround"
+            app:tabIndicatorColor="@color/primary_color"
+            app:tabSelectedTextColor="@color/black"
+            app:tabMode="scrollable"
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_tv_category">
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/page_tabs" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

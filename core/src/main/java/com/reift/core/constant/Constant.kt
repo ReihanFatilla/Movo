@@ -47,8 +47,9 @@ object Constant {
     // Intent Key
     const val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
 
-    // Shared Preference
+    // Bundle Key
     const val BUNDLE_MOVIE_ID = "BUNDLE_MOVIE_ID"
     const val BUNDLE_MOVIE_CATEGORY = "BUNDLE_MOVIE_ID"
     const val BUNDLE_MOVIE_DETAIL = "BUNDLE_MOVIE_DETAIL"
+    const val BUNDLE_MOVIE_PAGE: String = "BUNDLE_MOVIE_PAGE"
 }

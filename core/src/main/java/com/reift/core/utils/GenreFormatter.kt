@@ -30,7 +30,6 @@ object GenreFormatter {
             "10766" -> "Soap"
             "10767" -> "Talk"
             "10768" -> "War & Politics"
-            "37" -> "Western"
             else -> "animeh"
         }
     }

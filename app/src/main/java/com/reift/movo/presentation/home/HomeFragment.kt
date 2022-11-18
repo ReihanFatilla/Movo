@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
     private fun setUpUpcomingMovies(resource: Resource<MovieResult>?) {
         when(resource){
             is Resource.Success -> {
-                binding.rvUpcomingMovies.apply {
+                binding.rvPopularMovies.apply {
                     val mAdapter = HorizontalListAdapter<Movie>()
                     adapter = mAdapter
                     layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -106,7 +106,7 @@ class HomeFragment : Fragment() {
                 when(resource.data){
                     is MovieResult -> {
                         val result = resource.data as MovieResult
-                        binding.rvPopularMovies.apply {
+                        binding.rvUpcomingMovies.apply {
                             val mAdapter = HorizontalListAdapter<Movie>()
                             adapter = mAdapter
                             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -123,9 +123,7 @@ class HomeFragment : Fragment() {
                             })
                         }
                     }
-                    is TvResult -> {
-                        val result = resource.data as TvResult
-                    }
+                    is TvResult -> {}
                 }
 
             }
