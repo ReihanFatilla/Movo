@@ -1,28 +1,16 @@
 package com.reift.movo.presentation.allmovietv
 
-import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.core.constant.Constant
-import com.reift.core.domain.model.Resource
-import com.reift.core.domain.model.movie.MovieResult
-import com.reift.movo.R
-import com.reift.movo.`interface`.OnItemClickCallback
-import com.reift.movo.adapter.VerticalListAdapter
-import com.reift.movo.databinding.ActivityMainBinding
 import com.reift.movo.databinding.FragmentAllMovieTvBinding
 import com.reift.movo.presentation.allmovietv.adapter.SeeAllViewPagerAdapter
-import com.reift.movo.presentation.detail.DetailActivity
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class AllMovieTvFragment : Fragment() {
 
@@ -64,7 +52,7 @@ class AllMovieTvFragment : Fragment() {
     }
 
     private fun categoryTextFormatter(): String {
-        return when(category){
+        return when (category) {
             Constant.POPULAR_MOVIE -> "Popular Movie"
             Constant.TOP_RATED_MOVIE -> "Top Rated Movie"
             Constant.UPCOMING_MOVIE -> "Upcoming Movie"
@@ -80,10 +68,10 @@ class AllMovieTvFragment : Fragment() {
 
     private fun setUpPageBar() {
         binding.apply {
-            Log.i("setUpPageBarASDasdas", "setUpPageBar: $totalPages")
+            binding.vpPage.isUserInputEnabled = false
             vpPage.adapter = activity?.let { SeeAllViewPagerAdapter(it, category, totalPages) }
-            TabLayoutMediator(pageTabs, vpPage){ tab, position ->
-                tab.text = (position+1).toString()
+            TabLayoutMediator(pageTabs, vpPage) { tab, position ->
+                tab.text = (position + 1).toString()
             }.attach()
         }
     }

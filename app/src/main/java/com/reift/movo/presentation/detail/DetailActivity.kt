@@ -37,7 +37,6 @@ class DetailActivity : AppCompatActivity() {
         HelperFunction.transparentStatusbar(this)
 
         id = intent.getIntExtra(Constant.EXTRA_MOVIE_ID, 0).toString()
-        Log.i("onCreateSAdad", "onCreate: $id")
 
         initView()
         initObserver()
