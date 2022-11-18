@@ -13,13 +13,13 @@ class SeeAllViewPagerAdapter(
     val pageTotal: Int
 ) :FragmentStateAdapter(fa){
 
-    override fun getItemCount() = pageTotal
+    override fun getItemCount() = if(pageTotal > 30) 30 else pageTotal
 
     override fun createFragment(position: Int): Fragment {
         val seeAllTabFragment = SeeAllTabFragment()
         val bundle = Bundle()
         bundle.putString(Constant.BUNDLE_MOVIE_CATEGORY, category)
-        bundle.putInt(Constant.BUNDLE_MOVIE_PAGE, position)
+        bundle.putInt(Constant.BUNDLE_MOVIE_PAGE, position + 1)
         seeAllTabFragment.arguments = bundle
         return seeAllTabFragment
     }

@@ -13,9 +13,9 @@ class AllMovieTvViewModel(
 ) : ViewModel() {
     val movieResponse = MediatorLiveData<Resource<MovieResult>>()
 
-    fun getMoviesByCategory(category: String){
+    fun getMoviesByCategory(category: String, page: String = "0"){
         val source = LiveDataReactiveStreams.fromPublisher(
-            allMovieTvUseCase.getMovies(category, "1")
+            allMovieTvUseCase.getMovies(category, page)
         )
 
         movieResponse.addSource(source){

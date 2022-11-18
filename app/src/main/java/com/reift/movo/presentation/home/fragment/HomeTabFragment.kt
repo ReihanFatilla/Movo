@@ -33,7 +33,7 @@ class HomeTabFragment : Fragment() {
     ): View {
         _binding = FragmentHomeTabBinding.inflate(layoutInflater)
 
-        category = arguments?.getString(Constant.BUNDLE_MOVIE_CATEGORY) ?: Constant.NOW_PLAYING
+        category = arguments?.getString(Constant.BUNDLE_MOVIE_CATEGORY) ?: Constant.NOW_PLAYING_MOVIE
 
         initObservers()
 

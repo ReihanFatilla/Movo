@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_search"
             app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_navigation_home_to_allMovieTvFragment"
+            app:destination="@id/allMovieTvFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_favorite"
@@ -25,5 +28,19 @@
         android:name="com.reift.movo.presentation.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/allMovieTvFragment"
+        android:name="com.reift.movo.presentation.allmovietv.AllMovieTvFragment"
+        android:label="fragment_all_movie_tv"
+        tools:layout="@layout/fragment_all_movie_tv"  >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="now_playing" />
+        <argument
+            android:name="totalPages"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
 
 </navigation>

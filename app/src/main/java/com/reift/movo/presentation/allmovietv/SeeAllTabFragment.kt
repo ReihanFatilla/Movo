@@ -42,7 +42,7 @@ class SeeAllTabFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.getMoviesByCategory(category)
+        viewModel.getMoviesByCategory(category, page.toString())
         viewModel.movieResponse.observe(viewLifecycleOwner){
             setUpHomeTabRv(it)
         }

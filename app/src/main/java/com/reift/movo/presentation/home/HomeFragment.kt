@@ -2,7 +2,6 @@ package com.reift.movo.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +12,13 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.core.constant.Constant
-import com.reift.movo.R
-import com.reift.movo.adapter.CarouselAdapter
-import com.reift.movo.adapter.GenreListAdapter
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
-import com.reift.core.domain.model.tv.TvResult
+import com.reift.movo.R
 import com.reift.movo.`interface`.OnItemClickCallback
+import com.reift.movo.adapter.CarouselAdapter
+import com.reift.movo.adapter.GenreListAdapter
 import com.reift.movo.adapter.HorizontalListAdapter
 import com.reift.movo.databinding.FragmentHomeBinding
 import com.reift.movo.presentation.detail.DetailActivity
@@ -61,24 +59,32 @@ class HomeFragment : Fragment() {
 
     private fun initObserver() {
         viewModel.getNowPlayingMovies()
-        viewModel.nowPlayingResponse.observe(viewLifecycleOwner){
+        viewModel.nowPlayingResponse.observe(viewLifecycleOwner) {
             setUpCarousel(it)
         }
 
         viewModel.getPopularMovies()
-        viewModel.popularResponse.observe(viewLifecycleOwner){
+        viewModel.popularResponse.observe(viewLifecycleOwner) {
             setUpPopularMovies(it)
         }
 
         viewModel.getUpComingMovies()
-        viewModel.upcomingResponse.observe(viewLifecycleOwner){
+        viewModel.upcomingResponse.observe(viewLifecycleOwner) {
             setUpUpcomingMovies(it)
         }
     }
 
     private fun setUpUpcomingMovies(resource: Resource<MovieResult>?) {
-        when(resource){
+        when (resource) {
             is Resource.Success -> {
+                binding.tvSeeAllUpcomingMovies.setOnClickListener {
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionNavigationHomeToAllMovieTvFragment(
+                            Constant.UPCOMING_MOVIE,
+                            resource.data?.totalPages ?: 1
+                        )
+                    )
+                }
                 binding.rvPopularMovies.apply {
                     val mAdapter = HorizontalListAdapter<Movie>()
                     adapter = mAdapter
@@ -100,30 +106,32 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun <T> setUpPopularMovies(resource: Resource<T>?) {
-        when(resource){
+    private fun setUpPopularMovies(resource: Resource<MovieResult>?) {
+        when (resource) {
             is Resource.Success -> {
-                when(resource.data){
-                    is MovieResult -> {
-                        val result = resource.data as MovieResult
-                        binding.rvUpcomingMovies.apply {
-                            val mAdapter = HorizontalListAdapter<Movie>()
-                            adapter = mAdapter
-                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                            mAdapter.setData(result.movie)
+                binding.tvSeeAllPopularMovies.setOnClickListener {
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionNavigationHomeToAllMovieTvFragment(
+                            Constant.POPULAR_MOVIE,
+                            resource.data?.totalPages ?: 1
+                        )
+                    )
+                }
+                binding.rvUpcomingMovies.apply {
+                    val mAdapter = HorizontalListAdapter<Movie>()
+                    adapter = mAdapter
+                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    mAdapter.setData(resource.data?.movie)
 
-                            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                                override fun onItemClicked(id: Int) {
-                                    startActivity(
-                                        Intent(context, DetailActivity::class.java)
-                                            .putExtra(Constant.EXTRA_MOVIE_ID, id)
-                                    )
-                                }
-
-                            })
+                    mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                        override fun onItemClicked(id: Int) {
+                            startActivity(
+                                Intent(context, DetailActivity::class.java)
+                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                            )
                         }
-                    }
-                    is TvResult -> {}
+
+                    })
                 }
 
             }
