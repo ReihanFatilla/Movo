@@ -24,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
+            android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
@@ -56,6 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
             android:backgroundTint="@color/app_backround"
             app:tabIndicatorColor="@color/primary_color"
             app:tabSelectedTextColor="@color/primary_color"
