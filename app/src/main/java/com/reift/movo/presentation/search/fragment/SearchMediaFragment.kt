@@ -33,7 +33,7 @@ class SearchMediaFragment : Fragment() {
         mediaType = arguments?.getString(Constant.BUNDLE_MEDIA_TYPE).orEmpty()
         query = arguments?.getString(Constant.BUNDLE_SEARCH_QUERY).orEmpty()
 
-        setUpSearchTabViewPager(0)
+        setUpSearchTabViewPager(0, mediaType)
         initObserver()
 
         return binding.root
@@ -44,15 +44,15 @@ class SearchMediaFragment : Fragment() {
             Constant.BUNDLE_MEDIA_MOVIE -> {
                 viewModel.searchMovie(query)
                 viewModel.movieResponse.observe(viewLifecycleOwner){
-                    setUpSearchTabViewPager(it.data?.totalPages ?: 1)
+                    setUpSearchTabViewPager(it.data?.totalPages ?: 1, mediaType)
                 }
             }
         }
     }
 
-    private fun setUpSearchTabViewPager(pageTotal: Int) {
+    private fun setUpSearchTabViewPager(pageTotal: Int, mediaType: String) {
         binding.apply {
-            vpSearchPage.adapter = activity?.let { SearchMediaViewPagerAdapter(it, query, pageTotal) }
+            vpSearchPage.adapter = activity?.let { SearchMediaViewPagerAdapter(it, mediaType, query, pageTotal) }
 
             TabLayoutMediator(tabSearchPage, vpSearchPage){ tab, position ->
                 tab.text = (position+1).toString()

@@ -8,13 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.core.constant.Constant
-import com.reift.core.domain.model.Resource
-import com.reift.core.domain.model.movie.MovieResult
-import com.reift.movo.R
-import com.reift.movo.`interface`.OnItemClickCallback
-import com.reift.movo.adapter.VerticalListAdapter
 import com.reift.movo.databinding.FragmentSearchTabBinding
-import com.reift.movo.presentation.detail.DetailActivity
 import com.reift.movo.presentation.search.SearchViewModel
 import com.reift.movo.presentation.search.fragment.adapter.SearchMediaViewPagerAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,6 +22,7 @@ class SearchTabFragment : Fragment() {
 
     private lateinit var query: String
     private lateinit var page: String
+    private lateinit var mediaType: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +32,7 @@ class SearchTabFragment : Fragment() {
 
         query = arguments?.getString(Constant.BUNDLE_SEARCH_QUERY) ?: ""
         page = arguments?.getString(SearchMediaViewPagerAdapter.BUNDLE_SEARCH_PAGE) ?: ""
+        mediaType = arguments?.getString(Constant.BUNDLE_MEDIA_TYPE) ?: ""
 
         initObserver()
 
@@ -44,14 +40,13 @@ class SearchTabFragment : Fragment() {
     }
 
     private fun initObserver() {
-        viewModel.searchMovie(query, page)
-        viewModel.movieResponse.observe(viewLifecycleOwner){
+        when(mediaType){
+            Constant.BUNDLE_MEDIA_MOVIE -> {
+                viewModel.searchMovie(query, page)
+                viewModel.movieResponse.observe(viewLifecycleOwner){
 
-        }
-
-        viewModel.searchTv(query, page)
-        viewModel.tvResponse.observe(viewLifecycleOwner){
-
+                }
+            }
         }
     }
 }

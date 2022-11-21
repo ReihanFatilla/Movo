@@ -9,8 +9,9 @@ import com.reift.movo.presentation.search.fragment.SearchTabFragment
 
 class SearchMediaViewPagerAdapter(
     fa: FragmentActivity,
+    val mediaType: String,
     val querySearch: String,
-    val pageTotal: Int
+    val pageTotal: Int,
 ) : FragmentStateAdapter(fa){
     override fun getItemCount() = if(pageTotal > 30) 30 else pageTotal
 
@@ -19,6 +20,7 @@ class SearchMediaViewPagerAdapter(
         val searchTabFragment = SearchTabFragment()
         val bundle = Bundle()
         bundle.putString(Constant.BUNDLE_SEARCH_QUERY, querySearch)
+        bundle.putString(Constant.BUNDLE_MEDIA_TYPE, mediaType)
         bundle.putInt(BUNDLE_SEARCH_PAGE, position + 1)
         searchTabFragment.arguments = bundle
 
