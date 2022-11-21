@@ -38,7 +38,7 @@ class SearchFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                TODO("Not yet implemented")
+                return false
             }
 
         })
@@ -46,6 +46,7 @@ class SearchFragment : Fragment() {
 
     private fun setUpMediaViewPager(query: String) {
         binding.apply {
+            vpSearch.isUserInputEnabled = false
             vpSearch.adapter = activity?.let { SearchViewPagerAdapter(it, query) }
             TabLayoutMediator(searchMediaTabs, vpSearch){ tab, position ->
                 when (position) {
