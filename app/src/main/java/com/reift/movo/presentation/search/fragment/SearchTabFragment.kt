@@ -48,7 +48,6 @@ class SearchTabFragment : Fragment() {
         when(mediaType){
             Constant.BUNDLE_MEDIA_MOVIE -> {
                 viewModel.searchMovie(query, page.toString())
-                Log.i("asdsadasda", "current page: $page")
                 viewModel.movieResponse.observe(viewLifecycleOwner){
                     setUpSearchRV(it)
                 }

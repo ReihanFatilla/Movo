@@ -21,6 +21,7 @@
         app:tabIndicatorGravity="stretch"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/gray_text"
+        app:tabMode="scrollable"
         app:tabIndicatorAnimationMode="elastic"
         android:layout_marginTop="28dp"
         android:background="@android:color/transparent"
@@ -28,6 +29,24 @@
         app:tabIndicator="@drawable/tab_indicator"
         app:layout_constraintStart_toStartOf="parent"
         app:tabTextAppearance="@style/tabLayoutTextTheme"
-        app:layout_constraintTop_toBottomOf="@id/vp_search_page" />
+        app:layout_constraintTop_toBottomOf="@id/vp_search_page" >
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="satu" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="satu" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="satu" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="satu" />
+    </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

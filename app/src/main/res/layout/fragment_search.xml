@@ -90,6 +90,8 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_search"
             android:layout_width="match_parent"
+            android:layout_marginStart="-28dp"
+            android:layout_marginEnd="-28dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/search_media_tabs" />
 

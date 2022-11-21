@@ -1,6 +1,7 @@
 package com.reift.movo.presentation.search.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +57,7 @@ class SearchMediaFragment : Fragment() {
 
             TabLayoutMediator(tabSearchPage, vpSearchPage){ tab, position ->
                 tab.text = (position+1).toString()
-            }
+            }.attach()
         }
     }
 
