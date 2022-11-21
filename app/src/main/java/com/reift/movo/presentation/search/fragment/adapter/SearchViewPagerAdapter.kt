@@ -18,13 +18,13 @@ class SearchViewPagerAdapter(
         val movieTabFragment = SearchMediaFragment()
         val movieBundle = Bundle()
         movieBundle.putString(Constant.BUNDLE_MEDIA_TYPE, Constant.BUNDLE_MEDIA_MOVIE)
-        movieBundle.putString(SearchMediaViewPagerAdapter.BUNDLE_SEARCH_QUERY, querySearch)
+        movieBundle.putString(Constant.BUNDLE_SEARCH_QUERY, querySearch)
         movieTabFragment.arguments = movieBundle
 
         val tvTabFragment = SearchMediaFragment()
         val tvBundle = Bundle()
         tvBundle.putString(Constant.BUNDLE_MEDIA_TYPE, Constant.BUNDLE_MEDIA_TV)
-        tvBundle.putString(SearchMediaViewPagerAdapter.BUNDLE_SEARCH_QUERY, querySearch)
+        tvBundle.putString(Constant.BUNDLE_SEARCH_QUERY, querySearch)
         tvTabFragment.arguments = tvBundle
         return when(position){
             0 -> movieTabFragment

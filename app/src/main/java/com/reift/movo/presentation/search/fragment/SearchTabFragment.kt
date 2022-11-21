@@ -35,7 +35,7 @@ class SearchTabFragment : Fragment() {
     ): View {
         _binding = FragmentSearchTabBinding.inflate(layoutInflater)
 
-        query = arguments?.getString(SearchMediaViewPagerAdapter.BUNDLE_SEARCH_QUERY) ?: ""
+        query = arguments?.getString(Constant.BUNDLE_SEARCH_QUERY) ?: ""
         page = arguments?.getString(SearchMediaViewPagerAdapter.BUNDLE_SEARCH_PAGE) ?: ""
 
         initObserver()

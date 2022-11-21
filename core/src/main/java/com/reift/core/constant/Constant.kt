@@ -54,4 +54,5 @@ object Constant {
     const val BUNDLE_MEDIA_TYPE = "BUNDLE_MEDIA_TYPE"
     const val BUNDLE_MEDIA_MOVIE = "BUNDLE_MEDIA_MOVIE"
     const val BUNDLE_MEDIA_TV = "BUNDLE_MEDIA_TV"
+    const val BUNDLE_SEARCH_QUERY = "BUNDLE_SEARCH_QUERY"
 }

@@ -18,15 +18,15 @@ class SearchMediaViewPagerAdapter(
 
         val searchTabFragment = SearchTabFragment()
         val bundle = Bundle()
-        bundle.putString(BUNDLE_SEARCH_QUERY, querySearch)
+        bundle.putString(Constant.BUNDLE_SEARCH_QUERY, querySearch)
         bundle.putInt(BUNDLE_SEARCH_PAGE, position + 1)
         searchTabFragment.arguments = bundle
 
         return searchTabFragment
     }
 
-    companion object{
-        const val BUNDLE_SEARCH_QUERY = "BUNDLE_SEARCH_QUERY"
+    companion object {
         const val BUNDLE_SEARCH_PAGE = "BUNDLE_SEARCH_PAGE"
     }
+
 }
