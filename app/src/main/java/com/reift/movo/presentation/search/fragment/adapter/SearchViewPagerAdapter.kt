@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.reift.core.constant.Constant
 import com.reift.movo.presentation.search.fragment.SearchMediaFragment
 
-class SearchTabViewPagerAdapter(
+class SearchViewPagerAdapter(
     fa: FragmentActivity,
     val querySearch: String
 )
