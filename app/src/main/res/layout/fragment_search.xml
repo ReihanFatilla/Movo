@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingHorizontal="28dp"
+        android:paddingBottom="92dp"
         android:paddingTop="32dp">
 
         <ImageView

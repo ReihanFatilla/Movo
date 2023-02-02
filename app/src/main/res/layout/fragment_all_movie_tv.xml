@@ -64,9 +64,7 @@
             app:tabSelectedTextColor="@color/primary_color"
             app:tabTextColor="@color/gray_text"
             app:tabMode="scrollable"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_tv_category">
-
-        </com.google.android.material.tabs.TabLayout>
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_tv_category"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_page"

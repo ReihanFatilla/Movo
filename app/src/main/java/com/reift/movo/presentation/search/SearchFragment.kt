@@ -1,13 +1,16 @@
 package com.reift.movo.presentation.search
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.reift.movo.R
 import com.reift.movo.databinding.FragmentSearchBinding
 import com.reift.movo.presentation.search.fragment.adapter.SearchViewPagerAdapter
 
@@ -30,18 +33,22 @@ class SearchFragment : Fragment() {
     }
 
     private fun setUpSearchView() {
-        binding.svSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if(query == null) return false
-                setUpMediaViewPager(query)
-                return true
-            }
+        binding.svSearch.apply {
+            requestFocus()
+            binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if (query == null) return false
+                    setUpMediaViewPager(query)
+                    return true
+                }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
 
-        })
+            })
+        }
+
     }
 
     private fun setUpMediaViewPager(query: String) {

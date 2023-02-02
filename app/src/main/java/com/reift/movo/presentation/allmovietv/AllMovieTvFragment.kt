@@ -69,10 +69,13 @@ class AllMovieTvFragment : Fragment() {
     private fun setUpPageBar() {
         binding.apply {
             binding.vpPage.isUserInputEnabled = false
+
             vpPage.adapter = activity?.let { SeeAllViewPagerAdapter(it, category, totalPages) }
             TabLayoutMediator(pageTabs, vpPage) { tab, position ->
                 tab.text = (position + 1).toString()
             }.attach()
+
+            
         }
     }
 

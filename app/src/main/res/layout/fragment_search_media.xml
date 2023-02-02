@@ -29,24 +29,6 @@
         app:tabIndicator="@drawable/tab_indicator"
         app:layout_constraintStart_toStartOf="parent"
         app:tabTextAppearance="@style/tabLayoutTextTheme"
-        app:layout_constraintTop_toBottomOf="@id/vp_search_page" >
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="satu" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="satu" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="satu" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="satu" />
-    </com.google.android.material.tabs.TabLayout>
+        app:layout_constraintTop_toBottomOf="@id/vp_search_page"  />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

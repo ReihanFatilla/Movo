@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.MovieResult
+import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.VerticalListAdapter
 import com.reift.movo.databinding.FragmentSearchTabBinding
+import com.reift.movo.presentation.detail.DetailActivity
 import com.reift.movo.presentation.search.SearchViewModel
 import com.reift.movo.presentation.search.fragment.adapter.SearchMediaViewPagerAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -66,6 +68,16 @@ class SearchTabFragment : Fragment() {
                             layoutManager = LinearLayoutManager(context)
                             adapter = mAdapter
                             mAdapter.setData(result.movie)
+                            mAdapter.setOnItemClickCallback(
+                                object : OnItemClickCallback{
+                                    override fun onItemClicked(id: Int) {
+                                        startActivity(
+                                            Intent(context, DetailActivity::class.java)
+                                                .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                                        )
+                                    }
+                                }
+                            )
                         }
                     }
                 }

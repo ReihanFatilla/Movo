@@ -53,8 +53,8 @@ class SearchMediaFragment : Fragment() {
 
     private fun setUpSearchTabViewPager(pageTotal: Int, mediaType: String) {
         binding.apply {
+            vpSearchPage.isUserInputEnabled = false
             vpSearchPage.adapter = activity?.let { SearchMediaViewPagerAdapter(it, mediaType, query, pageTotal) }
-
             TabLayoutMediator(tabSearchPage, vpSearchPage){ tab, position ->
                 tab.text = (position+1).toString()
             }.attach()

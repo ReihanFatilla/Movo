@@ -13,7 +13,7 @@
         android:clipToPadding="false"
         android:paddingHorizontal="28dp"
         android:paddingTop="32dp"
-        android:paddingBottom="78dp"
+        android:paddingBottom="92dp"
         >
 
         <ImageView
