@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.movo.R
 import com.reift.movo.`interface`.OnItemClickCallback
@@ -55,7 +56,7 @@ class SeeAllTabFragment : Fragment() {
                     is MovieResult -> {
                         val result = resource.data as MovieResult
                         binding.rvSeeAllTab.apply {
-                            val mAdapter = VerticalListAdapter()
+                            val mAdapter = VerticalListAdapter<Movie>()
                             layoutManager = LinearLayoutManager(context)
                             adapter = mAdapter
                             mAdapter.setData(result.movie)

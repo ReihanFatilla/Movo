@@ -96,7 +96,7 @@ interface ApiService {
         apiKey: String,
     ): Flowable<TvDetailResponse>
 
-    @GET("search/movie")
+    @GET("search/tv")
     fun searchTvByQuery(
         @Query("api_key")
         apiKey: String,

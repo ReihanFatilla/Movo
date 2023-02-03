@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.VerticalListAdapter
@@ -51,7 +52,7 @@ class HomeTabFragment : Fragment() {
         when(resource){
             is Resource.Success -> {
                 binding.rvHomeTab.apply {
-                    val mAdapter = VerticalListAdapter()
+                    val mAdapter = VerticalListAdapter<Movie>()
                     layoutManager = LinearLayoutManager(context)
                     adapter = mAdapter
                     mAdapter.setData(resource.data?.movie)

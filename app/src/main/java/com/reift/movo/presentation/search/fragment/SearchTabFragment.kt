@@ -2,16 +2,17 @@ package com.reift.movo.presentation.search.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
+import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
+import com.reift.core.domain.model.tv.Tv
+import com.reift.core.domain.model.tv.TvResult
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.VerticalListAdapter
 import com.reift.movo.databinding.FragmentSearchTabBinding
@@ -54,6 +55,12 @@ class SearchTabFragment : Fragment() {
                     setUpSearchRV(it)
                 }
             }
+            Constant.BUNDLE_MEDIA_TV -> {
+                viewModel.searchTv(query)
+                viewModel.tvResponse.observe(viewLifecycleOwner){
+                    setUpSearchRV(it)
+                }
+            }
         }
     }
 
@@ -63,26 +70,53 @@ class SearchTabFragment : Fragment() {
                 when(resource.data){
                     is MovieResult -> {
                         val result = resource.data as MovieResult
-                        binding.rvSearch.apply {
-                            val mAdapter = VerticalListAdapter()
-                            layoutManager = LinearLayoutManager(context)
-                            adapter = mAdapter
-                            mAdapter.setData(result.movie)
-                            mAdapter.setOnItemClickCallback(
-                                object : OnItemClickCallback{
-                                    override fun onItemClicked(id: Int) {
-                                        startActivity(
-                                            Intent(context, DetailActivity::class.java)
-                                                .putExtra(Constant.EXTRA_MOVIE_ID, id)
-                                        )
-                                    }
-                                }
-                            )
-                        }
+                        displayMovie(result)
+                    }
+                    is TvResult -> {
+                        val result = resource.data as TvResult
+                        displayTv(result)
                     }
                 }
             }
             else -> {}
+        }
+    }
+
+    private fun displayTv(result: TvResult) {
+        binding.rvSearch.apply {
+            val mAdapter = VerticalListAdapter<Tv>()
+            layoutManager = LinearLayoutManager(context)
+            adapter = mAdapter
+            mAdapter.setData(result.tv)
+            mAdapter.setOnItemClickCallback(
+                object : OnItemClickCallback{
+                    override fun onItemClicked(id: Int) {
+                        startActivity(
+                            Intent(context, DetailActivity::class.java)
+                                .putExtra(Constant.EXTRA_TV_ID, id)
+                        )
+                    }
+                }
+            )
+        }
+    }
+
+    private fun displayMovie(result: MovieResult) {
+        binding.rvSearch.apply {
+            val mAdapter = VerticalListAdapter<Movie>()
+            layoutManager = LinearLayoutManager(context)
+            adapter = mAdapter
+            mAdapter.setData(result.movie)
+            mAdapter.setOnItemClickCallback(
+                object : OnItemClickCallback{
+                    override fun onItemClicked(id: Int) {
+                        startActivity(
+                            Intent(context, DetailActivity::class.java)
+                                .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                        )
+                    }
+                }
+            )
         }
     }
 }

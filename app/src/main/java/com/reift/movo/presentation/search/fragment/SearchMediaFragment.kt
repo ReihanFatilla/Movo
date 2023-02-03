@@ -48,6 +48,12 @@ class SearchMediaFragment : Fragment() {
                     setUpSearchTabViewPager(it.data?.totalPages ?: 1, mediaType)
                 }
             }
+            Constant.BUNDLE_MEDIA_TV -> {
+                viewModel.searchTv(query)
+                viewModel.tvResponse.observe(viewLifecycleOwner){
+                    setUpSearchTabViewPager(it.data?.totalPages ?: 1, mediaType)
+                }
+            }
         }
     }
 
@@ -55,6 +61,7 @@ class SearchMediaFragment : Fragment() {
         binding.apply {
             vpSearchPage.isUserInputEnabled = false
             vpSearchPage.adapter = activity?.let { SearchMediaViewPagerAdapter(it, mediaType, query, pageTotal) }
+            if(pageTotal == 1) tabSearchPage.visibility = View.GONE
             TabLayoutMediator(tabSearchPage, vpSearchPage){ tab, position ->
                 tab.text = (position+1).toString()
             }.attach()

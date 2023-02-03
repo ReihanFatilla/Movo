@@ -10,13 +10,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.movie.Movie
+import com.reift.core.domain.model.tv.Tv
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.databinding.ItemVerticalMovieBinding
 import com.reift.movo.utils.HelperFunction
 
-class VerticalListAdapter: RecyclerView.Adapter<VerticalListAdapter.VerticalViewholder>() {
+class VerticalListAdapter<T>: RecyclerView.Adapter<VerticalListAdapter.VerticalViewholder>() {
 
-    val listMovie = ArrayList<Movie>()
+    val listMovie = ArrayList<T>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
@@ -24,13 +25,13 @@ class VerticalListAdapter: RecyclerView.Adapter<VerticalListAdapter.VerticalView
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setData(list: List<Movie>?){
+    fun setData(list: List<T>?){
         if(list == null) return
         listMovie.clear()
         listMovie.addAll(list)
     }
 
-    inner class VerticalViewholder(val binding: ItemVerticalMovieBinding): RecyclerView.ViewHolder(binding.root)
+    class VerticalViewholder(val binding: ItemVerticalMovieBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= VerticalViewholder(
         ItemVerticalMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -38,21 +39,43 @@ class VerticalListAdapter: RecyclerView.Adapter<VerticalListAdapter.VerticalView
 
     override fun onBindViewHolder(holder: VerticalViewholder, position: Int) {
         holder.binding.apply {
-            with(listMovie[position]){
-                tvTitle.text = title
-                tvGenre.text = HelperFunction.genreComaFormatter(genre)
-                HelperFunction.setUpRatingStars(this@apply, voteAverage)
-                Glide.with(imgPoster.context)
-                    .load(Constant.IMAGE_BASE_URL+posterPath)
-                    .apply(RequestOptions())
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .priority(Priority.HIGH)
-                    .into(imgPoster)
+            when(listMovie[position]){
+                is Movie -> {
+                    with(listMovie[position] as Movie){
+                        tvTitle.text = title
+                        tvGenre.text = HelperFunction.genreComaFormatter(genre)
+                        HelperFunction.setUpRatingStars(this@apply, voteAverage)
+                        Glide.with(imgPoster.context)
+                            .load(Constant.IMAGE_BASE_URL+posterPath)
+                            .apply(RequestOptions())
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .priority(Priority.HIGH)
+                            .into(imgPoster)
 
-                holder.itemView.setOnClickListener {
-                    onItemClickCallback?.onItemClicked(id)
+                        holder.itemView.setOnClickListener {
+                            onItemClickCallback?.onItemClicked(id)
+                        }
+                    }
+                }
+                is Tv -> {
+                    with(listMovie[position] as Tv){
+                        tvTitle.text = name
+                        tvGenre.text = HelperFunction.genreComaFormatter(genre)
+                        HelperFunction.setUpRatingStars(this@apply, voteAverage)
+                        Glide.with(imgPoster.context)
+                            .load(Constant.IMAGE_BASE_URL+posterPath)
+                            .apply(RequestOptions())
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .priority(Priority.HIGH)
+                            .into(imgPoster)
+
+                        holder.itemView.setOnClickListener {
+                            onItemClickCallback?.onItemClicked(id)
+                        }
+                    }
                 }
             }
+
         }
 
 
