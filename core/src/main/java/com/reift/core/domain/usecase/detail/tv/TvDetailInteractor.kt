@@ -3,6 +3,7 @@ package com.reift.core.domain.usecase.detail.tv
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.tv.Tv
+import com.reift.core.domain.model.tv.TvResult
 import com.reift.core.domain.repository.detail.movie.MovieDetailRepository
 import com.reift.core.domain.repository.detail.tv.TvDetailRepository
 import io.reactivex.rxjava3.core.Flowable
@@ -27,6 +28,10 @@ class TvDetailInteractor(
         return tvDetailRepository.getTvActors(id)
     }
 
+    override fun getTvVideos(id: String): Flowable<Resource<List<Video>>> {
+        return tvDetailRepository.getTvVideos(id)
+    }
+
     override fun isFollowed(id: String): Flow<Boolean> {
         return tvDetailRepository.isFollowed(id)
     }
@@ -37,6 +42,14 @@ class TvDetailInteractor(
 
     override fun insertFavoriteTv(tv: Tv) {
         return tvDetailRepository.insertFavoriteTv(tv)
+    }
+
+    override fun getRecommendationsTv(id: String): Flowable<Resource<TvResult>> {
+        return tvDetailRepository.getRecommendationsTv(id)
+    }
+
+    override fun getSimilarTv(id: String): Flowable<Resource<TvResult>> {
+        return tvDetailRepository.getSimilarTv(id)
     }
 
 }
