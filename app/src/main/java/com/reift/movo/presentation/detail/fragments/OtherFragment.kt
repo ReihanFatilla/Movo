@@ -44,20 +44,23 @@ class OtherFragment : Fragment() {
     }
 
     private fun initObserver() {
-        viewModel.getMovieReviews(id)
-        viewModel.reviewResponse.observe(viewLifecycleOwner) {
-            setUpReviews(it)
+        if(isMovieType()){
+            viewModel.getMovieReviews(id)
+            viewModel.reviewResponse.observe(viewLifecycleOwner) {
+                setUpReviews(it)
+            }
+
+            viewModel.getSimilarMovies(id)
+            viewModel.similarResponse.observe(viewLifecycleOwner){
+                setUpSimilarMovies(it)
+            }
+
+            viewModel.getRecommendationsMovies(id)
+            viewModel.recommendationsResponse.observe(viewLifecycleOwner){
+                setUpRecommendationsMovies(it)
+            }
         }
 
-        viewModel.getSimilarMovies(id)
-        viewModel.similarResponse.observe(viewLifecycleOwner){
-            setUpSimilarMovies(it)
-        }
-
-        viewModel.getRecommendationsMovies(id)
-        viewModel.recommendationsResponse.observe(viewLifecycleOwner){
-            setUpRecommendationsMovies(it)
-        }
 
     }
 
@@ -122,5 +125,19 @@ class OtherFragment : Fragment() {
             else -> {}
         }
 
+    }
+
+    private fun isMovieType(): Boolean{
+        return when (arguments?.getString(Constant.BUNDLE_MEDIA_TYPE)) {
+            Constant.INTENT_MEDIA_MOVIE -> {
+                true
+            }
+            Constant.INTENT_MEDIA_TV -> {
+                false
+            }
+            else -> {
+                true
+            }
+        }
     }
 }

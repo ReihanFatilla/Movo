@@ -26,8 +26,10 @@ class DetailViewPagerAdapter<T>(
         bundle.putString(Constant.BUNDLE_MOVIE_ID, id)
         if(detailData is MovieDetail){
             bundle.putParcelable(Constant.BUNDLE_MOVIE_DETAIL, detailData as MovieDetail)
+            bundle.putString(Constant.BUNDLE_MEDIA_TYPE, Constant.BUNDLE_MEDIA_MOVIE)
         } else if (detailData is TvDetail){
             bundle.putParcelable(Constant.BUNDLE_MOVIE_DETAIL, detailData as TvDetail)
+            bundle.putString(Constant.BUNDLE_MEDIA_TYPE, Constant.BUNDLE_MEDIA_TV)
         }
         otherFragment.arguments = bundle
         overviewFragment.arguments = bundle
