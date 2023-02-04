@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.movie.Movie
-import com.reift.core.domain.model.movie.MovieResult
+import com.reift.core.domain.model.tv.Tv
 import com.reift.movo.databinding.ItemHorizontalMovieBinding
 
 class HorizontalListAdapter<T>: RecyclerView.Adapter<HorizontalListAdapter.MyViewHolder>() {
@@ -53,7 +53,21 @@ class HorizontalListAdapter<T>: RecyclerView.Adapter<HorizontalListAdapter.MyVie
                         }
                     }
                 }
+                is Tv -> {
+                    with(listMovie[position] as Tv){
+                        Glide.with(imgMovie.context)
+                            .load(Constant.IMAGE_BASE_URL+posterPath)
+                            .apply(RequestOptions())
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .priority(Priority.HIGH)
+                            .into(imgMovie)
+                        tvTitle.text = name
 
+                        holder.itemView.setOnClickListener {
+                            onItemClickCallBack?.onItemClicked(id)
+                        }
+                    }
+                }
                 }
             }
 

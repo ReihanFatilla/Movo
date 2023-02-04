@@ -13,6 +13,8 @@ import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.Review
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
+import com.reift.core.domain.model.tv.Tv
+import com.reift.core.domain.model.tv.TvResult
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.HorizontalListAdapter
 import com.reift.movo.adapter.ReviewAdapter
@@ -44,69 +46,131 @@ class OtherFragment : Fragment() {
     }
 
     private fun initObserver() {
-        if(isMovieType()){
+        if (isMovieType()) {
             viewModel.getMovieReviews(id)
             viewModel.reviewResponse.observe(viewLifecycleOwner) {
                 setUpReviews(it)
             }
 
             viewModel.getSimilarMovies(id)
-            viewModel.movieSimilarResponse.observe(viewLifecycleOwner){
+            viewModel.movieSimilarResponse.observe(viewLifecycleOwner) {
                 setUpSimilarMovies(it)
             }
 
             viewModel.getRecommendationsMovies(id)
-            viewModel.movieRecommendationsResponse.observe(viewLifecycleOwner){
+            viewModel.movieRecommendationsResponse.observe(viewLifecycleOwner) {
+                setUpRecommendationsMovies(it)
+            }
+        } else {
+            viewModel.getTvDetail(id)
+            viewModel.reviewResponse.observe(viewLifecycleOwner) {
+                setUpReviews(it)
+            }
+
+            viewModel.getSimilarTv(id)
+            viewModel.tvSimilarResponse.observe(viewLifecycleOwner) {
+                setUpSimilarMovies(it)
+            }
+
+            viewModel.getSimilarTv(id)
+            viewModel.tvRecommendationsResponse.observe(viewLifecycleOwner) {
                 setUpRecommendationsMovies(it)
             }
         }
 
-
     }
 
-    private fun setUpRecommendationsMovies(resource: Resource<MovieResult>?) {
-        when(resource){
+    private fun <T> setUpRecommendationsMovies(resource: Resource<T>?) {
+        when (resource) {
             is Resource.Success -> {
-                binding.rvRecommendations.apply {
-                    val mAdapter = HorizontalListAdapter<Movie>()
-                    adapter = mAdapter
-                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                    mAdapter.setData(resource.data?.movie)
+                when (resource.data) {
+                    is MovieResult -> {
+                        val result = resource.data as MovieResult
+                        binding.rvRecommendations.apply {
+                            val mAdapter = HorizontalListAdapter<Movie>()
+                            adapter = mAdapter
+                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            mAdapter.setData(result.movie)
 
-                    mAdapter.setOnItemClickCallback(object : OnItemClickCallback{
-                        override fun onItemClicked(id: Int) {
-                            startActivity(
-                                Intent(context, DetailActivity::class.java)
-                                    .putExtra(Constant.EXTRA_DETAIl_ID, id)
-                            )
+                            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                                override fun onItemClicked(id: Int) {
+                                    startActivity(
+                                        Intent(context, DetailActivity::class.java)
+                                            .putExtra(Constant.EXTRA_DETAIl_ID, id)
+                                    )
+                                }
+                            })
                         }
+                    }
+                    is TvResult -> {
+                        val result = resource.data as TvResult
+                        binding.rvRecommendations.apply {
+                            val mAdapter = HorizontalListAdapter<Tv>()
+                            adapter = mAdapter
+                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            mAdapter.setData(result.tv)
 
-                    })
+                            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                                override fun onItemClicked(id: Int) {
+                                    startActivity(
+                                        Intent(context, DetailActivity::class.java)
+                                            .putExtra(Constant.EXTRA_DETAIl_ID, id)
+                                    )
+                                }
+                            })
+                        }
+                    }
+
                 }
             }
             else -> {}
         }
     }
 
-    private fun setUpSimilarMovies(resource: Resource<MovieResult>?) {
-        when(resource){
+    private fun <T> setUpSimilarMovies(resource: Resource<T>?) {
+        when (resource) {
             is Resource.Success -> {
-                binding.rvSimilar.apply {
-                    val mAdapter = HorizontalListAdapter<Movie>()
-                    adapter = mAdapter
-                    layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                    mAdapter.setData(resource.data?.movie)
+                when(resource.data){
+                    is MovieResult -> {
+                        val result = resource.data as MovieResult
+                        binding.rvSimilar.apply {
+                            val mAdapter = HorizontalListAdapter<Movie>()
+                            adapter = mAdapter
+                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            mAdapter.setData(result.movie)
 
-                    mAdapter.setOnItemClickCallback(object : OnItemClickCallback{
-                        override fun onItemClicked(id: Int) {
-                            startActivity(
-                                Intent(context, DetailActivity::class.java)
-                                    .putExtra(Constant.EXTRA_DETAIl_ID, id)
-                            )
+                            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                                override fun onItemClicked(id: Int) {
+                                    startActivity(
+                                        Intent(context, DetailActivity::class.java)
+                                            .putExtra(Constant.EXTRA_DETAIl_ID, id)
+                                    )
+                                }
+
+                            })
                         }
+                    }
+                    is TvResult -> {
+                        val result = resource.data as TvResult
+                        binding.rvSimilar.apply {
+                            val mAdapter = HorizontalListAdapter<Tv>()
+                            adapter = mAdapter
+                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            mAdapter.setData(result.tv)
 
-                    })
+                            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                                override fun onItemClicked(id: Int) {
+                                    startActivity(
+                                        Intent(context, DetailActivity::class.java)
+                                            .putExtra(Constant.EXTRA_DETAIl_ID, id)
+                                    )
+                                }
+
+                            })
+                        }
+                    }
                 }
+
             }
             else -> {}
         }
@@ -127,7 +191,7 @@ class OtherFragment : Fragment() {
 
     }
 
-    private fun isMovieType(): Boolean{
+    private fun isMovieType(): Boolean {
         return when (arguments?.getString(Constant.BUNDLE_MEDIA_TYPE)) {
             Constant.INTENT_MEDIA_MOVIE -> {
                 true
