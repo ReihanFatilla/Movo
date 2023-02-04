@@ -78,44 +78,57 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpMovieDetail() {
         binding.apply {
-            if(isMovieType()){
-                with(movieDetail.data){
-                    if(this == null) return
-                    Glide.with(applicationContext)
-                        .load(Constant.IMAGE_BASE_URL+posterPath)
-                        .into(imgPoster)
+            with(movieDetail.data){
+                if(this == null) return
+                Glide.with(applicationContext)
+                    .load(Constant.IMAGE_BASE_URL+posterPath)
+                    .into(imgPoster)
 
-                    tvTitle.text = title
-                    collapsingToolbar.title = title
-                    tvRatingCount.text = voteAverage.toString().take(3)
-                    tvRatersCount.text = "($voteCount)"
-                    tvDurationOrEpisode.text = HelperFunction.durationFormatter(duration)
-                }
-            } else {
-                with(tvDetail.data){
-                    if(this == null) return
-                    Glide.with(applicationContext)
-                        .load(Constant.IMAGE_BASE_URL+posterPath)
-                        .into(imgPoster)
+                tvTitle.text = title
+                collapsingToolbar.title = title
+                tvRatingCount.text = voteAverage.toString().take(3)
+                tvRatersCount.text = "($voteCount)"
+                tvReleaseData.text = HelperFunction.dateFormatter(releaseDate)
+                tvDurationOrEpisode.text = HelperFunction.durationFormatter(duration)
+            }
+        }
+    }
 
-                    tvTitle.text = title
-                    collapsingToolbar.title = title
-                    tvRatingCount.text = voteAverage.toString().take(3)
-                    tvRatersCount.text = "($voteCount)"
-                    tvDurationOrEpisode.text = "$numberOfEpisodes Eps, $numberOfSeasons Seasons"
-                }
+    private fun setUpTvDetail() {
+        binding.apply {
+            with(tvDetail.data){
+                if(this == null) return
+                Glide.with(applicationContext)
+                    .load(Constant.IMAGE_BASE_URL+posterPath)
+                    .into(imgPoster)
+
+                tvTitle.text = title
+                collapsingToolbar.title = title
+                tvRatingCount.text = voteAverage.toString().take(3)
+                tvRatersCount.text = "($voteCount)"
+                tvReleaseData.text = HelperFunction.dateFormatter(firstAirDate)
+                tvDurationOrEpisode.text = "$numberOfEpisodes Eps, $numberOfSeasons Seasons"
             }
         }
     }
 
     private fun initObserver() {
-
-        viewModel.getMovieDetail(id)
-        viewModel.movieDetailResponse.observe(this){
-            _movieDetail = it
-            setUpMovieDetail()
-            setUpTabBar()
+        if(isMovieType()){
+            viewModel.getMovieDetail(id)
+            viewModel.movieDetailResponse.observe(this){
+                _movieDetail = it
+                setUpMovieDetail()
+                setUpTabBar()
+            }
+        } else {
+            viewModel.getTvDetail(id)
+            viewModel.tvDetailResponse.observe(this){
+                _tvDetail = it
+                setUpTvDetail()
+                setUpTabBar()
+            }
         }
+
     }
 
     private fun isMovieType(): Boolean{
