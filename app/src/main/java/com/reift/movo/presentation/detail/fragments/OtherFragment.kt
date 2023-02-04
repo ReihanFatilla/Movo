@@ -51,12 +51,12 @@ class OtherFragment : Fragment() {
             }
 
             viewModel.getSimilarMovies(id)
-            viewModel.similarResponse.observe(viewLifecycleOwner){
+            viewModel.movieSimilarResponse.observe(viewLifecycleOwner){
                 setUpSimilarMovies(it)
             }
 
             viewModel.getRecommendationsMovies(id)
-            viewModel.recommendationsResponse.observe(viewLifecycleOwner){
+            viewModel.movieRecommendationsResponse.observe(viewLifecycleOwner){
                 setUpRecommendationsMovies(it)
             }
         }

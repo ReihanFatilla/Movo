@@ -111,7 +111,7 @@ class DetailActivity : AppCompatActivity() {
     private fun initObserver() {
 
         viewModel.getMovieDetail(id)
-        viewModel.detailResponse.observe(this){
+        viewModel.movieDetailResponse.observe(this){
             _movieDetail = it
             setUpMovieDetail()
             setUpTabBar()
