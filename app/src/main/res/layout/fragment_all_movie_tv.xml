@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_backround"
+        android:clipToPadding="false"
         android:paddingHorizontal="28dp"
         android:paddingTop="32dp">
 
