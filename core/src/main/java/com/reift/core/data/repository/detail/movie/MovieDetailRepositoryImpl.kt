@@ -18,6 +18,7 @@ import com.reift.core.domain.repository.detail.movie.MovieDetailRepository
 import com.reift.core.mapper.HomeMapper.map
 import com.reift.core.mapper.MovieDetailMapper.asEntity
 import com.reift.core.mapper.MovieDetailMapper.map
+import com.reift.core.mapper.TvDetailMapper.map
 import io.reactivex.rxjava3.core.Flowable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

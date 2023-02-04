@@ -6,15 +6,14 @@ import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.data.remote.source.response.detail.actor.ActorResponse
 import com.reift.core.data.remote.source.response.detail.review.ReviewResponse
 import com.reift.core.data.remote.source.response.detail.tv.TvDetailResponse
+import com.reift.core.data.remote.source.response.detail.video.VideoResponse
 import com.reift.core.data.remote.source.response.detail.wallpaper.WallpaperResponse
 import com.reift.core.data.remote.source.response.tv.TvResponse
 import com.reift.core.data.repository.detail.movie.MovieDetailRepositoryImpl
 import com.reift.core.domain.model.Resource
-import com.reift.core.domain.model.detail.Actor
-import com.reift.core.domain.model.detail.Review
-import com.reift.core.domain.model.detail.TvDetail
-import com.reift.core.domain.model.detail.Wallpaper
+import com.reift.core.domain.model.detail.*
 import com.reift.core.domain.model.tv.Tv
+import com.reift.core.domain.model.tv.TvResult
 import com.reift.core.domain.repository.detail.movie.MovieDetailRepository
 import com.reift.core.domain.repository.detail.tv.TvDetailRepository
 import com.reift.core.mapper.HomeMapper.map
@@ -79,6 +78,19 @@ class TvDetailRepositoryImpl(
         }.asFlowable()
     }
 
+    override fun getTvVideos(id: String): Flowable<Resource<List<Video>>> {
+        return object : NetworkResource<List<Video>, VideoResponse>(){
+            override fun createResult(data: VideoResponse): List<Video> {
+                return data.map()
+            }
+
+            override fun createCall(): Flowable<VideoResponse> {
+                return remoteDataSource.getVideoList(MovieDetailRepositoryImpl.MOVIE, id)
+            }
+
+        }.asFlowable()
+    }
+
     override fun isFollowed(id: String): Flow<Boolean> {
         TODO("Not yet implemented")
     }
@@ -89,6 +101,32 @@ class TvDetailRepositoryImpl(
 
     override fun deleteFavoriteTv(tv: Tv) {
         TODO("Not yet implemented")
+    }
+
+    override fun getRecommendationsTv(id: String): Flowable<Resource<TvResult>> {
+        return object : NetworkResource<TvResult, TvResponse>(){
+            override fun createResult(data: TvResponse): TvResult {
+                return data.map()
+            }
+
+            override fun createCall(): Flowable<TvResponse> {
+                return remoteDataSource.getRecommendationsTv(id, MovieDetailRepositoryImpl.PAGE)
+            }
+
+        }.asFlowable()
+    }
+
+    override fun getSimilarTv(id: String): Flowable<Resource<TvResult>> {
+        return object : NetworkResource<TvResult, TvResponse>(){
+            override fun createResult(data: TvResponse): TvResult {
+                return data.map()
+            }
+
+            override fun createCall(): Flowable<TvResponse> {
+                return remoteDataSource.getSimilarTv(id, MovieDetailRepositoryImpl.PAGE)
+            }
+
+        }.asFlowable()
     }
 
     companion object{
