@@ -44,8 +44,11 @@ object Constant {
     const val IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w1280"
 
     // Intent Key
-    const val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
+    const val EXTRA_DETAIl_ID = "EXTRA_MOVIE_ID"
     const val EXTRA_TV_ID = "EXTRA_TV_ID"
+    const val INTENT_MEDIA_TYPE = "INTENT_MEDIA_TYPE"
+    const val INTENT_MEDIA_MOVIE = "INTENT_MEDIA_MOVIE"
+    const val INTENT_MEDIA_TV = "INTENT_MEDIA_TV"
 
     // Bundle Key
     const val BUNDLE_MOVIE_ID = "BUNDLE_MOVIE_ID"

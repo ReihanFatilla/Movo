@@ -112,7 +112,7 @@ class SearchTabFragment : Fragment() {
                     override fun onItemClicked(id: Int) {
                         startActivity(
                             Intent(context, DetailActivity::class.java)
-                                .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                                .putExtra(Constant.EXTRA_DETAIl_ID, id)
                         )
                     }
                 }

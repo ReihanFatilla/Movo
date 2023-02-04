@@ -2,7 +2,6 @@ package com.reift.movo.presentation.detail.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
-import com.reift.core.domain.model.detail.MovieDetail
 import com.reift.core.domain.model.detail.Review
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
@@ -76,7 +74,7 @@ class OtherFragment : Fragment() {
                         override fun onItemClicked(id: Int) {
                             startActivity(
                                 Intent(context, DetailActivity::class.java)
-                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                                    .putExtra(Constant.EXTRA_DETAIl_ID, id)
                             )
                         }
 
@@ -100,7 +98,7 @@ class OtherFragment : Fragment() {
                         override fun onItemClicked(id: Int) {
                             startActivity(
                                 Intent(context, DetailActivity::class.java)
-                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                                    .putExtra(Constant.EXTRA_DETAIl_ID, id)
                             )
                         }
 

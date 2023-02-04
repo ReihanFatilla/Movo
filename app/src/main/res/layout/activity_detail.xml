@@ -51,7 +51,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/img_poster" />
 
                 <TextView
-                    android:id="@+id/tv_release_data"
+                    android:id="@+id/tv_duration_or_episode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
@@ -72,13 +72,13 @@
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginTop="8dp"
                     app:cardBackgroundColor="@color/gray_text"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_release_data"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_duration_or_episode"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/tv_duration_or_episode"
+                    app:layout_constraintStart_toEndOf="@+id/tv_release_data"
                     app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
                 <TextView
-                    android:id="@+id/tv_duration_or_episode"
+                    android:id="@+id/tv_release_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"

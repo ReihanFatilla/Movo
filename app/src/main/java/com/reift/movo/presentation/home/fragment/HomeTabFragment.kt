@@ -2,7 +2,6 @@ package com.reift.movo.presentation.home.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -60,7 +59,7 @@ class HomeTabFragment : Fragment() {
                         override fun onItemClicked(id: Int) {
                             startActivity(
                                 Intent(context, DetailActivity::class.java)
-                                    .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                                    .putExtra(Constant.EXTRA_DETAIl_ID, id)
                             )
                         }
 

@@ -2,13 +2,13 @@ package com.reift.movo.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.movo.utils.HelperFunction
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.detail.MovieDetail
+import com.reift.core.domain.model.detail.TvDetail
 import com.reift.movo.R
 import com.reift.movo.databinding.ActivityDetailBinding
 import com.reift.movo.presentation.detail.fragments.adapter.DetailViewPagerAdapter
@@ -25,6 +25,9 @@ class DetailActivity : AppCompatActivity() {
     private var _movieDetail: Resource<MovieDetail>? = null
     private val movieDetail get() = _movieDetail as Resource<MovieDetail>
 
+    private var _tvDetail: Resource<TvDetail>? = null
+    private val tvDetail get() = _tvDetail as Resource<TvDetail>
+
     private lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +39,7 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         HelperFunction.transparentStatusbar(this)
 
-        id = intent.getIntExtra(Constant.EXTRA_MOVIE_ID, 0).toString()
+        id = intent.getIntExtra(Constant.EXTRA_DETAIl_ID, 0).toString()
 
         initView()
         initObserver()
@@ -50,11 +53,20 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpTabBar() {
-        if(movieDetail.data == null) return
-        binding.vpOverviewAndOther.apply {
-            adapter = movieDetail.data?.let { DetailViewPagerAdapter(this@DetailActivity, this@DetailActivity.id, it) }
-            isUserInputEnabled = false;
+        if (isMovieType()){
+            if(movieDetail.data == null) return
+            binding.vpOverviewAndOther.apply {
+                adapter = movieDetail.data?.let { DetailViewPagerAdapter(this@DetailActivity, this@DetailActivity.id, it) }
+                isUserInputEnabled = false;
+            }
+        } else {
+            if(tvDetail.data == null) return
+            binding.vpOverviewAndOther.apply {
+                adapter = tvDetail.data?.let { DetailViewPagerAdapter(this@DetailActivity, this@DetailActivity.id, it) }
+                isUserInputEnabled = false;
+            }
         }
+
 
         TabLayoutMediator(binding.tabDetail, binding.vpOverviewAndOther) { tab, position ->
             when (position) {
@@ -66,17 +78,32 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpMovieDetail() {
         binding.apply {
-            with(movieDetail.data){
-                if(this == null) return
-                Glide.with(applicationContext)
-                    .load(Constant.IMAGE_BASE_URL+posterPath)
-                    .into(imgPoster)
+            if(isMovieType()){
+                with(movieDetail.data){
+                    if(this == null) return
+                    Glide.with(applicationContext)
+                        .load(Constant.IMAGE_BASE_URL+posterPath)
+                        .into(imgPoster)
 
-                tvTitle.text = title
-                collapsingToolbar.title = title
-                tvRatingCount.text = voteAverage.toString().take(3)
-                tvRatersCount.text = "($voteCount)"
-                tvDurationOrEpisode.text = HelperFunction.durationFormatter(duration)
+                    tvTitle.text = title
+                    collapsingToolbar.title = title
+                    tvRatingCount.text = voteAverage.toString().take(3)
+                    tvRatersCount.text = "($voteCount)"
+                    tvDurationOrEpisode.text = HelperFunction.durationFormatter(duration)
+                }
+            } else {
+                with(tvDetail.data){
+                    if(this == null) return
+                    Glide.with(applicationContext)
+                        .load(Constant.IMAGE_BASE_URL+posterPath)
+                        .into(imgPoster)
+
+                    tvTitle.text = title
+                    collapsingToolbar.title = title
+                    tvRatingCount.text = voteAverage.toString().take(3)
+                    tvRatersCount.text = "($voteCount)"
+                    tvDurationOrEpisode.text = "$numberOfEpisodes Eps, $numberOfSeasons Seasons"
+                }
             }
         }
     }
@@ -88,6 +115,20 @@ class DetailActivity : AppCompatActivity() {
             _movieDetail = it
             setUpMovieDetail()
             setUpTabBar()
+        }
+    }
+
+    private fun isMovieType(): Boolean{
+        return when (intent.getStringExtra(Constant.INTENT_MEDIA_TYPE)) {
+            Constant.INTENT_MEDIA_MOVIE -> {
+                 true
+            }
+            Constant.INTENT_MEDIA_TV -> {
+                 false
+            }
+            else -> {
+                true
+            }
         }
     }
 

@@ -11,7 +11,6 @@ import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.movie.MovieResult
-import com.reift.movo.R
 import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.movo.adapter.VerticalListAdapter
 import com.reift.movo.databinding.FragmentSeeAllTabBinding
@@ -65,7 +64,7 @@ class SeeAllTabFragment : Fragment() {
                                 override fun onItemClicked(id: Int) {
                                     startActivity(
                                         Intent(context, DetailActivity::class.java)
-                                            .putExtra(Constant.EXTRA_MOVIE_ID, id)
+                                            .putExtra(Constant.EXTRA_DETAIl_ID, id)
                                     )
                                 }
 
