@@ -15,7 +15,7 @@ class TvDetailInteractor(
         return tvDetailRepository.getTvDetail(id)
     }
 
-    override fun getTvReviews(id: String): Flowable<Resource<List<Actor>>> {
+    override fun getTvReviews(id: String): Flowable<Resource<List<Review>>> {
         return tvDetailRepository.getTvReviews(id)
     }
 
