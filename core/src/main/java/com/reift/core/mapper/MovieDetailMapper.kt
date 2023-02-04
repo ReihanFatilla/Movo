@@ -27,55 +27,6 @@ object MovieDetailMapper {
         )
     }
 
-    fun ReviewResponse.map(): List<Review> {
-        return results?.map { review ->
-            with(review) {
-                Review(
-                    avatarPath = authorDetails?.avatarPath.orEmpty(),
-                    name = authorDetails?.name.orEmpty(),
-                    rating = authorDetails?.rating ?: 0.0,
-                    username = authorDetails?.username.orEmpty(),
-                    content = content.orEmpty()
-                )
-            }
-        } ?: listOf()
-    }
-
-    fun WallpaperResponse.map(): Wallpaper {
-        val listWallpaper = backdrops?.map { wallpaper ->
-             wallpaper.filePath.orEmpty()
-        } ?: listOf()
-        val listPoster = posters?.map { poster ->
-            poster.filePath.orEmpty()
-        } ?: listOf()
-        return Wallpaper(listPoster, listWallpaper)
-    }
-
-    fun ActorResponse.map(): List<Actor> {
-        return cast?.map {
-            with(it){
-                Actor(
-                    character = character.orEmpty(),
-                    name = name.orEmpty(),
-                    profilePath = profilePath.orEmpty()
-                )
-            }
-        } ?: listOf()
-    }
-
-    fun VideoResponse.map(): List<Video> {
-        return results?.map {
-            with(it){
-                Video(
-                    name = name.orEmpty(),
-                    official = official ?: false,
-                    id = id.orEmpty(),
-                    key = key.orEmpty()
-                )
-            }
-        } ?: listOf()
-    }
-
     fun Movie.asEntity(): MovieEntity{
         return MovieEntity(
             id = id,
