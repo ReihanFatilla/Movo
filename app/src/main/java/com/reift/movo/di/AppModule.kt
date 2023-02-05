@@ -4,6 +4,8 @@ import com.reift.core.domain.usecase.allmovietv.AllMovieTvInteractor
 import com.reift.core.domain.usecase.allmovietv.AllMovieTvUseCase
 import com.reift.core.domain.usecase.detail.movie.MovieDetailInteractor
 import com.reift.core.domain.usecase.detail.movie.MovieDetailUseCase
+import com.reift.core.domain.usecase.detail.tv.TvDetailInteractor
+import com.reift.core.domain.usecase.detail.tv.TvDetailUseCase
 import com.reift.core.domain.usecase.home.HomeInteractor
 import com.reift.core.domain.usecase.home.HomeUseCase
 import com.reift.core.domain.usecase.search.SearchInteractor
@@ -19,6 +21,7 @@ val useCaseModule = module {
     single<HomeUseCase> { HomeInteractor(get()) }
     single<AllMovieTvUseCase> { AllMovieTvInteractor(get()) }
     single<MovieDetailUseCase> { MovieDetailInteractor(get()) }
+    single<TvDetailUseCase> { TvDetailInteractor(get()) }
     single<SearchUseCase> { SearchInteractor(get()) }
 }
 

@@ -57,16 +57,15 @@ class DetailActivity : AppCompatActivity() {
             if(movieDetail.data == null) return
             binding.vpOverviewAndOther.apply {
                 adapter = movieDetail.data?.let { DetailViewPagerAdapter(this@DetailActivity, this@DetailActivity.id, it) }
-                isUserInputEnabled = false;
+                isUserInputEnabled = false
             }
         } else {
             if(tvDetail.data == null) return
             binding.vpOverviewAndOther.apply {
                 adapter = tvDetail.data?.let { DetailViewPagerAdapter(this@DetailActivity, this@DetailActivity.id, it) }
-                isUserInputEnabled = false;
+                isUserInputEnabled = false
             }
         }
-
 
         TabLayoutMediator(binding.tabDetail, binding.vpOverviewAndOther) { tab, position ->
             when (position) {
@@ -132,11 +131,11 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun isMovieType(): Boolean{
-        return when (intent.getStringExtra(Constant.INTENT_MEDIA_TYPE)) {
-            Constant.INTENT_MEDIA_MOVIE -> {
+        return when (intent.getStringExtra(Constant.EXTRA_MEDIA_TYPE)) {
+            Constant.EXTRA_MEDIA_MOVIE -> {
                  true
             }
-            Constant.INTENT_MEDIA_TV -> {
+            Constant.EXTRA_MEDIA_TV -> {
                  false
             }
             else -> {

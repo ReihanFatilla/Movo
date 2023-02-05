@@ -1,6 +1,7 @@
 package com.reift.movo.presentation.detail.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.Resource
-import com.reift.core.domain.model.detail.Actor
-import com.reift.core.domain.model.detail.MovieDetail
-import com.reift.core.domain.model.detail.Video
-import com.reift.core.domain.model.detail.Wallpaper
+import com.reift.core.domain.model.detail.*
 import com.reift.movo.adapter.ActorAdapter
 import com.reift.movo.adapter.WallpaperAdapter
 import com.reift.movo.databinding.FragmentOverviewBinding
@@ -28,6 +26,9 @@ class OverviewFragment : Fragment() {
     private var _movieDetail: MovieDetail? = null
     private val movieDetail get() = _movieDetail as MovieDetail
 
+    private var _tvDetail: TvDetail? = null
+    private val tvDetail get() = _tvDetail as TvDetail
+
     private val viewModel: DetailViewModel by viewModel()
 
     private lateinit var id: String
@@ -38,7 +39,6 @@ class OverviewFragment : Fragment() {
     ): View {
         _binding = FragmentOverviewBinding.inflate(layoutInflater)
 
-        _movieDetail = arguments?.getParcelable(Constant.BUNDLE_MOVIE_DETAIL)
         id = arguments?.getString(Constant.BUNDLE_MOVIE_ID) ?: "0"
 
         initObserver()
@@ -48,7 +48,13 @@ class OverviewFragment : Fragment() {
     }
 
     private fun setUpView() {
-        binding.tvSynopsis.text = movieDetail.overview
+        if(isMovieType()){
+            _movieDetail = arguments?.getParcelable(Constant.BUNDLE_MOVIE_DETAIL)
+            binding.tvSynopsis.text = movieDetail.overview
+        } else {
+            _tvDetail = arguments?.getParcelable(Constant.BUNDLE_MOVIE_DETAIL)
+            binding.tvSynopsis.text = tvDetail.overview
+        }
     }
 
     private fun setTrailerWebView(resource: Resource<List<Video>>) {
@@ -76,19 +82,36 @@ class OverviewFragment : Fragment() {
     }
 
     private fun initObserver() {
-        viewModel.getMovieActor(id)
-        viewModel.actorResponse.observe(viewLifecycleOwner) {
-            setUpActorRV(it)
-        }
+        if(isMovieType()){
+            viewModel.getMovieActor(id)
+            viewModel.actorResponse.observe(viewLifecycleOwner) {
+                setUpActorRV(it)
+            }
 
-        viewModel.getMovieWallpaper(id)
-        viewModel.wallpaperResponse.observe(viewLifecycleOwner) {
-            setUpWallpaperRV(it)
-        }
+            viewModel.getMovieWallpaper(id)
+            viewModel.wallpaperResponse.observe(viewLifecycleOwner) {
+                setUpWallpaperRV(it)
+            }
 
-        viewModel.getMovieTrailer(id)
-        viewModel.videoResponse.observe(viewLifecycleOwner) {
-            setTrailerWebView(it)
+            viewModel.getMovieTrailer(id)
+            viewModel.videoResponse.observe(viewLifecycleOwner) {
+                setTrailerWebView(it)
+            }
+        } else {
+            viewModel.getTvActor(id)
+            viewModel.actorResponse.observe(viewLifecycleOwner) {
+                setUpActorRV(it)
+            }
+
+            viewModel.getTvTrailer(id)
+            viewModel.wallpaperResponse.observe(viewLifecycleOwner) {
+                setUpWallpaperRV(it)
+            }
+
+            viewModel.getTvTrailer(id)
+            viewModel.videoResponse.observe(viewLifecycleOwner) {
+                setTrailerWebView(it)
+            }
         }
     }
 
@@ -120,5 +143,19 @@ class OverviewFragment : Fragment() {
             else -> {}
         }
 
+    }
+
+    private fun isMovieType(): Boolean {
+        return when (arguments?.getString(Constant.BUNDLE_MEDIA_TYPE)) {
+            Constant.BUNDLE_MEDIA_MOVIE -> {
+                true
+            }
+            Constant.BUNDLE_MEDIA_TV -> {
+                false
+            }
+            else -> {
+                true
+            }
+        }
     }
 }

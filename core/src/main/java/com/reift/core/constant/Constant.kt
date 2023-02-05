@@ -46,9 +46,9 @@ object Constant {
     // Intent Key
     const val EXTRA_DETAIl_ID = "EXTRA_MOVIE_ID"
     const val EXTRA_TV_ID = "EXTRA_TV_ID"
-    const val INTENT_MEDIA_TYPE = "INTENT_MEDIA_TYPE"
-    const val INTENT_MEDIA_MOVIE = "INTENT_MEDIA_MOVIE"
-    const val INTENT_MEDIA_TV = "INTENT_MEDIA_TV"
+    const val EXTRA_MEDIA_TYPE = "INTENT_MEDIA_TYPE"
+    const val EXTRA_MEDIA_MOVIE = "INTENT_MEDIA_MOVIE"
+    const val EXTRA_MEDIA_TV = "INTENT_MEDIA_TV"
 
     // Bundle Key
     const val BUNDLE_MOVIE_ID = "BUNDLE_MOVIE_ID"

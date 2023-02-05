@@ -193,10 +193,10 @@ class OtherFragment : Fragment() {
 
     private fun isMovieType(): Boolean {
         return when (arguments?.getString(Constant.BUNDLE_MEDIA_TYPE)) {
-            Constant.INTENT_MEDIA_MOVIE -> {
+            Constant.EXTRA_MEDIA_MOVIE -> {
                 true
             }
-            Constant.INTENT_MEDIA_TV -> {
+            Constant.EXTRA_MEDIA_TV -> {
                 false
             }
             else -> {
