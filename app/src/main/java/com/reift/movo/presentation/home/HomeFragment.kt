@@ -176,10 +176,8 @@ class HomeFragment : Fragment() {
         }
 
         TabLayoutMediator(binding.tabLayout, binding.vpHome) { tab, position ->
-            when (position) {
-                0 -> tab.text = "Top Rated Movie"
-                1 -> tab.text = "Latest Movie"
-            }
+            val listTab = listOf("Airing Today Tv", "Top Rated Movie", "Top Rated Tv", "Popular Tv")
+            tab.text = listTab[position]
         }.attach()
     }
 

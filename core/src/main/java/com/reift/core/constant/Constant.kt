@@ -15,7 +15,6 @@ object Constant {
     const val SORT_TITLE = "original_title.desc"
 
     // Movie List By
-    const val LATEST_MOVIE = "latest"
     const val NOW_PLAYING_MOVIE = "now_playing"
     const val POPULAR_MOVIE = "popular"
     const val TOP_RATED_MOVIE = "top_rated"

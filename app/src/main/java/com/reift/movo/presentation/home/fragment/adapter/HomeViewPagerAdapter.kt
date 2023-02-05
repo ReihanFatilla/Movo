@@ -1,33 +1,27 @@
 package com.reift.movo.presentation.home.fragment.adapter
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.reift.core.constant.Constant
-import com.reift.core.domain.model.detail.MovieDetail
-import com.reift.movo.presentation.detail.fragments.OtherFragment
 import com.reift.movo.presentation.detail.fragments.OverviewFragment
 import com.reift.movo.presentation.home.fragment.HomeTabFragment
+import com.reift.movo.utils.HomeTabFragmentGenerator
 
 class HomeViewPagerAdapter(
     fa: FragmentActivity
 ) : FragmentStateAdapter(fa) {
 
-    override fun getItemCount() = 2
+    override fun getItemCount() = 4
 
     override fun createFragment(position: Int): Fragment {
 
-        val bundle = Bundle()
+        val topRatedMovie = HomeTabFragmentGenerator.generate(Constant.TOP_RATED_MOVIE)
+        val topRatedTv = HomeTabFragmentGenerator.generate(Constant.TOP_RATED_TV)
+        val airingTodayTv = HomeTabFragmentGenerator.generate(Constant.AIRING_TODAY_TV)
+        val popularTv = HomeTabFragmentGenerator.generate(Constant.POPULAR_TV)
 
-        val topRatedMovie = HomeTabFragment()
-        bundle.putString(Constant.BUNDLE_MOVIE_CATEGORY, Constant.TOP_RATED_MOVIE)
-        topRatedMovie.arguments = bundle
-
-        return when(position) {
-            0 -> topRatedMovie
-            else -> topRatedMovie
-        }
+        return listOf(airingTodayTv, topRatedMovie, topRatedTv, popularTv)[position]
     }
 
 }

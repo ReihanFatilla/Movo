@@ -1,5 +1,6 @@
 package com.reift.movo.presentation.allmovietv
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.reift.core.domain.model.Resource
 import com.reift.core.domain.model.movie.MovieResult
 import com.reift.core.domain.usecase.allmovietv.AllMovieTvUseCase
+import kotlinx.parcelize.Parcelize
 
 class AllMovieTvViewModel(
     val allMovieTvUseCase: AllMovieTvUseCase

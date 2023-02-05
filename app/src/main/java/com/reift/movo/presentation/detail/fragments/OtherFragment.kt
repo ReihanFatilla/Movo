@@ -89,7 +89,8 @@ class OtherFragment : Fragment() {
                         binding.rvRecommendations.apply {
                             val mAdapter = HorizontalListAdapter<Movie>()
                             adapter = mAdapter
-                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            layoutManager =
+                                LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                             mAdapter.setData(result.movie)
 
                             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
@@ -107,7 +108,8 @@ class OtherFragment : Fragment() {
                         binding.rvRecommendations.apply {
                             val mAdapter = HorizontalListAdapter<Tv>()
                             adapter = mAdapter
-                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            layoutManager =
+                                LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                             mAdapter.setData(result.tv)
 
                             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
@@ -130,13 +132,14 @@ class OtherFragment : Fragment() {
     private fun <T> setUpSimilarMovies(resource: Resource<T>?) {
         when (resource) {
             is Resource.Success -> {
-                when(resource.data){
+                when (resource.data) {
                     is MovieResult -> {
                         val result = resource.data as MovieResult
                         binding.rvSimilar.apply {
                             val mAdapter = HorizontalListAdapter<Movie>()
                             adapter = mAdapter
-                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            layoutManager =
+                                LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                             mAdapter.setData(result.movie)
 
                             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
@@ -155,7 +158,8 @@ class OtherFragment : Fragment() {
                         binding.rvSimilar.apply {
                             val mAdapter = HorizontalListAdapter<Tv>()
                             adapter = mAdapter
-                            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                            layoutManager =
+                                LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                             mAdapter.setData(result.tv)
 
                             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
@@ -192,16 +196,6 @@ class OtherFragment : Fragment() {
     }
 
     private fun isMovieType(): Boolean {
-        return when (arguments?.getString(Constant.BUNDLE_MEDIA_TYPE)) {
-            Constant.EXTRA_MEDIA_MOVIE -> {
-                true
-            }
-            Constant.EXTRA_MEDIA_TV -> {
-                false
-            }
-            else -> {
-                true
-            }
-        }
+        return arguments?.getString(Constant.BUNDLE_MEDIA_TYPE) == Constant.BUNDLE_MEDIA_MOVIE
     }
 }
