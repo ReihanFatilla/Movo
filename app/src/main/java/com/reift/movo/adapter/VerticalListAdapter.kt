@@ -48,6 +48,7 @@ class VerticalListAdapter<T>: RecyclerView.Adapter<VerticalListAdapter.VerticalV
                         Glide.with(imgPoster.context)
                             .load(Constant.IMAGE_BASE_URL+posterPath)
                             .apply(RequestOptions())
+                            .override(300, 300)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .priority(Priority.HIGH)
                             .into(imgPoster)

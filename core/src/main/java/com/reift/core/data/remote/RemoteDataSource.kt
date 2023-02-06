@@ -21,7 +21,7 @@ class RemoteDataSource(
 ) {
 
     private val apiKey = "cc624f824bf4aae323fb0cc15680e65c"
-    private val region = "ID"
+    private val region = "US"
 
     // Movie
 

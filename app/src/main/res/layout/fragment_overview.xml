@@ -35,7 +35,7 @@
             android:id="@+id/tv_synopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="#ECECEC"
             android:fontFamily="@font/poppins_regular"
             android:textSize="12sp"
             android:text="Lightning McQueen and his best friend Mater head east from Radiator Springs on a cross-country road trip to meet up with Mater’s sister."

@@ -11,6 +11,7 @@ import com.reift.movo.`interface`.OnItemClickCallback
 import com.reift.core.constant.Constant
 import com.reift.core.domain.model.movie.Movie
 import com.reift.core.domain.model.tv.Tv
+import com.reift.movo.R
 import com.reift.movo.databinding.ItemHorizontalMovieBinding
 
 class HorizontalListAdapter<T>: RecyclerView.Adapter<HorizontalListAdapter.MyViewHolder>() {
@@ -58,6 +59,7 @@ class HorizontalListAdapter<T>: RecyclerView.Adapter<HorizontalListAdapter.MyVie
                         Glide.with(imgMovie.context)
                             .load(Constant.IMAGE_BASE_URL+posterPath)
                             .apply(RequestOptions())
+                            .override(300, 300)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .priority(Priority.HIGH)
                             .into(imgMovie)

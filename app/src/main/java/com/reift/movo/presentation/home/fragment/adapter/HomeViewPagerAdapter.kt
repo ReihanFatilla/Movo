@@ -16,10 +16,10 @@ class HomeViewPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
 
-        val topRatedMovie = HomeTabFragmentGenerator.generate(Constant.TOP_RATED_MOVIE)
-        val topRatedTv = HomeTabFragmentGenerator.generate(Constant.TOP_RATED_TV)
-        val airingTodayTv = HomeTabFragmentGenerator.generate(Constant.AIRING_TODAY_TV)
-        val popularTv = HomeTabFragmentGenerator.generate(Constant.POPULAR_TV)
+        val topRatedMovie = HomeTabFragmentGenerator.generate(Constant.TOP_RATED_MOVIE, Constant.BUNDLE_MEDIA_MOVIE)
+        val topRatedTv = HomeTabFragmentGenerator.generate(Constant.TOP_RATED_TV, Constant.BUNDLE_MEDIA_TV)
+        val airingTodayTv = HomeTabFragmentGenerator.generate(Constant.AIRING_TODAY_TV, Constant.BUNDLE_MEDIA_TV)
+        val popularTv = HomeTabFragmentGenerator.generate(Constant.POPULAR_TV, Constant.BUNDLE_MEDIA_TV)
 
         return listOf(airingTodayTv, topRatedMovie, topRatedTv, popularTv)[position]
     }
