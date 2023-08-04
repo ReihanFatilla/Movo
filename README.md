@@ -3,11 +3,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-
-https://user-images.githubusercontent.com/88997868/184272482-36425c93-5fd4-484c-80cd-0bf9a1da6312.mp4
-
-
-
 Movo (Movie Information) is an android application to find out all the Movie Information and details around the world Including related movies, reviews, actors, current playing, upcoming, top rated movies and more.
 
 * Get all type of Movie list including
